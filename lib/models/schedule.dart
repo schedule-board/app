@@ -66,3 +66,4 @@ class ComparableTime extends TimeOfDay {
     return hour + minute / 60;
   }
 }
+

@@ -23,7 +23,7 @@ class SubjectDetailPage extends StatelessWidget {
                 _buildSubjectNameAndPicture(),
                 const SizedBox(height: 40),
                 const Text(
-                  "This course is a sample course put into these designs for the mere purpose of "
+                  "this is in this country is a sample course put into these designs for the mere purpose of "
                   "making the designs complete and filing gaps. It just gives the UI a good look"
                   "This course is a sample course put into these designs for the mere purpose of "
                   "making the designs complete and filing gaps. It just gives the UI a good look",
@@ -275,7 +275,8 @@ class TopRow extends StatelessWidget {
         Text(
           pageTitle,
           style: const TextStyle(fontSize: 18),
-        )
+        ),
+        const Text("hello how are you"),
       ],
     );
   }

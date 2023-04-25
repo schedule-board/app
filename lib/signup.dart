@@ -1,11 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'login_view.dart';
 
@@ -47,23 +42,33 @@ class _SignUpViewState extends State<SignUpView> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(children: [
             //textfield 1
+            AuthField(controller: (emailController), hintText: 'name'),
+            const SizedBox(
+              height: 5,
+            ),
             AuthField(controller: (emailController), hintText: 'email'),
             const SizedBox(
-              height: 25,
+              height: 5,
             ),
             AuthField(
               controller: passwordController,
               hintText: 'password',
             ),
             const SizedBox(
-              height: 40,
+              height: 5,
+            ),
+            AuthField(
+              controller: passwordController,
+              hintText: 'confirm password',
             ),
             //textfield2
-
+            const SizedBox(
+              height: 40,
+            ),
             Align(
-              alignment: Alignment.topRight,
-              child: RoundedSmallButton(
-                label: "done",
+              alignment: Alignment.center,
+              child: RoundedButton(
+                label: "Signup",
                 onTap: () {},
               ),
             ),
@@ -101,23 +106,31 @@ class _SignUpViewState extends State<SignUpView> {
   }
 }
 
-class RoundedSmallButton extends StatelessWidget {
+class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
-  const RoundedSmallButton({Key? key, required this.label, required this.onTap})
-      : super(key: key);
+  final ButtonStyle style =
+      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
+  RoundedButton({
+    Key? key,
+    required this.label,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(label),
+    return ElevatedButton(
+      style: style,
+      onPressed: () {},
+      child: Text(label),
     );
   }
 }
 
 class AuthField extends StatelessWidget {
   final TextEditingController controller;
-  final hintText;
+  final String hintText;
   const AuthField({
     Key? key,
     required this.controller,
@@ -131,7 +144,7 @@ class AuthField extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: const BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.black12),
         ),
         contentPadding: const EdgeInsets.all(
           22,
@@ -149,12 +162,9 @@ class AuthField extends StatelessWidget {
 class UIconstants {
   static AppBar appBar() {
     return AppBar(
-      title: SvgPicture.asset(
-        'images/logo.png',
-        color: Colors.amber,
-        height: 30,
-      ),
+      title: const Text('SignUp'),
       centerTitle: true,
+      backgroundColor: Colors.indigo[100],
     );
   }
 }

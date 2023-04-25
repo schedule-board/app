@@ -50,14 +50,32 @@ class _LoginViewState extends State<LoginView> {
               hintText: 'password',
             ),
             const SizedBox(
-              height: 40,
+              height: 5,
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'forgot your Password?',
+                      style: const TextStyle(color: Colors.greenAccent),
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 30,
             ),
             //textfield2
 
             Align(
-              alignment: Alignment.topRight,
-              child: RoundedSmallButton(
-                label: "done",
+              alignment: Alignment.center,
+              child: RoundedButton(
+                label: "Login",
                 onTap: () {},
               ),
             ),
@@ -94,23 +112,31 @@ class _LoginViewState extends State<LoginView> {
   }
 }
 
-class RoundedSmallButton extends StatelessWidget {
+class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
-  const RoundedSmallButton({Key? key, required this.label, required this.onTap})
-      : super(key: key);
+  final ButtonStyle style = ElevatedButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 20, color: Colors.black12));
+
+  RoundedButton({
+    Key? key,
+    required this.label,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(label),
+    return ElevatedButton(
+      style: style,
+      onPressed: () {},
+      child: Text(label),
     );
   }
 }
 
 class AuthField extends StatelessWidget {
   final TextEditingController controller;
-  final hintText;
+  final String hintText;
   const AuthField({
     Key? key,
     required this.controller,
@@ -135,6 +161,16 @@ class AuthField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.grey),
         ),
       ),
+    );
+  }
+}
+
+class UIconstants {
+  static AppBar appBar() {
+    return AppBar(
+      title: const Text('Login'),
+      centerTitle: true,
+      backgroundColor: Colors.indigo[100],
     );
   }
 }

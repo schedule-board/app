@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule/signup.dart';
 import 'package:schedule/subject_detail.dart';
 import 'package:schedule/announce.dart';
 
@@ -14,12 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Schedule Board',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home:
-          const AnnouncePage(), // this will be changed. we're doing this temporarily tot test the SubjectDetailPage
+          const SignUpView(), // this will be changed. we're doing this temporarily tot test the SubjectDetailPage
     );
   }
 }

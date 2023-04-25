@@ -79,7 +79,8 @@ class SubjectDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSingleSubjectMiniSchedule(List<List<Schedule>> weeklySchedulesOfSubject) {
+  Widget _buildSingleSubjectMiniSchedule(
+      List<List<Schedule>> weeklySchedulesOfSubject) {
     // let's find the biggest end value in the schedules 'cause that number decides how tall the display will be
     Schedule latestSchedule = weeklySchedulesOfSubject[0][0];
     for (List<Schedule> dailySchedulesOfSubject in weeklySchedulesOfSubject) {
@@ -91,9 +92,12 @@ class SubjectDetailPage extends StatelessWidget {
       }
     }
 
-    double hourToDpRatio = 6; // a ratio telling how many density independent pixels we use to represent 1 hour. (on this widget)
+    double hourToDpRatio =
+        6; // a ratio telling how many density independent pixels we use to represent 1 hour. (on this widget)
     // the maxHeight will be the height of the maximum stripe in the widget. it depends on the end time of the latest schedule.
-    double maxHeight = (latestSchedule.end.hour + latestSchedule.end.minute / 60) * hourToDpRatio;
+    double maxHeight =
+        (latestSchedule.end.hour + latestSchedule.end.minute / 60) *
+            hourToDpRatio;
 
     // we're defining this function in a function to automate building the "stripes" for each schedule.
     Widget _buildSchedulesForDay(List<Schedule>? schedulesOfTheDay) {
@@ -101,18 +105,22 @@ class SubjectDetailPage extends StatelessWidget {
         return Container();
       }
       return SizedBox(
-        height: maxHeight, // no matter which stripe we're drawing, all the stacks have the same height, determined by the latest schedule
+        height:
+            maxHeight, // no matter which stripe we're drawing, all the stacks have the same height, determined by the latest schedule
         width: 12, // this number is arbitrary. could be changed.
         child: Stack(
           children: [
             for (Schedule schedule in schedulesOfTheDay)
               Positioned(
-                left: 2, // this depends on the width of the child container. but still arbitrary.
+                left:
+                    2, // this depends on the width of the child container. but still arbitrary.
                 top: schedule.start.inHours() * hourToDpRatio,
                 child: Container(
                   width: 10, // another arbitrary number
                   height: schedule.lengthInHours() * hourToDpRatio,
-                  decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(20)),
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(20)),
                 ),
               )
           ],
@@ -239,7 +247,8 @@ class SubjectDetailPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(100), // this radius should be way bigger than the width of the image. always.
+              borderRadius: BorderRadius.circular(
+                  100), // this radius should be way bigger than the width of the image. always.
               child: Image.network(
                   "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"),
             ),
@@ -276,7 +285,6 @@ class TopRow extends StatelessWidget {
           pageTitle,
           style: const TextStyle(fontSize: 18),
         ),
-        const Text("hello how are you"),
       ],
     );
   }

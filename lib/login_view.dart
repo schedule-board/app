@@ -17,6 +17,8 @@ class _LoginViewState extends State<LoginView> {
   final appBar = UIconstants.appBar();
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late TextEditingController passwordCheckController;
+  late TextEditingController nameController;
 
   @override
   void initState() {
@@ -116,7 +118,10 @@ class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20, color: Colors.black12));
+      textStyle: const TextStyle(
+        fontSize: 20,
+      ),
+  backgroundColor: Colors.black,);
 
   RoundedButton({
     Key? key,
@@ -170,7 +175,7 @@ class UIconstants {
     return AppBar(
       title: const Text('Login'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[100],
+      backgroundColor: Colors.deepPurple[100],
     );
   }
 }

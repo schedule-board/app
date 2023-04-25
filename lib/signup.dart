@@ -18,12 +18,16 @@ class _SignUpViewState extends State<SignUpView> {
   final appBar = UIconstants.appBar();
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late TextEditingController passwordCheckController;
+  late TextEditingController nameController;
 
   @override
   void initState() {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    nameController = TextEditingController();
+    passwordCheckController = TextEditingController();
   }
 
   @override
@@ -31,6 +35,8 @@ class _SignUpViewState extends State<SignUpView> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    passwordCheckController.dispose();
+    nameController.dispose();
   }
 
   @override
@@ -42,7 +48,7 @@ class _SignUpViewState extends State<SignUpView> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(children: [
             //textfield 1
-            AuthField(controller: (emailController), hintText: 'name'),
+            AuthField(controller: (nameController), hintText: 'name'),
             const SizedBox(
               height: 5,
             ),
@@ -58,7 +64,7 @@ class _SignUpViewState extends State<SignUpView> {
               height: 5,
             ),
             AuthField(
-              controller: passwordController,
+              controller: passwordCheckController,
               hintText: 'confirm password',
             ),
             //textfield2
@@ -109,8 +115,11 @@ class _SignUpViewState extends State<SignUpView> {
 class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
-  final ButtonStyle style =
-      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+  final ButtonStyle style = ElevatedButton.styleFrom(
+      textStyle: const TextStyle(
+        fontSize: 20,
+      ),
+      backgroundColor: Colors.black87);
 
   RoundedButton({
     Key? key,
@@ -164,7 +173,7 @@ class UIconstants {
     return AppBar(
       title: const Text('SignUp'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[100],
+      backgroundColor: Colors.deepPurple[100],
     );
   }
 }

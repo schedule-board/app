@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schedule/signup.dart';
-import 'package:schedule/subject_detail.dart';
-import 'package:schedule/announce.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schedule/blocs/auth_bloc.dart';
+import 'package:schedule/ui/signup.dart';
+import 'package:schedule/ui/subject_detail.dart';
+import 'package:schedule/ui/announce.dart';
 
 // import 'announcement.dart';
 
@@ -14,13 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Schedule Board',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(create: (context) => AuthBloc(),)
+      ],
+      child: MaterialApp(
+        title: 'Schedule Board',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home:
+            const SignUpView(), // this will be changed. we're doing this temporarily tot test the SubjectDetailPage
       ),
-      home:
-          const SignUpView(), // this will be changed. we're doing this temporarily tot test the SubjectDetailPage
     );
   }
 }

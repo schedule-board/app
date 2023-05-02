@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:schedule/signup.dart';
+import 'package:schedule/subject_detail.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -118,10 +119,11 @@ class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(
-        fontSize: 20,
-      ),
-  backgroundColor: Colors.black,);
+    textStyle: const TextStyle(
+      fontSize: 20,
+    ),
+    backgroundColor: Colors.black,
+  );
 
   RoundedButton({
     Key? key,
@@ -133,7 +135,11 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: style,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => SubjectDetailPage(),
+        ));
+      },
       child: Text(label),
     );
   }

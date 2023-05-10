@@ -65,7 +65,7 @@ class _AnnouncePageState extends State<AnnouncePage> {
     setState(() {
       displayList = announcementsList
           .where((element) => element.announcementDescription!
-              .toLowerCase()!
+              .toLowerCase()
               .contains(value.toLowerCase()))
           .toList();
     });

@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:schedule/models/announcementsmodel.dart';
+import 'package:schedule/announcement/models/announcementsmodel.dart';
 
 class AnnouncePage extends StatefulWidget {
   const AnnouncePage({Key? key}) : super(key: key);

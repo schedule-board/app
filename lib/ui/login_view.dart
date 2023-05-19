@@ -1,11 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:schedule/blocs/auth_bloc.dart';
-import 'package:schedule/ui/landing_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:schedule/ui/signup.dart';
-import 'package:schedule/ui/subject_detail.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -141,9 +139,7 @@ class RoundedButton extends StatelessWidget {
       onPressed: () {
         var authBloc = BlocProvider.of<AuthBloc>(context);
         authBloc.add(UserLogInEvent(newUserName: "Andy"));
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => LandingPage(),
-        ));
+        context.go('/landing');
       },
       child: Text(label),
     );

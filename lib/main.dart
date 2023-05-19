@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:schedule/blocs/auth_bloc.dart';
+import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:schedule/ui/landing_page.dart';
 import 'package:schedule/ui/login_view.dart';
 import 'package:schedule/ui/signup.dart';
 import 'package:schedule/ui/subject_detail.dart';
-import 'package:schedule/ui/announce.dart';
+import 'package:schedule/course/screens/screens.dart';
 
 // import 'announcement.dart';
 
@@ -45,6 +45,10 @@ class MyApp extends StatelessWidget {
         path: '/subjectDetail',
         builder: (context, state) => const SubjectDetailPage(),
       ),
+      GoRoute(
+        path: '/createCourse',
+        builder: (context, state) => CreateCourseScreen(),
+      ),
     ],
   );
 
@@ -57,8 +61,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
-        routerDelegate: router.routerDelegate,
-        routeInformationParser: router.routeInformationParser,
+        routerConfig: router,
         title: 'Schedule Board',
         theme: ThemeData(
           primarySwatch: Colors.blue,

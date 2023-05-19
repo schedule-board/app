@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:schedule/dummy_data/dummy_schedule_data.dart';
-import 'package:schedule/models/schedule.dart';
+import 'package:schedule/schedule/models/schedule.dart';
 
 class SubjectDetailPage extends StatelessWidget {
   const SubjectDetailPage({super.key});

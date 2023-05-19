@@ -1,4 +1,4 @@
-import 'package:schedule/models/schedule.dart';
+import 'package:schedule/schedule/models/schedule.dart';
 
 List<List<Schedule>> weeklySchedulesOfSubject = [
   [

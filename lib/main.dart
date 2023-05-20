@@ -8,6 +8,9 @@ import 'package:schedule/ui/signup.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:schedule/course/screens/screens.dart';
 
+import 'auth/screens/joinwithcode_screen.dart';
+import 'auth/screens/signup_screen.dart';
+
 // import 'announcement.dart';
 
 void main() {
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/signUp',
-        builder: (context, state) => const SignUpView(),
+        builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
         path: '/subjectDetail',
@@ -49,6 +52,22 @@ class MyApp extends StatelessWidget {
         path: '/createCourse',
         builder: (context, state) => CreateCourseScreen(),
       ),
+      GoRoute(
+        path: '/signUp',
+        builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: '/joinWithCode',
+        builder: (context, state) => JoinWithCodeScreen(),
+      ),
+      // GoRoute(
+      //   path: '/joinAsOwner',
+      //   builder: (context, state) => JoinAsOwnerScreen(),
+      // ),
+      // GoRoute(
+      //   path: '/joinAsStudent',
+      //   builder: (context, state) => JoinAsStudentScreen(),
+      // ),
     ],
   );
 

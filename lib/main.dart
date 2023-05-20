@@ -7,6 +7,7 @@ import 'package:schedule/ui/login_view.dart';
 import 'package:schedule/ui/signup.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:schedule/course/screens/screens.dart';
+import 'package:schedule/auth/screens/join_as_owner.dart';
 
 // import 'announcement.dart';
 
@@ -49,6 +50,11 @@ class MyApp extends StatelessWidget {
         path: '/createCourse',
         builder: (context, state) => CreateCourseScreen(),
       ),
+      GoRoute(
+        path: '/JoinAsOwner',
+        builder: (context, state) =>  JoinAsOwner(),
+      ),
+      
     ],
   );
 

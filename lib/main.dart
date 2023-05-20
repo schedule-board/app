@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schedule/auth/bloc/auth_bloc.dart';
+import 'package:schedule/auth/screens/join_as_student_page.dart';
+import 'package:schedule/auth/screens/login_page.dart';
 import 'package:schedule/ui/landing_page.dart';
-import 'package:schedule/ui/login_view.dart';
 import 'package:schedule/ui/signup.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:schedule/course/screens/screens.dart';
-
-// import 'announcement.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,17 +20,17 @@ class MyApp extends StatelessWidget {
     initialLocation: '/login',
     initialExtra: GoRoute(
       path: '/login',
-      builder: (context, state) => const LoginView(),
+      builder: (context, state) => LoginPage(),
     ),
     routes: [
       // a route for the root of the app
       GoRoute(
         path: '/',
-        builder: (context, state) => const LoginView(),
+        builder: (context, state) => LoginPage(),
       ),
       GoRoute(
         path: '/login',
-        builder: (context, state) => const LoginView(),
+        builder: (context, state) => LoginPage(),
       ),
       GoRoute(
         path: '/landing',
@@ -48,6 +47,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/createCourse',
         builder: (context, state) => CreateCourseScreen(),
+      ),
+      GoRoute(
+        path: '/joinAsStudent',
+        builder: (context, state) => JoinAsStudentPage(),
       ),
     ],
   );

@@ -54,6 +54,11 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => CreateCourseScreen(),
       ),
       GoRoute(
+        path: '/JoinAsOwner',
+        builder: (context, state) =>  JoinAsOwner(),
+      ),
+      
+      GoRoute(
         path: '/joinAsStudent',
         builder: (context, state) => JoinAsStudentPage(),
       ),

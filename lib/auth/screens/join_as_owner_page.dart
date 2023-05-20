@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class JoinAsOwner extends StatelessWidget {
+class JoinAsOwnerPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _schoolNameController = TextEditingController();
   final TextEditingController _shoolEmailController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  JoinAsOwnerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +46,7 @@ class JoinAsOwner extends StatelessWidget {
                 labelText: 'School email',
               ),
               validator: (value) {
-                RegExp emailRegex =
-                    RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+                RegExp emailRegex = RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
                 if (value == null || value.isEmpty) {
                   return 'Please enter the School email';
                 }
@@ -82,8 +83,7 @@ class JoinAsOwner extends StatelessWidget {
               ),
               keyboardType: TextInputType.number,
               validator: (value) {
-                RegExp emailRegex =
-                    RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+                RegExp emailRegex = RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
                 if (value == null || value.isEmpty) {
                   return 'Please enter the School email';
                 }

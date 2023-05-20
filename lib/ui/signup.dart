@@ -2,8 +2,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'login_view.dart';
-
 class SignUpView extends StatefulWidget {
   const SignUpView({Key? key}) : super(key: key);
   static route() => MaterialPageRoute(
@@ -93,10 +91,10 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.push(
-                          context,
-                          LoginView.route(),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   LoginPage.route(),
+                        // );
                       },
                   ),
                 ],

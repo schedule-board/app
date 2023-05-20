@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/joinAsOwner');
+                    context.push('/joinAsOwner');
                   },
                   child: const Text('Join as owner'),
                 ),

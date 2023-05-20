@@ -9,7 +9,7 @@ import 'package:schedule/ui/signup.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:schedule/course/screens/screens.dart';
 
-import 'auth/screens/joinwithcode_screen.dart';
+import 'auth/screens/join_with_code_screen.dart';
 import 'auth/screens/signup_screen.dart';
 
 // import 'announcement.dart';

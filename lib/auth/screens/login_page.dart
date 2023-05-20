@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -63,6 +64,13 @@ class LoginPage extends StatelessWidget {
                   }
                 },
                 child: const Text('Login'),
+              ),
+              // text button to go to sign up page
+              TextButton(
+                onPressed: () {
+                  context.push('/signUp');
+                },
+                child: const Text('Sign Up'),
               ),
             ],
           ),

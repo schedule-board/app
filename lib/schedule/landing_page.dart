@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: appTitle,
-      home: LandingPageScreen(title: appTitle),
+      home: LandingPage(title: appTitle),
     );
   }
 }
 
-class LandingPageScreen extends StatelessWidget {
-  const LandingPageScreen({super.key, required this.title});
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key, required this.title});
 
   final String title;
 

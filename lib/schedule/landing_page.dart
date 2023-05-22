@@ -28,27 +28,30 @@ class LandingPageScreen extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: ListView(
         children: [
-          ListTile(
+          Card(
+              child: ListTile(
+            isThreeLine: true,
             leading: Icon(Icons.timelapse),
-            title: Text('Schedule 1'),
-            onTap: () {
-            },
-          ),
-          ListTile(
+            title: Text('Course Name'),
+            subtitle: Text('Day , Start time - End time'),
+            onTap: () {},
+          )),
+          Card(
+              child: ListTile(
+            isThreeLine: true,
             leading: Icon(Icons.timelapse),
-            title: Text('Schedule 2'),
-            onTap: () {
-              
-            },
-          ),
-          ListTile(
+            title: Text('Course Name'),
+            subtitle: Text('Day , Start time - End time'),
+            onTap: () {},
+          )),
+          Card(
+              child: ListTile(
+            isThreeLine: true,
             leading: Icon(Icons.timelapse),
-            title: Text('Schedule 3'),
-            onTap: () {
-              // Show a popup when the list tile is tapped.
-             
-            },
-          ),
+            title: Text('Course Name'),
+            subtitle: Text('Day , Start time - End time'),
+            onTap: () {},
+          )),
         ],
       ),
       drawer: Drawer(

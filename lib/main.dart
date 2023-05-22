@@ -6,9 +6,9 @@ import 'package:schedule/auth/screens/join_as_owner_page.dart';
 import 'package:schedule/auth/screens/join_as_student_page.dart';
 import 'package:schedule/auth/screens/login_page.dart';
 import 'package:schedule/course/screens/course_detail_page.dart';
-import 'package:schedule/ui/landing_page.dart';
+import 'package:schedule/course/screens/create_course_page.dart';
+import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/ui/subject_detail.dart';
-import 'package:schedule/course/screens/screens.dart';
 
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
@@ -23,10 +23,12 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/courseDetail',
+    initialLocation: '/landing',
     initialExtra: GoRoute(
-      path: '/login',
-      builder: (context, state) => LoginPage(),
+      path: '/landingpage',
+      builder: (context, state) => LandingPage(
+        title: 'Schedule board',
+      ),
     ),
     routes: [
       // a route for the root of the app
@@ -37,10 +39,6 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/login',
         builder: (context, state) => LoginPage(),
-      ),
-      GoRoute(
-        path: '/landing',
-        builder: (context, state) => LandingPage(),
       ),
       GoRoute(
         path: '/signUp',
@@ -70,6 +68,12 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/joinWithCode',
         builder: (context, state) => JoinWithCodeScreen(),
+      ),
+      GoRoute(
+        path: '/landing',
+        builder: (context, state) => const LandingPage(
+          title: 'Schedule board',
+        ),
       ),
       GoRoute(
         path: '/courseDetail',

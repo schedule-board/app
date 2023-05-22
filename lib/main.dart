@@ -105,6 +105,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
+         debugShowCheckedModeBanner: false,
         routerConfig: router,
         title: 'Schedule Board',
         theme: ThemeData(

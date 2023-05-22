@@ -5,6 +5,8 @@ import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:schedule/auth/screens/join_as_owner_page.dart';
 import 'package:schedule/auth/screens/join_as_student_page.dart';
 import 'package:schedule/auth/screens/login_page.dart';
+import 'package:schedule/class/screens/class_detail_page.dart';
+import 'package:schedule/class/screens/create_class_page.dart';
 import 'package:schedule/course/screens/course_detail_page.dart';
 import 'package:schedule/course/screens/create_course_page.dart';
 import 'package:schedule/schedule/landing_page.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/landing',
+    initialLocation: '/login',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => LandingPage(
@@ -45,12 +47,16 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
-        path: '/subjectDetail',
-        builder: (context, state) => const SubjectDetailPage(),
-      ),
-      GoRoute(
         path: '/createCourse',
         builder: (context, state) => CreateCoursePage(),
+      ),
+      GoRoute(
+        path: '/createClass',
+        builder: (context, state) => CreateClassPage(),
+      ),
+      GoRoute(
+        path: '/classDetail',
+        builder: (context, state) => ClassDetailPage(),
       ),
       GoRoute(
         path: '/JoinAsOwner',

@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
         ),
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("user Details"),
+            title: const Text("user Profile"),
           ),
           body: Form(
             key: _formKey,
@@ -108,6 +108,6 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  static const String emailDetailHintText = 'school email';
-  static const String nameDetailHintText = 'school name';
+  static const String emailDetailHintText = 'user email';
+  static const String nameDetailHintText = 'user name';
 }

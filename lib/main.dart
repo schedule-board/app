@@ -11,6 +11,9 @@ import 'package:schedule/course/screens/screens.dart';
 
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
+import 'school/screens/school_detail_page.dart';
+import 'auth/screens/invite_page.dart';
+import 'auth/screens/profile_page.dart';
 
 // import 'announcement.dart';
 
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/ProfilePage',
     initialExtra: GoRoute(
       path: '/login',
       builder: (context, state) => LoginPage(),
@@ -70,6 +73,19 @@ class MyApp extends StatelessWidget {
         path: '/joinWithCode',
         builder: (context, state) => JoinWithCodeScreen(),
       ),
+      GoRoute(
+        path: '/schoolDetailPage',
+        builder: (context, state) => SchoolDetailPage(),
+      ),
+      GoRoute(
+        path: '/invitePage',
+        builder: (context, state) => InvitePage(),
+      ),
+      GoRoute(
+        path: '/ProfilePage',
+        builder: (context, state) => ProfilePage(),
+      ),
+
       // GoRoute(
       //   path: '/joinAsOwner',
       //   builder: (context, state) => JoinAsOwnerScreen(),

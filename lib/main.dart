@@ -8,9 +8,10 @@ import 'package:schedule/auth/screens/login_page.dart';
 import 'package:schedule/ui/landing_page.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:schedule/course/screens/screens.dart';
-
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
+import "ui/class_list_page.dart";
+import "ui/course_list_page.dart";
 
 // import 'announcement.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/courseList',
     initialExtra: GoRoute(
       path: '/login',
       builder: (context, state) => LoginPage(),
@@ -32,6 +33,14 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/',
         builder: (context, state) => LoginPage(),
+      ),
+      GoRoute(
+        path: '/classList',
+        builder: (context, state) => ClassListPage(),
+      ),
+      GoRoute(
+        path: '/courseList',
+        builder: (context, state) => CourseListPage(),
       ),
       GoRoute(
         path: '/login',

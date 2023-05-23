@@ -5,11 +5,17 @@ import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:schedule/auth/screens/join_as_owner_page.dart';
 import 'package:schedule/auth/screens/join_as_student_page.dart';
 import 'package:schedule/auth/screens/login_page.dart';
-import 'package:schedule/ui/landing_page.dart';
+import 'package:schedule/class/screens/class_detail_page.dart';
+import 'package:schedule/class/screens/create_class_page.dart';
+import 'package:schedule/course/screens/course_detail_page.dart';
+import 'package:schedule/course/screens/create_course_page.dart';
+import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/ui/subject_detail.dart';
-import 'package:schedule/course/screens/screens.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
+import 'school/screens/school_detail_page.dart';
+import 'auth/screens/invite_page.dart';
+import 'auth/screens/profile_page.dart';
 import "ui/class_list_page.dart";
 import "ui/course_list_page.dart";
 
@@ -23,10 +29,12 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/courseList',
+    initialLocation: '/login',
     initialExtra: GoRoute(
-      path: '/login',
-      builder: (context, state) => LoginPage(),
+      path: '/landingpage',
+      builder: (context, state) => LandingPage(
+        title: 'Schedule board',
+      ),
     ),
     routes: [
       // a route for the root of the app
@@ -47,20 +55,20 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => LoginPage(),
       ),
       GoRoute(
-        path: '/landing',
-        builder: (context, state) => LandingPage(),
-      ),
-      GoRoute(
         path: '/signUp',
         builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
-        path: '/subjectDetail',
-        builder: (context, state) => const SubjectDetailPage(),
+        path: '/createCourse',
+        builder: (context, state) => CreateCoursePage(),
       ),
       GoRoute(
-        path: '/createCourse',
-        builder: (context, state) => CreateCourseScreen(),
+        path: '/createClass',
+        builder: (context, state) => CreateClassPage(),
+      ),
+      GoRoute(
+        path: '/classDetail',
+        builder: (context, state) => ClassDetailPage(),
       ),
       GoRoute(
         path: '/JoinAsOwner',
@@ -78,6 +86,29 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/joinWithCode',
         builder: (context, state) => JoinWithCodeScreen(),
+      ),
+      GoRoute(
+        path: '/schoolDetailPage',
+        builder: (context, state) => SchoolDetailPage(),
+      ),
+      GoRoute(
+        path: '/invitePage',
+        builder: (context, state) => InvitePage(),
+      ),
+      GoRoute(
+        path: '/ProfilePage',
+        builder: (context, state) => ProfilePage(),
+      ),
+
+      GoRoute(
+        path: '/landing',
+        builder: (context, state) => const LandingPage(
+          title: 'Schedule board',
+        ),
+      ),
+      GoRoute(
+        path: '/courseDetail',
+        builder: (context, state) => CourseDetailPage(),
       ),
       // GoRoute(
       //   path: '/joinAsOwner',
@@ -99,6 +130,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: router,
         title: 'Schedule Board',
         theme: ThemeData(

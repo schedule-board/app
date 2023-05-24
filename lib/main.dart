@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/ProfilePage',
+    initialLocation: '/SelectClass',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => const LandingPage(
@@ -92,15 +92,15 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => JoinWithCodeScreen(),
       ),
       GoRoute(
-        path: '/schoolDetailPage',
+        path: '/schoolDetail',
         builder: (context, state) => SchoolDetailPage(),
       ),
       GoRoute(
-        path: '/invitePage',
+        path: '/invite',
         builder: (context, state) => InvitePage(),
       ),
       GoRoute(
-        path: '/ProfilePage',
+        path: '/Profile',
         builder: (context, state) => ProfilePage(),
       ),
 
@@ -115,7 +115,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => CourseDetailPage(),
       ),
       GoRoute(
-        path: '/SelectClassPage',
+        path: '/SelectClass',
         builder: (context, state) => SelectClassPage(),
       ),
       // GoRoute(
@@ -136,6 +136,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
+        ),
         BlocProvider<CourseBloc>(
           create: (context) => CourseBloc(courseRepository),
         ),

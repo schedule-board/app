@@ -17,6 +17,7 @@ import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
 import 'auth/screens/invite_page.dart';
 import 'auth/screens/profile_page.dart';
+import 'class/screens/select_class_page.dart';
 
 // import 'announcement.dart';
 
@@ -28,10 +29,10 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/ProfilePage',
+    initialLocation: '/SelectClassPage',
     initialExtra: GoRoute(
       path: '/landingpage',
-      builder: (context, state) => LandingPage(
+      builder: (context, state) => const LandingPage(
         title: 'Schedule board',
       ),
     ),
@@ -101,6 +102,10 @@ class MyApp extends StatelessWidget {
         path: '/courseDetail',
         builder: (context, state) => CourseDetailPage(),
       ),
+      GoRoute(
+        path: '/SelectClassPage',
+        builder: (context, state) => SelectClassPage(),
+      ),
       // GoRoute(
       //   path: '/joinAsOwner',
       //   builder: (context, state) => JoinAsOwnerScreen(),
@@ -121,7 +126,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
-         debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         routerConfig: router,
         title: 'Schedule Board',
         theme: ThemeData(

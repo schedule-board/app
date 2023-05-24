@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:go_router/go_router.dart';
 import '../models/class_model.dart';
-import '../models/class_dummydata.dart';
+
 
 class ClassListPage extends StatelessWidget {
-  const ClassListPage({super.key});
+   ClassListPage({super.key});
+
+  List classes = [];
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +21,12 @@ class ClassListPage extends StatelessWidget {
                   elevation: 3,
                   child: InkWell(
                     onTap: () {},
-                    child: ListTile(
-                      leading: const Icon(Icons.school),
-                      title: Text(
-                        classes[index].classname,
+                    child: const ListTile(
+                      leading:  Icon(Icons.school),
+                      title:  Text(
+                        "hi"
+            
                       ),
-                      subtitle: Text(classes[index].schoolName,
-                          style: const TextStyle(color: Colors.grey)),
                     ),
                   ),
                 ),

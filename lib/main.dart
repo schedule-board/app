@@ -16,8 +16,11 @@ import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
 import 'auth/screens/invite_page.dart';
 import 'auth/screens/profile_page.dart';
-import "ui/class_list_page.dart";
-import "ui/course_list_page.dart";
+import 'class/screens/class_list_page.dart';
+import 'course/screens/course_list_page.dart';
+import "course/bloc/bloc.dart";
+import 'course/repository/course_repository.dart';
+import 'course/data_provider/course_provider.dart';
 
 // import 'announcement.dart';
 
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/courseList',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => LandingPage(
@@ -123,11 +126,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CourseRepository courseRepository = CourseRepository(CourseProvider());
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
-        )
+        ),
+        BlocProvider<CourseBloc>(
+          create: (context) => CourseBloc(courseRepository),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

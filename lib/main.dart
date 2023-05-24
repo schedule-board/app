@@ -11,12 +11,16 @@ import 'package:schedule/course/screens/course_detail_page.dart';
 import 'package:schedule/course/screens/create_course_page.dart';
 import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/ui/subject_detail.dart';
-
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
 import 'auth/screens/invite_page.dart';
 import 'auth/screens/profile_page.dart';
+import 'class/screens/class_list_page.dart';
+import 'course/screens/course_list_page.dart';
+import "course/bloc/bloc.dart";
+import 'course/repository/course_repository.dart';
+import 'course/data_provider/course_provider.dart';
 import 'class/screens/select_class_page.dart';
 
 // import 'announcement.dart';
@@ -29,7 +33,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/SelectClassPage',
+    initialLocation: '/ProfilePage',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => const LandingPage(
@@ -41,6 +45,14 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/',
         builder: (context, state) => LoginPage(),
+      ),
+      GoRoute(
+        path: '/classList',
+        builder: (context, state) => ClassListPage(),
+      ),
+      GoRoute(
+        path: '/courseList',
+        builder: (context, state) => CourseListPage(),
       ),
       GoRoute(
         path: '/login',
@@ -119,11 +131,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CourseRepository courseRepository = CourseRepository(CourseProvider());
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
-        )
+        BlocProvider<CourseBloc>(
+          create: (context) => CourseBloc(courseRepository),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

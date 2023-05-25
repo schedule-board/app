@@ -6,16 +6,16 @@ class ClassProvider {
   ClassProvider();
 
   Future<List<dynamic>> loadClass(String schoolId) async {
-    
     var uri = Uri.http('localhost:4000', '/api/v1/classes');
 
     final response = await http.get(uri,
         headers: {'Content-Type': 'application/json', 'Accept': '*/*'});
-  
+
     if (response.statusCode == 200) {
       var classData = jsonDecode(response.body)["data"];
-      List<dynamic> classes = classData.map((courseJson) {
-        return classData.fromJson(courseJson);
+
+      List<dynamic> classes = classData.map((classJson) {
+        return Class.fromJson(classJson);
       }).toList();
       return classes;
     } else {

@@ -26,13 +26,12 @@ class SelectClassPage extends StatelessWidget {
                         elevation: 3,
                         child: InkWell(
                           onTap: () {},
-                          child: ListTile(
-                            leading: const Icon(Icons.school),
+                          child: CheckboxListTile(
+                            onChanged: (value) => {},
+                            value: false,
                             title: Text(
-                              state.classes[index].courseName,
+                              state.classes[index].className,
                             ),
-                            subtitle: Text(state.classes[index].schoolName,
-                                style: const TextStyle(color: Colors.grey)),
                           ),
                         ),
                       ),

@@ -22,10 +22,9 @@ import "course/bloc/bloc.dart";
 import 'course/repository/course_repository.dart';
 import 'course/data_provider/course_provider.dart';
 import 'class/screens/select_class_page.dart';
-import 'class/bloc/class_bloc.dart'; 
+import 'class/bloc/class_bloc.dart';
 import 'class/repository/class_repository.dart';
 import 'class/data_provider/class_provider.dart';
-
 
 // import 'announcement.dart';
 
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/courseList',
+    initialLocation: '/SelectClass',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => const LandingPage(

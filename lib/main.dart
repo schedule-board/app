@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/SelectClass',
+    initialLocation: '/classList',
     initialExtra: GoRoute(
       path: '/landingpage',
       builder: (context, state) => const LandingPage(
@@ -143,8 +143,13 @@ class MyApp extends StatelessWidget {
         BlocProvider<CourseBloc>(
           create: (context) => CourseBloc(courseRepository),
         ),
-        BlocProvider<ClassBloc>(
-          create: (context) => ClassBloc(ClassRepository(ClassProvider())),
+        BlocProvider<SelectClassBloc>(
+          create: (context) =>
+              SelectClassBloc(ClassRepository(ClassProvider())),
+        ),
+        BlocProvider<ManageClassBloc>(
+          create: (context) =>
+              ManageClassBloc(ClassRepository(ClassProvider())),
         ),
       ],
       child: MaterialApp.router(

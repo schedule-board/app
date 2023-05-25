@@ -7,7 +7,11 @@ class ClassRepository {
 
   ClassRepository(this.classProvider);
 
-  Future<List<dynamic>> load(String schoolId) async {
-    return classProvider.loadClass(schoolId);
+  Future<List<dynamic>> loadClassesForSelect() async {
+    return classProvider.loadClassesForSelect();
+  }
+
+  Future<List<dynamic>> loadClassesForManage(String schoolId) async {
+    return classProvider.loadClassesForManage(schoolId);
   }
 } 

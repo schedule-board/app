@@ -28,14 +28,13 @@ class classesForManage {
     required this.className,
     required this.courseIds,
   });
-// Notes: since what the database is sending is not clear yet, I am just returning a dummy data for now.
-//      I will update this later.
 
   factory classesForManage.fromJson(Map<dynamic, dynamic> json) {
+    print(json);
     return classesForManage(
-      classId: "id",
-      className: "class_name",
-      courseIds: ["course A", "course B", "course C"],
+      classId: json["id"],
+      className: json["class_name"],
+      courseIds: json["courses"],
     );
   }
 }

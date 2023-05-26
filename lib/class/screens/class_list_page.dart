@@ -1,42 +1,58 @@
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../bloc/class_bloc.dart';
+import '../bloc/class_event.dart';
+import '../bloc/class_state.dart';
 import '../models/class_model.dart';
 
-
 class ClassListPage extends StatelessWidget {
-   ClassListPage({super.key});
+  ClassListPage({super.key});
 
   List classes = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Class List"),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView.builder(
-            itemBuilder: (context, index) => Card(
-                  elevation: 3,
-                  child: InkWell(
-                    onTap: () {},
-                    child: const ListTile(
-                      leading:  Icon(Icons.school),
-                      title:  Text(
-                        "hi"
-            
+      appBar: AppBar(title: const Text("Class list")),
+      body: Center(
+        child: BlocBuilder<ManageClassBloc, ClassState>(
+          builder: (context, state) {
+            if (state is ClassLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (state is ManageClassOperationSuccess) {
+              return ListView.builder(
+                  itemBuilder: (context, index) => Card(
+                        elevation: 3,
+                        child: InkWell(
+                          onTap: () {},
+                          child: CheckboxListTile(
+                            onChanged: (value) => {},
+                            value: false,
+                            title: Text(
+                              state.classesToManage[index].className,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-            itemCount: classes.length),
+                  itemCount: state.classesToManage.length);
+            }
+
+            if (state is ClassOperationFailure) {
+              return Center(child: Text(state.error.toString()));
+            } else {
+              return Center(child: Text("none"));
+            }
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+        onPressed: () {
+          BlocProvider.of<ManageClassBloc>(context).add(LoadManageClassEvent());
+        },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

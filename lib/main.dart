@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/ScheduleList',
+    initialLocation: '/classList',
     initialExtra: GoRoute(
         path: '/courseList',
         builder: (context, state) => const CourseListPage()),
@@ -145,8 +145,13 @@ class MyApp extends StatelessWidget {
         BlocProvider<CourseBloc>(
           create: (context) => CourseBloc(courseRepository),
         ),
-        BlocProvider<ClassBloc>(
-          create: (context) => ClassBloc(ClassRepository(ClassProvider())),
+        BlocProvider<SelectClassBloc>(
+          create: (context) =>
+              SelectClassBloc(ClassRepository(ClassProvider())),
+        ),
+        BlocProvider<ManageClassBloc>(
+          create: (context) =>
+              ManageClassBloc(ClassRepository(ClassProvider())),
         ),
       ],
       child: MaterialApp.router(

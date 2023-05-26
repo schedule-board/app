@@ -14,13 +14,13 @@ class SelectClassPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Select Class")),
       body: Center(
-        child: BlocBuilder<ClassBloc, ClassState>(
+        child: BlocBuilder<SelectClassBloc, ClassState>(
           builder: (context, state) {
             if (state is ClassLoadingState) {
               return const Center(child: CircularProgressIndicator());
             }
 
-            if (state is ClassesOperationSuccess) {
+            if (state is SelectClassOperationSuccess) {
               return ListView.builder(
                   itemBuilder: (context, index) => Card(
                         elevation: 3,
@@ -30,12 +30,12 @@ class SelectClassPage extends StatelessWidget {
                             onChanged: (value) => {},
                             value: false,
                             title: Text(
-                              state.classes[index].className,
+                              state.classesToSelect[index].className,
                             ),
                           ),
                         ),
                       ),
-                  itemCount: state.classes.length);
+                  itemCount: state.classesToSelect.length);
             }
 
             if (state is ClassOperationFailure) {
@@ -48,7 +48,7 @@ class SelectClassPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          BlocProvider.of<ClassBloc>(context).add(LoadClassEvent());
+          BlocProvider.of<SelectClassBloc>(context).add(LoadSelectClassEvent());
         },
       ),
     );

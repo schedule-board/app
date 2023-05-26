@@ -39,8 +39,9 @@ class ParentWidget extends StatelessWidget {
                 itemCount: state.schedules.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(state.schedules[index].title ?? 'a'),
-                    subtitle: Text(state.schedules[index].body ?? 'b'),
+                    title: Text(state.schedules[index].className ?? 'title'),
+                    subtitle: Text(
+                        "${state.schedules[index].dayOfTheWeek ?? 'Day:'}${state.schedules[index].startTime ?? 'starting time:'} - ${state.schedules[index].endTime ?? 'endtime'}"),
                     // Add more widgets to display other properties if desired
                   );
                 },
@@ -50,16 +51,16 @@ class ParentWidget extends StatelessWidget {
             if (state is ScheduleOperationFailureState) {
               return Center(child: Text(state.error.toString()));
             } else {
-              return Center(child: Text("yelem"));
+              return const Center(child: CircularProgressIndicator());
             }
           })),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          BlocProvider.of<ScheduleBloc>(context).add(const LoadScheduleEvent());
+          BlocProvider.of<ScheduleBloc>(context).add(LoadScheduleEvent());
         },
         child: const Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }

@@ -41,6 +41,7 @@ class CourseListPage extends StatelessWidget {
             }
 
             if (state is CourseOperationFailure) {
+    
               return Center(child: Text(state.error.toString()));
             } else {
               return Center(child: Text("none"));

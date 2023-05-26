@@ -10,6 +10,7 @@ import 'package:schedule/class/screens/create_class_page.dart';
 import 'package:schedule/course/screens/course_detail_page.dart';
 import 'package:schedule/course/screens/create_course_page.dart';
 import 'package:schedule/schedule/landing_page.dart';
+import 'package:schedule/schedule/screens/schedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
@@ -36,13 +37,10 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/SelectClass',
+    initialLocation: '/ScheduleList',
     initialExtra: GoRoute(
-      path: '/landingpage',
-      builder: (context, state) => const LandingPage(
-        title: 'Schedule board',
-      ),
-    ),
+        path: '/courseList',
+        builder: (context, state) => const CourseListPage()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -120,6 +118,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/SelectClass',
         builder: (context, state) => SelectClassPage(),
+      ),
+      GoRoute(
+        path: '/ScheduleList',
+        builder: (context, state) => ScheduleScreen(),
       ),
       // GoRoute(
       //   path: '/joinAsOwner',

@@ -6,7 +6,7 @@ class ClassProvider {
   ClassProvider();
 
   Future<List<dynamic>> loadClassesForSelect() async {
-    var uri = Uri.http('localhost:4000', '/api/v1/classes');
+    var uri = Uri.http('localhost:4000', '/api/v1/courses');
 
     final response = await http.get(uri,
         headers: {'Content-Type': 'application/json', 'Accept': '*/*'});
@@ -25,8 +25,7 @@ class ClassProvider {
   }
 
   Future<List<dynamic>> loadClassesForManage(String shoolID) async {
-    var uri = Uri.http(
-        'localhost:4000', '/api/v1/schools/646a2b183748bfedb7cb7819/courses');
+    var uri = Uri.http('localhost:4000', '/api/v1/schools/$shoolID/classes');
 
     final response = await http.get(uri,
         headers: {'Content-Type': 'application/json', 'Accept': '*/*'});

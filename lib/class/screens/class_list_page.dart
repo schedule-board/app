@@ -6,15 +6,15 @@ import '../bloc/class_event.dart';
 import '../bloc/class_state.dart';
 import '../models/class_model.dart';
 
-class ClassListPage extends StatelessWidget {
-  ClassListPage({super.key});
+class ManageClassPage extends StatelessWidget {
+  ManageClassPage({super.key});
 
   List classes = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Class list")),
+      appBar: AppBar(title: const Text("Manage Class")),
       body: Center(
         child: BlocBuilder<ManageClassBloc, ClassState>(
           builder: (context, state) {

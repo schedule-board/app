@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/classList',
+    initialLocation: '/manageClass',
     initialExtra: GoRoute(
         path: '/courseList',
         builder: (context, state) => const CourseListPage()),
@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => LoginPage(),
       ),
       GoRoute(
-        path: '/classList',
-        builder: (context, state) => ClassListPage(),
+        path: '/manageClass',
+        builder: (context, state) => ManageClassPage(),
       ),
       GoRoute(
         path: '/courseList',

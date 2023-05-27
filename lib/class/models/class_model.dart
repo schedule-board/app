@@ -30,7 +30,7 @@ class classesForManage {
   });
 
   factory classesForManage.fromJson(Map<dynamic, dynamic> json) {
-    print(json);
+    print('classes For Manage $json');
     return classesForManage(
       classId: json["id"],
       className: json["class_name"],

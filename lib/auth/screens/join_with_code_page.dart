@@ -30,9 +30,6 @@ class JoinWithCodeScreen extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'Please enter valid code';
                 }
-                if (int.tryParse(value) == null) {
-                  return 'Please enter a valid number';
-                }
                 return null;
               },
             ),
@@ -72,7 +69,7 @@ class JoinWithCodeScreen extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a password';
                 }
-                if (!(value.length < 7)) {
+                if (value.length < 6) {
                   return 'the password length should be greater than 6';
                 }
 
@@ -83,7 +80,7 @@ class JoinWithCodeScreen extends StatelessWidget {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   // Form is valid, perform desired actions here
-                  final code = int.parse(_codeController.text);
+                  final code = _codeController.text;
                   final userName = _usernameController.text;
                   final userEmail = _useremailController.text;
                   final password = _passwordController.text;

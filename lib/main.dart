@@ -119,14 +119,14 @@ class MyApp extends StatelessWidget {
         path: '/ScheduleList',
         builder: (context, state) => ScheduleScreen(),
       ),
-      // GoRoute(
-      //   path: '/joinAsOwner',
-      //   builder: (context, state) => JoinAsOwnerScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/joinAsStudent',
-      //   builder: (context, state) => JoinAsStudentScreen(),
-      // ),
+      GoRoute(
+        path: '/joinAsOwner',
+        builder: (context, state) => JoinAsOwnerPage(),
+      ),
+      GoRoute(
+        path: '/joinAsStudent',
+        builder: (context, state) => JoinAsStudentPage(),
+      ),
     ],
   );
 

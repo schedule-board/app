@@ -33,9 +33,6 @@ class JoinAsOwnerPage extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'Please enter the  School Name';
                 }
-                if (value.length < 3) {
-                  return 'Please enter a valid School Name';
-                }
                 return null;
               },
             ),
@@ -66,11 +63,11 @@ class JoinAsOwnerPage extends StatelessWidget {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter the name';
+                  return 'Please enter a username';
                 }
 
                 if (value.length < 3) {
-                  return 'Please enter a valid name';
+                  return 'Please enter a valid username';
                 }
 
                 return null;
@@ -85,7 +82,7 @@ class JoinAsOwnerPage extends StatelessWidget {
               validator: (value) {
                 RegExp emailRegex = RegExp(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
                 if (value == null || value.isEmpty) {
-                  return 'Please enter the School email';
+                  return 'Please enter your school\'s email';
                 }
                 if (!emailRegex.hasMatch(value)) {
                   return 'Please enter a valid email';
@@ -104,8 +101,8 @@ class JoinAsOwnerPage extends StatelessWidget {
                   return 'Please enter the password';
                 }
 
-                if (value.length < 8) {
-                  return 'only 8 digit password allowed';
+                if (value.length < 6) {
+                  return 'passwords should be longer than 6 characters';
                 }
 
                 return null;
@@ -123,11 +120,11 @@ class JoinAsOwnerPage extends StatelessWidget {
                   final password = int.parse(_passwordController.text);
 
                   // Do something with the form data (e.g., save to database)
-                  print('school Name : $shoolName');
-                  print('school Email: $schoolEmail');
+                  print('school_name : $shoolName');
+                  print('school_email: $schoolEmail');
 
-                  print('user Name: $userName');
-                  print('user Email: $userEmail');
+                  print('user_name: $userName');
+                  print('user_email: $userEmail');
                   print('password: $password');
                 }
               },

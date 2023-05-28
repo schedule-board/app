@@ -11,6 +11,7 @@ class JoinAsStudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text("Join as student")),
       body: SafeArea(
         child: Center(
             child: Form(
@@ -39,7 +40,7 @@ class JoinAsStudentPage extends StatelessWidget {
                 },
               ),
               TextFormField(
-                controller: _userNameController,
+                controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: 'Email',
                 ),
@@ -72,9 +73,9 @@ class JoinAsStudentPage extends StatelessWidget {
                     final email = _emailController.text;
 
                     // Do something with the form data (e.g., save to database)
-                    print('Username: $userName');
-                    print('Password: $password');
-                    print('Email: $email');
+                    print('user_name: $userName');
+                    print('user_email: $email');
+                    print('password: $password');
                   }
                 },
                 child: const Text('Join as Student'),

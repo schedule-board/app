@@ -1,7 +1,6 @@
 import '../data_provider/class_provider.dart';
 import '../models/class_model.dart';
 
-
 class ClassRepository {
   final ClassProvider classProvider;
 
@@ -14,4 +13,8 @@ class ClassRepository {
   Future<List<dynamic>> loadClassesForManage(String schoolId) async {
     return classProvider.loadClassesForManage(schoolId);
   }
-} 
+
+  Future<List<dynamic>> createClass(String shoolId,classesForManage data) async {
+    return classProvider.createClassForSchool(shoolId,data);
+  }
+}

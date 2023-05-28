@@ -31,7 +31,7 @@ class LandingPage extends StatelessWidget {
       appBar: AppBar(
         title: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
-            return Text('Hello ${state.user!.userName}');
+            return Text('Hello ${state.user?.userName ?? "user"}');
           },
         ),
       ),

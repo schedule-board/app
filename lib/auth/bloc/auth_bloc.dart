@@ -31,7 +31,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<LogoutEvent>((event, emit) {
-      emit(state.copyWith(user: null));
+      // let's remove the token from the shared preferences
+      SharedPreferences.getInstance().then((prefs) {
+        prefs.remove('token');
+      });
+      emit(state.copyWith(
+        user: null,
+        school: null,
+        token: null,
+        authFailed: false,
+        isProcessing: false,
+      ));
     });
 
     on<AuthProcessingStartEvent>((event, emit) {

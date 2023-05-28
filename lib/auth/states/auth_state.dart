@@ -23,9 +23,9 @@ class AuthState {
     bool? authFailed,
   }) {
     return AuthState(
-      user: user ?? this.user,
-      school: school ?? this.school,
-      token: token ?? this.token,
+      user: user,
+      school: school,
+      token: token,
       isProcessing: isProcessing ?? this.isProcessing,
       authFailed: authFailed ?? this.authFailed,
     );

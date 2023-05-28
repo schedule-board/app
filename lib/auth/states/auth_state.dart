@@ -39,14 +39,36 @@ class AuthState {
   }
 }
 
-class InviteCoordinatorState extends AuthState {
+class InvitationState extends AuthState {
   String? invitationCode;
-  InviteCoordinatorState({
+  InvitationState({
     super.user,
     super.school,
     super.token,
     super.isProcessing = false,
     super.authFailed = false,
     this.invitationCode,
+  });
+}
+
+class InviteCoordinatorState extends InvitationState {
+  InviteCoordinatorState({
+    super.user,
+    super.school,
+    super.token,
+    super.isProcessing = false,
+    super.authFailed = false,
+    super.invitationCode,
+  });
+}
+
+class InviteTeacherState extends InvitationState {
+  InviteTeacherState({
+    super.user,
+    super.school,
+    super.token,
+    super.isProcessing = false,
+    super.authFailed = false,
+    super.invitationCode,
   });
 }

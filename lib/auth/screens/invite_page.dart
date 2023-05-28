@@ -21,8 +21,8 @@ class InvitePage extends StatelessWidget {
             const SizedBox(height: 40),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
-                if (state is InviteCoordinatorState) {
-                  return Center(child: Text("Invite code: ${state.invitationCode}", style: TextStyle(fontSize: 30)));
+                if (state is InvitationState) {
+                  return Center(child: Text("Invite code: ${state.invitationCode}", style: const TextStyle(fontSize: 30)));
                 }
                 return LinearProgressIndicator();
               },
@@ -56,7 +56,10 @@ class InvitePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 100),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
+          authBloc.add(InviteTeacherEvent(authBloc.state.school!.id));
+        },
         child: const Text(
           "Invite Teacher",
           style: TextStyle(

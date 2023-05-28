@@ -52,6 +52,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         invitationCode: invitationCode,
       ));
     });
+
+    on<InviteTeacherEvent>((event, emit) async {
+      emit(state.copyWith(isProcessing: true));
+      String invitationCode = await AuthRepository(this).getInvitationCode(schoolId: event.schoolId, forTeacher: true);
+      emit(InviteTeacherState(
+        user: state.user,
+        school: state.school,
+        token: state.token,
+        invitationCode: invitationCode,
+      ));
+    });
   }
 }
 
@@ -91,4 +102,9 @@ class AuthProcessingStartEvent extends AuthEvent {}
 class InviteCoordinatorEvent extends AuthEvent {
   String schoolId;
   InviteCoordinatorEvent(this.schoolId);
+}
+
+class InviteTeacherEvent extends AuthEvent {
+  String schoolId;
+  InviteTeacherEvent(this.schoolId);
 }

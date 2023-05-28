@@ -26,6 +26,22 @@ class AuthApiProvider {
   signOut() {}
   signUp() {}
 
+  Future<String?> getInvitationCodeForCoordinator(String schoolId) async {
+    var uri = Uri.http('localhost:4000', '/api/v1/schools/$schoolId/inviteCoordinator');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token')!;
+    final response = await http.get(
+      uri,
+      headers: {'Content-Type': 'application/json', 'Accept': '*/*', 'Authorization': 'Bearer ${token}'},
+    );
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      return data['code'] as String;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   Future<String?> getInvitationCodeForTeacher(String schoolId) async {
     var uri = Uri.http('localhost:4000', '/api/v1/schools/$schoolId/inviteTeacher');
     SharedPreferences prefs = await SharedPreferences.getInstance();

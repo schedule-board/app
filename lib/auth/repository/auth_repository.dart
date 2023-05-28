@@ -27,7 +27,12 @@ class AuthRepository {
   }
 
   getInvitationCode({required String schoolId, required bool forTeacher}) async {
-    String invitationCode = (await AuthApiProvider().getInvitationCodeForTeacher(schoolId))!;
+    String invitationCode;
+    if (forTeacher) {
+      invitationCode = (await AuthApiProvider().getInvitationCodeForTeacher(schoolId))!;
+    } else {
+      invitationCode = (await AuthApiProvider().getInvitationCodeForCoordinator(schoolId))!;
+    }
     return invitationCode;
   }
 }

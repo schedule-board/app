@@ -1,5 +1,5 @@
 import './schedules_Amodel.dart';
-import './user_model.dart';
+import '../../auth/models/user_model.dart';
 import './school_models.dart';
 
 class Course {

@@ -1,9 +1,24 @@
+import 'package:schedule/auth/models/user_model.dart';
+
 class AuthState {
-  String? userName;
+  User? user;
+  bool isProcessing;
+  bool authFailed;
+  AuthState({
+    this.user,
+    this.isProcessing = false,
+    this.authFailed = false,
+  });
 
-  AuthState({this.userName});
-
-  AuthState copyWith({String? userName}) {
-    return AuthState(userName: userName ?? this.userName);
+  AuthState copyWith({
+    User? user,
+    bool? isProcessing,
+    bool? authFailed,
+  }) {
+    return AuthState(
+      user: user ?? this.user,
+      isProcessing: isProcessing ?? this.isProcessing,
+      authFailed: authFailed ?? this.authFailed,
+    );
   }
 }

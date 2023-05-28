@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:schedule/auth/bloc/auth_bloc.dart';
+import 'package:schedule/auth/states/auth_state.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,7 +28,13 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            return Text('Hello ${state.user!.userName}');
+          },
+        ),
+      ),
       body: ListView(
         children: [
           Card(

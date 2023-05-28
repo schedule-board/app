@@ -1,4 +1,4 @@
-import './user_model.dart';
+import '../../auth/models/user_model.dart';
 
 class School {
   String schoolId;

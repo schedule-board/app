@@ -5,21 +5,27 @@ abstract class ClassEvent extends Equatable {
   const ClassEvent();
 }
 
-class LoadClassEvent extends ClassEvent {
-  const LoadClassEvent();
+class LoadSelectClassEvent extends ClassEvent {
+  const LoadSelectClassEvent();
+  @override
+  List<Object?> get props => [];
+}
+
+class LoadManageClassEvent extends ClassEvent {
+  const LoadManageClassEvent();
   @override
   List<Object?> get props => [];
 }
 
 class CreateClassEvent extends ClassEvent {
-  Class classModel;
+  classesForSelectModel classModel;
   CreateClassEvent(this.classModel);
   @override
   List<Object?> get props => [classModel];
 }
 
 class UpdateClassEvent extends ClassEvent {
-  Class classModel;
+  classesForSelectModel classModel;
   UpdateClassEvent(this.classModel);
   @override
   List<Object?> get props => [classModel];

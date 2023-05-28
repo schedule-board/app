@@ -21,13 +21,13 @@ class CourseProvider {
 
   Future<List<dynamic>> loadCourse(String schoolId) async {
     var uri =
-        "http://localhost:4000/api/v1/schools/646a2b183748bfedb7cb7819/courses";
+        "http://localhost:4000/api/v1/schools/646a2b183748bfedb7cb7819/schedules";
     var response = await http.get(Uri.parse(uri));
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
       List<dynamic> courses = coursedata.map((courseJson) {
-        return Course.fromJson(courseJson);
+        return Schedule.fromJson(courseJson);
       }).toList();
       return courses;
     } else {

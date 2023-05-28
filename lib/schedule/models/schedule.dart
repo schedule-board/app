@@ -1,69 +1,70 @@
-import 'package:flutter/material.dart';
-
 class Schedule {
-  late ComparableTime start;
-  late ComparableTime end;
-  late String courseName;
+  String scheduleId;
+  String courseName;
+  String startTime;
+  String endTime;
+  String dayOfTheWeek;
+  String schoolId;
+  String teacherId;
+  String classId;
+  String className;
 
-  Schedule({
-    required ComparableTime start,
-    required ComparableTime end,
-    required String courseName,
-  }) {
-    // we complain if the start is higher than the end
-    if (start.inMinutes() >= end.inMinutes()) {
-      throw Exception("start must be lower than end for a schedule");
-    }
-    this.start = start;
-    this.end = end;
-    this.courseName = courseName;
-  }
+  Schedule(
+      {required this.scheduleId,
+      required this.courseName,
+      required this.startTime,
+      required this.endTime,
+      required this.dayOfTheWeek,
+      required this.schoolId,
+      required this.teacherId,
+      required this.classId,
+      required this.className});
 
-  int lengthInMinutes() {
-    return end.inMinutes() - start.inMinutes();
-  }
-
-  double lengthInHours() {
-    return end.inHours() - start.inHours();
-  }
-}
-
-class ComparableTime extends TimeOfDay {
-  const ComparableTime({
-    required int hour,
-    required int minute,
-  }) : super(hour: hour, minute: minute);
-
-  factory ComparableTime.now() {
-    var temp = TimeOfDay.now();
-    return ComparableTime(hour: temp.hour, minute: temp.minute);
-  }
-
-  factory ComparableTime.fromDateTime(DateTime dateTime) {
-    var temp = TimeOfDay.fromDateTime(dateTime);
-    return ComparableTime(hour: temp.hour, minute: temp.minute);
-  }
-
-  bool isLessThan(TimeOfDay other) {
-    return hour * 60 + minute < other.hour * 60 + other.minute;
-  }
-
-  bool isGreaterThan(TimeOfDay other) {
-    return hour * 60 + minute > other.hour * 60 + other.minute;
-  }
-
-  bool isEqualTo(TimeOfDay other) {
-    return hour * 60 + minute == other.hour * 60 + other.minute;
-  }
-
-  int inMinutes() {
-    /// returns the number of minutes from 00:00 to to this time of day.
-    return hour * 60 + minute;
-  }
-
-  double inHours() {
-    /// returns the number of hours (floating) from 00:00 to this time of day.
-    return hour + minute / 60;
+  factory Schedule.fromJson(Map<String, dynamic> json) {
+    return Schedule(
+      scheduleId: json["_id"],
+      courseName: json["course"]?? "corse_name",
+      startTime: json["startTime"]??"start",
+      endTime: json["endTime"]?? "end",
+      dayOfTheWeek: json["dayOfTheWeek"] ?? "day",
+      teacherId: json["teacher"]["_id"],
+      className: json["class"] ? json["class"]["class_name"] : "null",
+      classId: json["class"] ? json["class"]["_id"] : "null",
+      schoolId: json["school"]?? "school_id",
+    );
   }
 }
 
+
+class ScheduleItem {
+  final String id;
+  final String course;
+  final String school;
+
+  final String dayOfTheWeek;
+  final String startTime;
+  final String endTime;
+  final String className;
+
+  ScheduleItem({
+    required this.id,
+    required this.course,
+    required this.school,
+    required this.dayOfTheWeek,
+    required this.startTime,
+    required this.endTime,
+    required this.className,
+  });
+
+  factory ScheduleItem.fromJson(Map<dynamic, dynamic> json) {
+    return ScheduleItem(
+      id: json['_id'],
+      course: json['course'],
+      school: json['school'],
+      dayOfTheWeek: json['dayOfTheWeek'],
+      startTime: json['startTime'],
+      endTime: json['endTime'],
+      className:json["class"] != null ? json["class"]["class_name"] : "section",  
+    );
+  }
+}

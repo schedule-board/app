@@ -1,18 +1,37 @@
-class Class {
+class classesForSelectModel {
   String classId;
   String className;
   List<dynamic> courseIds;
 
-  Class({
+  classesForSelectModel({
     required this.classId,
     required this.className,
     required this.courseIds,
   });
 
-  factory Class.fromJson(Map<dynamic, dynamic> json) {
-   
+  factory classesForSelectModel.fromJson(Map<dynamic, dynamic> json) {
+    return classesForSelectModel(
+      classId: json["id"],
+      className: json["class_name"],
+      courseIds: json["courses"],
+    );
+  }
+}
 
-    return Class(
+class classesForManage {
+  String classId;
+  String className;
+  List<dynamic> courseIds;
+
+  classesForManage({
+    required this.classId,
+    required this.className,
+    required this.courseIds,
+  });
+
+  factory classesForManage.fromJson(Map<dynamic, dynamic> json) {
+    print('classes For Manage $json');
+    return classesForManage(
       classId: json["id"],
       className: json["class_name"],
       courseIds: json["courses"],

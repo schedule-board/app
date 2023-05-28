@@ -3,18 +3,42 @@ import './class_event.dart';
 import './class_state.dart';
 import '../repository/class_repository.dart';
 
-class ClassBloc extends Bloc<ClassEvent, ClassState> {
+class SelectClassBloc extends Bloc<ClassEvent, ClassState> {
   ClassRepository classRepository;
 
-  ClassBloc(this.classRepository) : super(ClassInitialState()) {
-    on<LoadClassEvent>((event, emit) async {
+  SelectClassBloc(this.classRepository) : super(ClassInitialState()) {
+    on<LoadSelectClassEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var classes = await classRepository.load("646a2b183748bfedb7cb7819");
-        emit(ClassesOperationSuccess(classes));
+        var classesToSelect = await classRepository.loadClassesForSelect();
+
+        emit(SelectClassOperationSuccess(classesToSelect));
       } catch (err) {
         emit(ClassOperationFailure(err));
       }
     });
   }
 }
+
+class ManageClassBloc extends Bloc<ClassEvent, ClassState> {
+  ClassRepository classRepository;
+
+  ManageClassBloc(this.classRepository) : super(ClassInitialState()) {
+    on<LoadManageClassEvent>((event, emit) async {
+      emit(ClassLoadingState());
+      try {
+       var ClassesToManage = await classRepository.loadClassesForManage("646a2b183748bfedb7cb7819");
+
+        emit(ManageClassOperationSuccess(ClassesToManage));
+      } catch (err) {
+        emit(ClassOperationFailure(err));
+      }
+    });
+  }
+}
+
+
+
+
+
+

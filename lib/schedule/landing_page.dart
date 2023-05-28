@@ -67,62 +67,69 @@ class LandingPage extends StatelessWidget {
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+        child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+          return ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text('Schedule board'),
               ),
-              child: Text('Schedule board'),
-            ),
-            ListTile(
-              title: const Text('Invite'),
-              onTap: () {
-                context.push('/invite');
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Select class'),
-              onTap: () {
-                context.push('/selectClass');
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('MY School'),
-              onTap: () {
-                context.push('/schoolDetail');
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              title: const Text('Profile'),
-              onTap: () {
-                context.push('/profile');
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              title: const Text('Manage Courses'),
-              onTap: () {
-                context.push('/courseList');
+              if (state.user?.role != 'student')
+                ListTile(
+                  title: const Text('Invite'),
+                  onTap: () {
+                    context.push('/invite');
+                    Navigator.pop(context);
+                  },
+                ),
+              if (state.user?.role == 'student')
+                ListTile(
+                  title: const Text('Select class'),
+                  onTap: () {
+                    context.push('/selectClass');
+                    Navigator.pop(context);
+                  },
+                ),
+              if (state.user?.role != 'student')
+                ListTile(
+                  title: const Text('MY School'),
+                  onTap: () {
+                    context.push('/schoolDetail');
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ListTile(
+                title: const Text('Profile'),
+                onTap: () {
+                  context.push('/profile');
+                  Navigator.of(context).pop();
+                },
+              ),
+              if (state.user?.role == 'owner' || state.user?.role == 'coordinator')
+                ListTile(
+                  title: const Text('Manage Courses'),
+                  onTap: () {
+                    context.push('/courseList');
 
-                Navigator.of(context).pop();
-              },
-            ),
-            ListTile(
-              title: const Text('Manage Classes'),
-              onTap: () {
-                context.push('/classList');
+                    Navigator.of(context).pop();
+                  },
+                ),
+              if (state.user?.role == 'owner' || state.user?.role == 'coordinator')
+                ListTile(
+                  title: const Text('Manage Classes'),
+                  onTap: () {
+                    context.push('/classList');
 
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
+                    Navigator.of(context).pop();
+                  },
+                ),
+            ],
+          );
+        }),
       ),
     );
   }

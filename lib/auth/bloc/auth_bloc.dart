@@ -13,6 +13,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isProcessing: true));
     });
 
+    on<JoinAsStudentAttemptEvent>((event, emit) async {
+      AuthRepository(this).joinAsStudent(event.userName, event.userEmail, event.password);
+      emit(state.copyWith(isProcessing: true));
+    });
+
     on<LoginSuccessEvent>((event, emit) async {
       // set the jwt token in the shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -26,7 +31,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ));
     });
 
+    on<JoinAsStudentSuccessEvent>((event, emit) async {
+      // set the jwt token in the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', event.token);
+      emit(state.copyWith(
+        user: event.user,
+        token: event.token,
+        isProcessing: false,
+        authFailed: false,
+      ));
+    });
+
     on<LoginFailedEvent>((event, emit) {
+      emit(state.copyWith(authFailed: true, isProcessing: false));
+    });
+
+    on<SignUpFailedEvent>((event, emit) {
       emit(state.copyWith(authFailed: true, isProcessing: false));
     });
 
@@ -81,9 +102,17 @@ class LoginAttemptEvent extends AuthEvent {
   LoginAttemptEvent({required this.userEmail, required this.password});
 }
 
+class JoinAsStudentAttemptEvent extends AuthEvent {
+  String userName;
+  String userEmail;
+  String password;
+
+  JoinAsStudentAttemptEvent({required this.userName, required this.userEmail, required this.password});
+}
+
 class LoginSuccessEvent extends AuthEvent {
   User user;
-  School school;
+  School? school;
   String token;
 
   LoginSuccessEvent({
@@ -93,9 +122,21 @@ class LoginSuccessEvent extends AuthEvent {
   });
 }
 
+class JoinAsStudentSuccessEvent extends AuthEvent {
+  User user;
+  String token;
+
+  JoinAsStudentSuccessEvent({
+    required this.user,
+    required this.token,
+  });
+}
+
 class LoginFailedEvent extends AuthEvent {}
 
 class LogoutEvent extends AuthEvent {}
+
+class SignUpFailedEvent extends AuthEvent {}
 
 class AuthProcessingStartEvent extends AuthEvent {}
 

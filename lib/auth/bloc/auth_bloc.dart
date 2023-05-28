@@ -35,17 +35,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       SharedPreferences.getInstance().then((prefs) {
         prefs.remove('token');
       });
-      emit(state.copyWith(
-        user: null,
-        school: null,
-        token: null,
-        authFailed: false,
-        isProcessing: false,
-      ));
+      emit(state.reset());
     });
 
     on<AuthProcessingStartEvent>((event, emit) {
       emit(state.copyWith(isProcessing: true, authFailed: false));
+    });
+
+    on<InviteCoordinatorEvent>((event, emit) async {
+      emit(state.copyWith(isProcessing: true));
+      String invitationCode = await AuthRepository(this).getInvitationCode(schoolId: event.schoolId, forTeacher: false);
+      emit(InviteCoordinatorState(
+        user: state.user,
+        school: state.school,
+        token: state.token,
+        invitationCode: invitationCode,
+      ));
     });
   }
 }
@@ -82,3 +87,8 @@ class LoginFailedEvent extends AuthEvent {}
 class LogoutEvent extends AuthEvent {}
 
 class AuthProcessingStartEvent extends AuthEvent {}
+
+class InviteCoordinatorEvent extends AuthEvent {
+  String schoolId;
+  InviteCoordinatorEvent(this.schoolId);
+}

@@ -15,6 +15,13 @@ class AuthState {
     this.authFailed = false,
   });
 
+  AuthState reset() {
+    user = null;
+    school = null;
+    token = null;
+    return copyWith();
+  }
+
   AuthState copyWith({
     User? user,
     School? school,
@@ -23,11 +30,23 @@ class AuthState {
     bool? authFailed,
   }) {
     return AuthState(
-      user: user,
-      school: school,
-      token: token,
+      user: user ?? this.user,
+      school: school ?? this.school,
+      token: token ?? this.token,
       isProcessing: isProcessing ?? this.isProcessing,
       authFailed: authFailed ?? this.authFailed,
     );
   }
+}
+
+class InviteCoordinatorState extends AuthState {
+  String? invitationCode;
+  InviteCoordinatorState({
+    super.user,
+    super.school,
+    super.token,
+    super.isProcessing = false,
+    super.authFailed = false,
+    this.invitationCode,
+  });
 }

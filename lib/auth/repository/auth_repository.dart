@@ -25,4 +25,9 @@ class AuthRepository {
       authBloc.add(LoginFailedEvent());
     }
   }
+
+  getInvitationCode({required String schoolId, required bool forTeacher}) async {
+    String invitationCode = (await AuthApiProvider().getInvitationCodeForTeacher(schoolId))!;
+    return invitationCode;
+  }
 }

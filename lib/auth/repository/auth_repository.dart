@@ -44,6 +44,28 @@ class AuthRepository {
     }
   }
 
+  Future joinAsOwner(String schoolName, String schoolEmail, String userName, String userEmail, String password) async {
+    try {
+      // sign up and fetch data
+      var dataDynamic = (await AuthApiProvider().signUpAsOwner(
+        schoolName: schoolName,
+        schoolEmail: schoolEmail,
+        userName: userName,
+        userEmail: userEmail,
+        password: password,
+      ))!;
+      Map<String, dynamic> dataMap = Map<String, dynamic>.from(dataDynamic as Map<String, dynamic>);
+      // create the user
+      User user = User.fromJson(dataMap['user']);
+      School school = School.fromJson(dataMap['school']);
+      // extract the jwt
+      String token = dataMap['token'];
+      authBloc.add(JoinAsStudentSuccessEvent(user: user, token: token));
+    } catch (e) {
+      authBloc.add(SignUpFailedEvent());
+    }
+  }
+
   getInvitationCode({required String schoolId, required bool forTeacher}) async {
     String invitationCode;
     if (forTeacher) {

@@ -18,6 +18,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isProcessing: true));
     });
 
+    on<JoinAsOwnerAttemptEvent>((event, emit) async {
+      AuthRepository(this).joinAsOwner(event.schoolName, event.schoolEmail, event.userName, event.userEmail, event.password);
+      emit(state.copyWith(isProcessing: true));
+    });
+
     on<LoginSuccessEvent>((event, emit) async {
       // set the jwt token in the shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -32,6 +37,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<JoinAsStudentSuccessEvent>((event, emit) async {
+      // set the jwt token in the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', event.token);
+      emit(state.copyWith(
+        user: event.user,
+        token: event.token,
+        isProcessing: false,
+        authFailed: false,
+      ));
+    });
+
+    on<JoinAsOwnerSuccessEvent>((event, emit) async {
       // set the jwt token in the shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', event.token);
@@ -110,6 +127,22 @@ class JoinAsStudentAttemptEvent extends AuthEvent {
   JoinAsStudentAttemptEvent({required this.userName, required this.userEmail, required this.password});
 }
 
+class JoinAsOwnerAttemptEvent extends AuthEvent {
+  String schoolName;
+  String schoolEmail;
+  String userName;
+  String userEmail;
+  String password;
+
+  JoinAsOwnerAttemptEvent({
+    required this.schoolName,
+    required this.schoolEmail,
+    required this.userName,
+    required this.userEmail,
+    required this.password,
+  });
+}
+
 class LoginSuccessEvent extends AuthEvent {
   User user;
   School? school;
@@ -128,6 +161,18 @@ class JoinAsStudentSuccessEvent extends AuthEvent {
 
   JoinAsStudentSuccessEvent({
     required this.user,
+    required this.token,
+  });
+}
+
+class JoinAsOwnerSuccessEvent extends AuthEvent {
+  User user;
+  School school;
+  String token;
+
+  JoinAsOwnerSuccessEvent({
+    required this.user,
+    required this.school,
     required this.token,
   });
 }

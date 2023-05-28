@@ -26,7 +26,7 @@ class JoinAsStudentPage extends StatelessWidget {
             return Center(
               child: Column(
                 children: [
-                  Text('Login failed'),
+                  Text('SignUp failed'),
                   // retry button
                   ElevatedButton(
                     onPressed: () {

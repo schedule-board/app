@@ -4,6 +4,7 @@ import 'package:schedule/auth/models/user_model.dart';
 import 'package:schedule/auth/repository/auth_repository.dart';
 import 'package:schedule/auth/states/auth_state.dart';
 import 'package:schedule/school/models/school_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState()) {
@@ -12,7 +13,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isProcessing: true));
     });
 
-    on<LoginSuccessEvent>((event, emit) {
+    on<LoginSuccessEvent>((event, emit) async {
+      // set the jwt token in the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', event.token);
       emit(state.copyWith(
         user: event.user,
         school: event.school,

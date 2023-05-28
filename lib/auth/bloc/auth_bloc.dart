@@ -23,6 +23,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isProcessing: true));
     });
 
+    on<JoinWithCodeAttemptEvent>((event, emit) async {
+      AuthRepository(this).joinWithCode(event.code, event.userName, event.userEmail, event.password);
+      emit(state.copyWith(isProcessing: true));
+    });
+
     on<LoginSuccessEvent>((event, emit) async {
       // set the jwt token in the shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -54,6 +59,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       prefs.setString('token', event.token);
       emit(state.copyWith(
         user: event.user,
+        school: event.school,
+        token: event.token,
+        isProcessing: false,
+        authFailed: false,
+      ));
+    });
+
+    on<JoinWithCodeSuccessEvent>((event, emit) async {
+      // set the jwt token in the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', event.token);
+      emit(state.copyWith(
+        user: event.user,
+        school: event.school,
         token: event.token,
         isProcessing: false,
         authFailed: false,
@@ -143,6 +162,20 @@ class JoinAsOwnerAttemptEvent extends AuthEvent {
   });
 }
 
+class JoinWithCodeAttemptEvent extends AuthEvent {
+  String code;
+  String userName;
+  String userEmail;
+  String password;
+
+  JoinWithCodeAttemptEvent({
+    required this.code,
+    required this.userName,
+    required this.userEmail,
+    required this.password,
+  });
+}
+
 class LoginSuccessEvent extends AuthEvent {
   User user;
   School? school;
@@ -171,6 +204,18 @@ class JoinAsOwnerSuccessEvent extends AuthEvent {
   String token;
 
   JoinAsOwnerSuccessEvent({
+    required this.user,
+    required this.school,
+    required this.token,
+  });
+}
+
+class JoinWithCodeSuccessEvent extends AuthEvent {
+  User user;
+  School school;
+  String token;
+
+  JoinWithCodeSuccessEvent({
     required this.user,
     required this.school,
     required this.token,

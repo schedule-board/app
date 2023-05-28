@@ -48,12 +48,8 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => LoginPage(),
       ),
       GoRoute(
-        path: '/manageClass',
+        path: '/classList',
         builder: (context, state) => ManageClassPage(),
-      ),
-      GoRoute(
-        path: '/courseList',
-        builder: (context, state) => CourseListPage(),
       ),
       GoRoute(
         path: '/login',

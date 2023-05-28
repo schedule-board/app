@@ -80,35 +80,35 @@ class LandingPage extends StatelessWidget {
             ListTile(
               title: const Text('Invite'),
               onTap: () {
-                context.push('/inviteScreen');
+                context.push('/invite');
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Select class'),
               onTap: () {
-                context.push('/selectClassScreen');
+                context.push('/selectClass');
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('MY School'),
               onTap: () {
-                context.push('/mySchoolScreen');
+                context.push('/schoolDetail');
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                context.push('/profileScreen');
+                context.push('/profile');
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
               title: const Text('Manage Courses'),
               onTap: () {
-                context.push('/manageCoursesScreen');
+                context.push('/courseList');
 
                 Navigator.of(context).pop();
               },
@@ -116,7 +116,7 @@ class LandingPage extends StatelessWidget {
             ListTile(
               title: const Text('Manage Classes'),
               onTap: () {
-                context.push('/manageClassesScreen');
+                context.push('/classList');
 
                 Navigator.of(context).pop();
               },

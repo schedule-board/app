@@ -1,4 +1,3 @@
-import '../../course/models/school_models.dart';
 
 class User {
   String userId;

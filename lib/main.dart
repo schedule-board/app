@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/manageClass',
+    initialLocation: '/login',
     initialExtra: GoRoute(
         path: '/courseList',
         builder: (context, state) => const CourseListPage()),

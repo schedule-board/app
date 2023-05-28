@@ -3,6 +3,7 @@ import 'package:schedule/auth/data_provider/auth_api_provider.dart';
 import 'package:schedule/auth/models/user_model.dart';
 import 'package:schedule/auth/repository/auth_repository.dart';
 import 'package:schedule/auth/states/auth_state.dart';
+import 'package:schedule/school/models/school_model.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState()) {
@@ -12,10 +13,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<LoginSuccessEvent>((event, emit) {
-      // set the token
-      // set the user
-      // set the school
-      emit(state.copyWith(user: event.user, isProcessing: false, authFailed: false));
+      emit(state.copyWith(
+        user: event.user,
+        school: event.school,
+        token: event.token,
+        isProcessing: false,
+        authFailed: false,
+      ));
     });
 
     on<LoginFailedEvent>((event, emit) {
@@ -49,7 +53,14 @@ class LoginAttemptEvent extends AuthEvent {
 
 class LoginSuccessEvent extends AuthEvent {
   User user;
-  LoginSuccessEvent({required this.user});
+  School school;
+  String token;
+
+  LoginSuccessEvent({
+    required this.user,
+    required this.school,
+    required this.token,
+  });
 }
 
 class LoginFailedEvent extends AuthEvent {}

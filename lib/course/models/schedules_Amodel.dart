@@ -6,8 +6,8 @@ class Schedule {
   String day;
   String schoolId;
   String teacherId;
-  String classId;
-  String className;
+  String? classId;
+  String? className;
 
   Schedule(
       {required this.scheduleId,
@@ -17,8 +17,8 @@ class Schedule {
       required this.day,
       required this.schoolId,
       required this.teacherId,
-      required this.classId,
-      required this.className});
+      this.classId,
+      this.className});
 
   factory Schedule.fromJson(Map<String, dynamic> json) {
     return Schedule(

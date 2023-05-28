@@ -26,6 +26,9 @@ import 'class/screens/select_class_page.dart';
 import 'class/bloc/class_bloc.dart';
 import 'class/repository/class_repository.dart';
 import 'class/data_provider/class_provider.dart';
+import 'teacher/bloc/bloc.dart';
+import 'teacher/repository/teacher_repository.dart';
+import 'teacher/data_provider/teacher_provider.dart';
 
 // import 'announcement.dart';
 
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/classList',
+    initialLocation: '/landing',
     initialExtra: GoRoute(
         path: '/courseList',
         builder: (context, state) => const CourseListPage()),
@@ -113,7 +116,9 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/courseDetail',
-        builder: (context, state) => CourseDetailPage(),
+        name: "courseDetail",
+        builder: (context, state) =>
+            CourseDetailPage(id: state.queryParameters["id"]),
       ),
       GoRoute(
         path: '/SelectClass',
@@ -137,6 +142,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CourseRepository courseRepository = CourseRepository(CourseProvider());
+    TeacherRepository teacherRepository = TeacherRepository(TeacherProvider());
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
@@ -152,6 +159,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<ManageClassBloc>(
           create: (context) =>
               ManageClassBloc(ClassRepository(ClassProvider())),
+        ),
+        BlocProvider<CourseUpdateBloc>(
+          create: (context) => CourseUpdateBloc(courseRepository),
+        ),
+        BlocProvider<TeacherBloc>(
+          create: (context) => TeacherBloc(teacherRepository),
         ),
       ],
       child: MaterialApp.router(

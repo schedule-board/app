@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../models/course_model.dart';
 import '../bloc/bloc.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
+import '../../teacher/bloc/bloc.dart';
 
 class CourseListPage extends StatelessWidget {
   const CourseListPage({super.key});
@@ -13,43 +14,50 @@ class CourseListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("course List"),
       ),
-      body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child:
-              BlocBuilder<CourseBloc, CourseState>(builder: (context, state) {
-            if (state is CourseLoadingState) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            if (state is CoursesOperationSuccess) {
-              return ListView.builder(
-                  itemBuilder: (context, index) => Card(
-                        elevation: 3,
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: const Icon(Icons.school),
-                            title: Text(
-                              state.courses[index].courseName,
+      body: SingleChildScrollView(
+          child: Container(
+              height: 500,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: BlocBuilder<CourseBloc, CourseState>(
+                  builder: (context, state) {
+                if (state is CoursesOperationSuccess) {
+                  return ListView.builder(
+                      itemBuilder: (context, index) {
+                        Course course = state.courses[index];
+                        return Card(
+                          elevation: 3,
+                          child: InkWell(
+                            onTap: () {
+                              BlocProvider.of<TeacherBloc>(context).add(
+                                  LoadTeacherEvent("646a2b183748bfedb7cb7819"));
+                              BlocProvider.of<CourseBloc>(context)
+                                  .add(LoadOneCourseEvent(course.courseId));
+                              context.push("/courseDetail");
+                            },
+                            child: ListTile(
+                              leading: const Icon(Icons.school),
+                              title: Text(course.courseName),
+                              subtitle: Text(course.schoolName!,
+                                  style: const TextStyle(color: Colors.grey)),
                             ),
-                            subtitle: Text(state.courses[index].schoolName,
-                                style: const TextStyle(color: Colors.grey)),
                           ),
-                        ),
-                      ),
-                  itemCount: state.courses.length);
-            }
-
-            if (state is CourseOperationFailure) {
-    
-              return Center(child: Text(state.error.toString()));
-            } else {
-              return Center(child: Text("none"));
-            }
-          })),
+                        );
+                      },
+                      itemCount: state.courses.length);
+                } else if (state is CourseOperationFailure) {
+                  return Center(child: Text(state.error.toString()));
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                ;
+              }))),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          BlocProvider.of<CourseBloc>(context).add(LoadCourseEvent());
+          BlocProvider.of<TeacherBloc>(context)
+              .add(LoadTeacherEvent("646a2b183748bfedb7cb7819"));
+
+          context.push('/createCourse');
+          // Navigator.of(context).pop();
         },
         child: const Icon(Icons.add),
       ),

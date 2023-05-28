@@ -11,23 +11,25 @@ class LoadCourseEvent extends CourseEvent {
   List<Object?> get props => [];
 }
 
-class CreateCourseEvent extends CourseEvent {
-  Course course;
-  CreateCourseEvent(this.course);
+class LoadOneCourseEvent extends CourseEvent {
+  String? id;
+  LoadOneCourseEvent(this.id);
   @override
-  List<Object?> get props => [course];
+  List<Object?> get props => [id];
 }
 
-class UpdateCourseEvent extends CourseEvent {
-  Course course;
-  UpdateCourseEvent(this.course);
+class CreateCourseEvent extends CourseEvent {
+  Map course;
+  String? schoolId;
+  CreateCourseEvent(this.course, this.schoolId);
   @override
   List<Object?> get props => [course];
 }
 
 class DeleteCourseEvent extends CourseEvent {
-  String id;
-  DeleteCourseEvent(this.id);
+  String courseId;
+  String schoolId;
+  DeleteCourseEvent(this.courseId, this.schoolId);
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [];
 }

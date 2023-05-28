@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:schedule/teacher/bloc/bloc.dart';
+import '../bloc/bloc.dart';
+import "package:flutter_bloc/flutter_bloc.dart";
 
 class CreateCoursePage extends StatefulWidget {
   @override
@@ -18,27 +21,33 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
 
   String? _courseName;
 
-  String? _selectedTeacher;
+  String? _selectedTeacherid;
 
-  TimeOfDay? _selectedStartTime;
-  TimeOfDay? _selectedEndTime;
-
-  List<String> _teachers = [
-    'Teacher 1',
-    'Teacher 2',
-    'Teacher 3',
-  ];
+  late TimeOfDay _selectedStartTime = TimeOfDay.now();
+  late TimeOfDay _selectedEndTime = TimeOfDay.now();
 
   List<Schedule> _schedules = [];
+  List _teachers = [];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create Course'),
-      ),
-      body: Center(
-        child: Form(
+    List teachers = context.watch<TeacherBloc>().state.props;
+
+    if (teachers.length != 0) {
+      _teachers = teachers[0];
+    }
+
+    return WillPopScope(
+      onWillPop: () async {
+        BlocProvider.of<CourseBloc>(context).add(LoadCourseEvent());
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Create Course'),
+        ),
+        body: Center(
+            child: Form(
           key: _formKey,
           child: Column(
             children: <Widget>[
@@ -60,11 +69,11 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
                 decoration: InputDecoration(
                   labelText: 'Teacher',
                 ),
-                value: _selectedTeacher,
-                items: _teachers.map((String teacher) {
+                value: _selectedTeacherid,
+                items: _teachers.map((teacher) {
                   return DropdownMenuItem(
-                    value: teacher,
-                    child: Text(teacher),
+                    value: teacher.teacherId,
+                    child: Text(teacher.teacherName),
                   );
                 }).toList(),
                 validator: (value) {
@@ -75,11 +84,11 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
                 },
                 onChanged: (value) {
                   setState(() {
-                    _selectedTeacher = value;
+                    _selectedTeacherid = value as String?;
                   });
                 },
                 onSaved: (value) {
-                  _selectedTeacher = value;
+                  _selectedTeacherid = value as String?;
                 },
               ),
               Text(
@@ -123,24 +132,35 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    // Perform submit action here
-                    print('Course Name: $_courseName');
-                    print('Selected Teacher: $_selectedTeacher');
+                    Map course = {
+                      "course_name": _courseName,
+                      "teacher": _selectedTeacherid,
+                      "schedules": _schedules
+                          .map((schedule) => {
+                                "dayOfTheWeek": schedule.dayOfWeek,
+                                "startTime": schedule.startTime,
+                                "endTime": schedule.endTime
+                              })
+                          .toList()
+                    };
+                    BlocProvider.of<CourseBloc>(context).add(
+                        CreateCourseEvent(course, "646a2b183748bfedb7cb7819"));
+                    _showCreateCoursePopup(context);
                   }
                 },
                 child: Text('Submit'),
               ),
             ],
           ),
-        ),
+        )),
       ),
     );
   }
 
   void _showAddScheduleDialog() {
-    String _selectedDay = 'Monday';
-    TimeOfDay _selectedStartTime = TimeOfDay.now();
-    TimeOfDay _selectedEndTime = TimeOfDay.now();
+    String _selectedDay = 'monday';
+    _selectedStartTime = TimeOfDay.now();
+    _selectedEndTime = TimeOfDay.now();
 
     showDialog(
       context: context,
@@ -153,13 +173,13 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
               DropdownButtonFormField(
                 value: _selectedDay,
                 items: [
-                  'Monday',
-                  'Tuesday',
-                  'Wednesday',
-                  'Thursday',
-                  'Friday',
-                  'Saturday',
-                  'Sunday',
+                  'monday',
+                  'tuesday',
+                  'wednesday',
+                  'thursday',
+                  'friday',
+                  'saturday',
+                  'sunday',
                 ].map((day) {
                   return DropdownMenuItem(
                     value: day,
@@ -226,6 +246,7 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
       context: context,
       initialTime: TimeOfDay.now(),
     );
+
     if (pickedTime != null) {
       setState(() {
         _selectedStartTime = pickedTime;
@@ -238,6 +259,7 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
       context: context,
       initialTime: TimeOfDay.now(),
     );
+
     if (pickedTime != null) {
       setState(() {
         _selectedEndTime = pickedTime;
@@ -268,4 +290,40 @@ class Schedule {
     required this.startTime,
     required this.endTime,
   });
+}
+
+void _showCreateCoursePopup(context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Create Course'),
+        content:
+            BlocBuilder<CourseBloc, CourseState>(builder: (context, state) {
+          if (state is OneCourseOperationSuccess) {
+            return Text("${state.course.courseName} is sucessfully created");
+          }
+          if (state is CourseOperationFailure) {
+            var errString;
+            if (state.error.toString().split(":").length == 2) {
+              errString = state.error.toString().split(":")[1];
+            } else {
+              errString = state.error.toString().split(":");
+            }
+            return Text("Error ocurr on Creation:\n $errString");
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        }),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Cancel'),
+          ),
+        ],
+      );
+    },
+  );
 }

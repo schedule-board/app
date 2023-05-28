@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import "../course/bloc/bloc.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() => runApp(const MyApp());
 
@@ -99,8 +101,8 @@ class LandingPage extends StatelessWidget {
             ListTile(
               title: const Text('Manage Courses'),
               onTap: () {
-                context.push('/manageCoursesScreen');
-
+                context.push('/courseList');
+                BlocProvider.of<CourseBloc>(context).add(LoadCourseEvent());
                 Navigator.of(context).pop();
               },
             ),

@@ -1,0 +1,10 @@
+^C:\USERS\YONAS\DOCUMENTS\CLASS\AAIT CLASS\MOBILE\APP\BUILD\WINDOWS\CMAKEFILES\62CEB0D435F6CADBC2DF4E0D000BEE6F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/yonas/Documents/class/aait class/mobile/app/windows" "-BC:/Users/yonas/Documents/class/aait class/mobile/app/build/windows" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/schedule.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

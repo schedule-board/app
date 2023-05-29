@@ -1,0 +1,14 @@
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/icudtl.dat
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/flutter_windows.dll
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/isar_flutter_libs_plugin.dll
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/isar.dll
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/images/logo.png
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/images/logo1.svg
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/images/photo1.jpg
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

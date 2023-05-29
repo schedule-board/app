@@ -1,12 +1,16 @@
 import 'package:sqflite/sqflite.dart';
 
-class ClassLocalProvider {
+// IMPORTANT NOTE: all the methods of this class operate in the context of a single school.
+// for example, the getAllCourses() method will return all the courses for the current school
+// that we can get in the AuthState.
+
+class DatabaseHelper {
   // let's do a singleton here
-  static final ClassLocalProvider instance = ClassLocalProvider._privateConstructor();
+  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
-  ClassLocalProvider._privateConstructor();
+  DatabaseHelper._privateConstructor();
 
-  factory ClassLocalProvider() {
+  factory DatabaseHelper() {
     return instance;
   }
 

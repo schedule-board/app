@@ -1,3 +1,6 @@
+import 'package:schedule/course/models/course_model.dart';
+import 'package:schedule/database_helper/db_helper.dart';
+
 import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
@@ -28,5 +31,17 @@ class ClassRepository {
 
   Future<dynamic> deleteClassFromApi(String? classId, String? schoolId, token) async {
     return classProvider.deleteClass(classId, schoolId, token);
+  }
+
+  Future<List<Class>> loadClassesFromLocal(String schoolId) async {
+    var result = await DatabaseHelper().getAllClasses();
+    var classes = result.map((e) => Class.fromJson(e)).toList();
+    return classes;
+  }
+
+  Future<List<Course>> loadCoursesFromLocal(String classId) async {
+    var result = await DatabaseHelper().getAllCourses();
+    var courses = result.map((e) => Course.fromJson(e)).toList();
+    return courses;
   }
 }

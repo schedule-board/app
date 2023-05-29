@@ -1,8 +1,8 @@
-import '../data_provider/class_provider.dart';
+import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
 class ClassRepository {
-  final ClassProvider classProvider;
+  final ClassApiProvider classProvider;
 
   ClassRepository(this.classProvider);
 
@@ -22,8 +22,7 @@ class ClassRepository {
     return classProvider.createClass(course, schoolId, token);
   }
 
-  Future<Class> update(
-      Map course, String? classId, String? schoolId, token) async {
+  Future<Class> update(Map course, String? classId, String? schoolId, token) async {
     return classProvider.updateClass(course, classId, schoolId, token);
   }
 

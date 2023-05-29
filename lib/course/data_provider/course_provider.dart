@@ -76,7 +76,7 @@ class CourseProvider {
         body: jsonEncode(course));
 
     if (response.statusCode == 200) {
-      var coursedata = jsonDecode(response.body)["course"];
+      var coursedata = jsonDecode(response.body)["updatedCourse"];
       var course = Course.fromJson(coursedata);
       return course;
     } else {

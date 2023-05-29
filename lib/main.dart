@@ -30,7 +30,7 @@ import 'course/data_provider/course_provider.dart';
 import 'class/screens/select_class_page.dart';
 import 'class/bloc/class_bloc.dart';
 import 'class/repository/class_repository.dart';
-import 'class/data_provider/class_provider.dart';
+import 'class/data_provider/class_api_provider.dart';
 import 'teacher/bloc/bloc.dart';
 import 'teacher/repository/teacher_repository.dart';
 import 'teacher/data_provider/teacher_provider.dart';
@@ -47,8 +47,7 @@ class MyApp extends StatelessWidget {
 
   final router = GoRouter(
     initialLocation: '/login',
-    initialExtra:
-        GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
+    initialExtra: GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -122,8 +121,7 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/courseDetail',
         name: "courseDetail",
-        builder: (context, state) =>
-            CourseDetailPage(id: state.queryParameters["id"]),
+        builder: (context, state) => CourseDetailPage(id: state.queryParameters["id"]),
       ),
       GoRoute(
         path: '/SelectClass',
@@ -158,11 +156,10 @@ class MyApp extends StatelessWidget {
           create: (context) => CourseBloc(courseRepository),
         ),
         BlocProvider<ClassBloc>(
-          create: (context) => ClassBloc(ClassRepository(ClassProvider())),
+          create: (context) => ClassBloc(ClassRepository(ClassApiProvider())),
         ),
         BlocProvider<ClassUpdateBloc>(
-          create: (context) =>
-              ClassUpdateBloc(ClassRepository(ClassProvider())),
+          create: (context) => ClassUpdateBloc(ClassRepository(ClassApiProvider())),
         ),
         BlocProvider<CourseUpdateBloc>(
           create: (context) => CourseUpdateBloc(courseRepository),
@@ -171,8 +168,7 @@ class MyApp extends StatelessWidget {
           create: (context) => TeacherBloc(teacherRepository),
         ),
         BlocProvider<ScheduleBloc>(
-          create: (context) =>
-              ScheduleBloc(ScheduleRepository(ScheduleProvider())),
+          create: (context) => ScheduleBloc(ScheduleRepository(ScheduleProvider())),
         ),
       ],
       child: MaterialApp.router(

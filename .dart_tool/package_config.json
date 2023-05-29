@@ -536,6 +536,18 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "sqflite",
+      "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/sqflite-2.2.8+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/sqflite_common-2.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "sqlite3",
       "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/sqlite3-1.11.1",
       "packageUri": "lib/",
@@ -574,6 +586,12 @@
     {
       "name": "string_scanner",
       "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/string_scanner-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/synchronized-3.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -674,7 +692,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-29T19:32:34.357854Z",
+  "generated": "2023-05-29T20:07:16.982705Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

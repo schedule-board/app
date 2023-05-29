@@ -5,35 +5,44 @@ abstract class ClassEvent extends Equatable {
   const ClassEvent();
 }
 
-class LoadSelectClassEvent extends ClassEvent {
-  const LoadSelectClassEvent();
+class LoadClassesEvent extends ClassEvent {
+  String schoolId;
+  String token;
+  LoadClassesEvent(this.schoolId, this.token);
   @override
   List<Object?> get props => [];
 }
 
-class LoadManageClassEvent extends ClassEvent {
-  const LoadManageClassEvent();
+class LoadAllClassesEvent extends ClassEvent {
+  String token;
+  LoadAllClassesEvent(this.token);
+  @override
+  List<Object?> get props => [];
+}
+
+class LoadOneClassEvent extends ClassEvent {
+  String token;
+  String? classid;
+  String? schoolId;
+  LoadOneClassEvent(this.classid, this.schoolId, this.token);
   @override
   List<Object?> get props => [];
 }
 
 class CreateClassEvent extends ClassEvent {
-  classesForSelectModel classModel;
-  CreateClassEvent(this.classModel);
+  String token;
+  Map classs;
+  String? schoolId;
+  CreateClassEvent(this.classs, this.schoolId, this.token);
   @override
-  List<Object?> get props => [classModel];
-}
-
-class UpdateClassEvent extends ClassEvent {
-  classesForSelectModel classModel;
-  UpdateClassEvent(this.classModel);
-  @override
-  List<Object?> get props => [classModel];
+  List<Object?> get props => [classs];
 }
 
 class DeleteClassEvent extends ClassEvent {
-  String id;
-  DeleteClassEvent(this.id);
+  String token;
+  String classId;
+  String schoolId;
+  DeleteClassEvent(this.classId, this.schoolId, this.token);
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [];
 }

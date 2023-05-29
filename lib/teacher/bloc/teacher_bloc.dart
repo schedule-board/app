@@ -9,7 +9,7 @@ class TeacherBloc extends Bloc<TeacherEvent, TeacherState> {
   TeacherBloc(this.teacherRepository) : super(TeacherInitialState()) {
     on<LoadTeacherEvent>((event, emit) async {
       try {
-        var teacher = await teacherRepository.load("646a2b183748bfedb7cb7819");
+        var teacher = await teacherRepository.load(event.schoolId);
 
         emit(TeachersOperationSuccess(teacher));
       } catch (err) {

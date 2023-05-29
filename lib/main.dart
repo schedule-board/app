@@ -5,12 +5,17 @@ import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:schedule/auth/screens/join_as_owner_page.dart';
 import 'package:schedule/auth/screens/join_as_student_page.dart';
 import 'package:schedule/auth/screens/login_page.dart';
+import 'package:schedule/class/bloc/bloc.dart';
 import 'package:schedule/class/screens/class_detail_page.dart';
 import 'package:schedule/class/screens/create_class_page.dart';
 import 'package:schedule/course/screens/course_detail_page.dart';
 import 'package:schedule/course/screens/create_course_page.dart';
+import 'package:schedule/schedule/bloc/schedule_bloc.dart';
 import 'package:schedule/schedule/landing_page.dart';
-import 'package:schedule/schedule/screens/schedule_list_screen.dart';
+import 'package:schedule/schedule/repository/schedule_repository.dart';
+import 'package:schedule/schedule/data_provider/schedule_provider.dart';
+
+// import 'package:schedule/schedule/screens/ManageClassPageschedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
@@ -29,6 +34,7 @@ import 'class/data_provider/class_provider.dart';
 import 'teacher/bloc/bloc.dart';
 import 'teacher/repository/teacher_repository.dart';
 import 'teacher/data_provider/teacher_provider.dart';
+import 'course/screens/course_list_page.dart';
 
 // import 'announcement.dart';
 
@@ -40,10 +46,9 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/landing',
-    initialExtra: GoRoute(
-        path: '/courseList',
-        builder: (context, state) => const CourseListPage()),
+    initialLocation: '/login',
+    initialExtra:
+        GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -52,7 +57,7 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/classList',
-        builder: (context, state) => ClassListPage(),
+        builder: (context, state) => ManageClassPage(),
       ),
       GoRoute(
         path: '/courseList',
@@ -124,18 +129,18 @@ class MyApp extends StatelessWidget {
         path: '/SelectClass',
         builder: (context, state) => SelectClassPage(),
       ),
+      // GoRoute(
+      //   path: '/ScheduleList',
+      // builder: (context, state) => ScheduleScreen(),
+      // ),
       GoRoute(
-        path: '/ScheduleList',
-        builder: (context, state) => ScheduleScreen(),
+        path: '/joinAsOwner',
+        builder: (context, state) => JoinAsOwnerPage(),
       ),
-      // GoRoute(
-      //   path: '/joinAsOwner',
-      //   builder: (context, state) => JoinAsOwnerScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/joinAsStudent',
-      //   builder: (context, state) => JoinAsStudentScreen(),
-      // ),
+      GoRoute(
+        path: '/joinAsStudent',
+        builder: (context, state) => JoinAsStudentPage(),
+      ),
     ],
   );
 
@@ -152,19 +157,22 @@ class MyApp extends StatelessWidget {
         BlocProvider<CourseBloc>(
           create: (context) => CourseBloc(courseRepository),
         ),
-        BlocProvider<SelectClassBloc>(
-          create: (context) =>
-              SelectClassBloc(ClassRepository(ClassProvider())),
+        BlocProvider<ClassBloc>(
+          create: (context) => ClassBloc(ClassRepository(ClassProvider())),
         ),
-        BlocProvider<ManageClassBloc>(
+        BlocProvider<ClassUpdateBloc>(
           create: (context) =>
-              ManageClassBloc(ClassRepository(ClassProvider())),
+              ClassUpdateBloc(ClassRepository(ClassProvider())),
         ),
         BlocProvider<CourseUpdateBloc>(
           create: (context) => CourseUpdateBloc(courseRepository),
         ),
         BlocProvider<TeacherBloc>(
           create: (context) => TeacherBloc(teacherRepository),
+        ),
+        BlocProvider<ScheduleBloc>(
+          create: (context) =>
+              ScheduleBloc(ScheduleRepository(ScheduleProvider())),
         ),
       ],
       child: MaterialApp.router(

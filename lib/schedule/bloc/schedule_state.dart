@@ -1,15 +1,14 @@
 import './bloc.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
+
 abstract class ScheduleState {}
 
-class ScheduleInitialState  extends ScheduleState {}
+class ScheduleInitialState extends ScheduleState {}
 
 class ScheduleLoadingState extends ScheduleState {}
 
-
-
 class ScheduleOperationSuccess extends ScheduleState {
-  final List<dynamic> schedules;
+  final dynamic schedules;
   ScheduleOperationSuccess(this.schedules);
   @override
   List<Object?> get props => [schedules];

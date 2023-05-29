@@ -6,14 +6,18 @@ abstract class CourseEvent extends Equatable {
 }
 
 class LoadCourseEvent extends CourseEvent {
-  const LoadCourseEvent();
+  String? schoolId;
+  String? token;
+  LoadCourseEvent(this.schoolId, this.token);
   @override
   List<Object?> get props => [];
 }
 
 class LoadOneCourseEvent extends CourseEvent {
   String? id;
-  LoadOneCourseEvent(this.id);
+  String? schoolId;
+  String? token;
+  LoadOneCourseEvent(this.schoolId, this.id, this.token);
   @override
   List<Object?> get props => [id];
 }
@@ -21,7 +25,8 @@ class LoadOneCourseEvent extends CourseEvent {
 class CreateCourseEvent extends CourseEvent {
   Map course;
   String? schoolId;
-  CreateCourseEvent(this.course, this.schoolId);
+  String? token;
+  CreateCourseEvent(this.course, this.schoolId, this.token);
   @override
   List<Object?> get props => [course];
 }
@@ -29,7 +34,8 @@ class CreateCourseEvent extends CourseEvent {
 class DeleteCourseEvent extends CourseEvent {
   String courseId;
   String schoolId;
-  DeleteCourseEvent(this.courseId, this.schoolId);
+  String? token;
+  DeleteCourseEvent(this.courseId, this.schoolId, this.token);
   @override
   List<Object?> get props => [];
 }

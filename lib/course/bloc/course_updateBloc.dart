@@ -12,7 +12,7 @@ class CourseUpdateBloc extends Bloc<CourseUpdateEvent, CourseUpdateState> {
       emit(CourseUpdateLoadingState());
       try {
         var course = await courseRepository.update(
-            event.course, event.courseId, event.schoolId);
+            event.course, event.courseId, event.schoolId, event.token);
         emit(CourseUpdateOperationSuccess(course));
       } catch (err) {
         emit(CourseUpdateOperationFailure(err));

@@ -11,18 +11,25 @@ class ClassInitialState extends ClassState {}
 
 class ClassLoadingState extends ClassState {}
 
-class SelectClassOperationSuccess extends ClassState {
-  final List<dynamic> classesToSelect;
-  const SelectClassOperationSuccess(this.classesToSelect,);
+class ClassesOperationSuccess extends ClassState {
+  final List<dynamic> classes;
+  const ClassesOperationSuccess(this.classes);
   @override
-  List<Object?> get props => [classesToSelect];
+  List<Object?> get props => [classes];
 }
 
-class ManageClassOperationSuccess extends ClassState {
-  final List<dynamic> classesToManage;
-  const ManageClassOperationSuccess(this.classesToManage,);
+class OneClassOperationSuccess extends ClassState {
+  final Class classs;
+  const OneClassOperationSuccess(this.classs);
   @override
-  List<Object?> get props => [classesToManage];
+  List<Object?> get props => [classs];
+}
+
+class DeleteClassOperationSuccess extends ClassState {
+  final bool x;
+  const DeleteClassOperationSuccess(this.x);
+  @override
+  List<Object?> get props => [x];
 }
 
 class ClassOperationFailure extends ClassState {
@@ -31,7 +38,3 @@ class ClassOperationFailure extends ClassState {
   @override
   List<Object?> get props => [error];
 }
-
-
-
-

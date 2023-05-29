@@ -6,11 +6,9 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
-
     return Center(
-       //make it at acenter from the top
-       
+      //make it at acenter from the top
+
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Sign up page'),
@@ -33,7 +31,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/joinAsaStudent');
+                    context.push('/joinAsStudent');
                   },
                   child: const Text('Join as a student'),
                 ),
@@ -43,16 +41,15 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/joinWithCode');
+                    context.push('/joinWithCode');
                   },
                   child: const Text('Join with Code'),
                 ),
               ],
-                  
-                  ),
+            ),
           ),
         ),
-        ),
+      ),
     );
   }
 }

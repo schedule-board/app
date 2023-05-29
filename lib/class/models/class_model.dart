@@ -1,40 +1,21 @@
-class classesForSelectModel {
+class Class {
   String classId;
   String className;
-  List<dynamic> courseIds;
+  String? schoolName;
+  List<dynamic>? courses;
+  bool isSelected = false;
+  Class(
+      {required this.classId,
+      required this.className,
+      required this.courses,
+      required this.schoolName});
 
-  classesForSelectModel({
-    required this.classId,
-    required this.className,
-    required this.courseIds,
-  });
-
-  factory classesForSelectModel.fromJson(Map<dynamic, dynamic> json) {
-    return classesForSelectModel(
+  factory Class.fromJson(Map<dynamic, dynamic> json) {
+    return Class(
+      schoolName: json["school"] is Map ? json["school"]["school_name"] : null,
       classId: json["id"],
       className: json["class_name"],
-      courseIds: json["courses"],
-    );
-  }
-}
-
-class classesForManage {
-  String classId;
-  String className;
-  List<dynamic> courseIds;
-
-  classesForManage({
-    required this.classId,
-    required this.className,
-    required this.courseIds,
-  });
-
-  factory classesForManage.fromJson(Map<dynamic, dynamic> json) {
-    print(json);
-    return classesForManage(
-      classId: json["id"],
-      className: json["class_name"],
-      courseIds: json["courses"],
+      courses: json["courses"],
     );
   }
 }

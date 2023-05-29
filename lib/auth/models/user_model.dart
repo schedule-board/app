@@ -1,4 +1,3 @@
-import './school_models.dart';
 
 class User {
   String userId;
@@ -15,7 +14,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-        userId: json["id"],
+        userId: json["_id"],
         userName: json["user_name"],
         userEmail: json["user_email"],
         role: json["role"]);

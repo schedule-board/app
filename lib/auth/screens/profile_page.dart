@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:schedule/auth/bloc/auth_bloc.dart';
+import 'package:schedule/auth/states/auth_state.dart';
 
 class ProfilePage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -15,32 +19,48 @@ class ProfilePage extends StatelessWidget {
         data: ThemeData(
           primaryColor: Color.fromARGB(255, 208, 209, 209),
           hintColor: Color.fromARGB(255, 173, 173, 173),
-          brightness: Brightness.dark,
         ),
         child: Scaffold(
           appBar: AppBar(
             title: const Text("user Profile"),
           ),
-          body: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Padding(padding: EdgeInsets.only(bottom: 100)),
-                userEmailDetail(),
-                const Padding(padding: EdgeInsets.only(bottom: 60)),
-                userNameDetail(),
-                const Padding(padding: EdgeInsets.only(bottom: 100)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    editButton(),
-                    deleteButton(),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          body: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+            if (state.user == null) {
+              return Center(
+                  child: Column(
+                children: [
+                  const Text("You are successfully logged out"),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.go('/login');
+                    },
+                    child: const Text('Log In'),
+                  ),
+                ],
+              ));
+            }
+            return Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Padding(padding: EdgeInsets.only(bottom: 100)),
+                  userEmailDetail(),
+                  const Padding(padding: EdgeInsets.only(bottom: 60)),
+                  userNameDetail(),
+                  const Padding(padding: EdgeInsets.only(bottom: 100)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      editButton(context),
+                      deleteButton(context),
+                      logoutButton(context),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          }),
         ));
   }
 
@@ -88,7 +108,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget editButton() {
+  Widget editButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate()) {
@@ -101,10 +121,20 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget deleteButton() {
+  Widget deleteButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {},
       child: const Text('Delete user'),
+    );
+  }
+
+  Widget logoutButton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        AuthBloc authbloc = BlocProvider.of<AuthBloc>(context);
+        authbloc.add(LogoutEvent());
+      },
+      child: const Text('Log out'),
     );
   }
 

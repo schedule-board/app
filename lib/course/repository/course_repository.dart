@@ -6,23 +6,24 @@ class CourseRepository {
 
   CourseRepository(this.courseProvider);
 
-  Future<List<dynamic>> load(String schoolId) async {
-    return courseProvider.loadCourses(schoolId);
+  Future<List<dynamic>> load(String schoolId, token) async {
+    return courseProvider.loadCourses(schoolId, token);
   }
 
-  Future<Course> loadOne(String schoolId, String? courseId) async {
-    return courseProvider.loadCourseOne(schoolId, courseId);
+  Future<Course> loadOne(String schoolId, String? courseId, token) async {
+    return courseProvider.loadCourseOne(schoolId, courseId, token);
   }
 
-  Future<Course> create(Map course, String? schoolId) async {
-    return courseProvider.createCourse(course, schoolId);
+  Future<Course> create(Map course, String? schoolId, token) async {
+    return courseProvider.createCourse(course, schoolId, token);
   }
 
-  Future<Course> update(Map course, String? courseId, String? schoolId) async {
-    return courseProvider.updateCourse(course, courseId, schoolId);
+  Future<Course> update(
+      Map course, String? courseId, String? schoolId, token) async {
+    return courseProvider.updateCourse(course, courseId, schoolId, token);
   }
 
-  Future<dynamic> delete(String? courseId, String? schoolId) async {
-    return courseProvider.deleteCourse(courseId, schoolId);
+  Future<dynamic> delete(String? courseId, String? schoolId, token) async {
+    return courseProvider.deleteCourse(courseId, schoolId, token);
   }
 }

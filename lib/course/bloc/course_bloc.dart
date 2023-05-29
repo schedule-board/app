@@ -11,7 +11,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     on<LoadCourseEvent>((event, emit) async {
       emit(CourseLoadingState());
       try {
-        var courses = await courseRepository.load("646a2b183748bfedb7cb7819");
+        var courses = await courseRepository.load(event.schoolId!, event.token);
         emit(CoursesOperationSuccess(courses));
       } catch (err) {
         emit(CourseOperationFailure(err));
@@ -22,7 +22,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
       emit(CourseLoadingState());
       try {
         var course = await courseRepository.loadOne(
-            "646a2b183748bfedb7cb7819", event.id);
+            event.schoolId!, event.id, event.token);
         emit(OneCourseOperationSuccess(course));
       } catch (err) {
         emit(CourseOperationFailure(err));
@@ -32,8 +32,8 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     on<CreateCourseEvent>((event, emit) async {
       try {
         emit(CourseLoadingState());
-        var course =
-            await courseRepository.create(event.course, event.schoolId);
+        var course = await courseRepository.create(
+            event.course, event.schoolId, event.token);
         emit(OneCourseOperationSuccess(course));
       } catch (err) {
         emit(CourseOperationFailure(err));
@@ -43,7 +43,8 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     on<DeleteCourseEvent>((event, emit) async {
       try {
         emit(CourseLoadingState());
-        var x = await courseRepository.delete(event.courseId, event.schoolId);
+        var x = await courseRepository.delete(
+            event.courseId, event.schoolId, event.token);
         emit(DeleteCourseOperationSuccess(x));
       } catch (err) {
         emit(CourseOperationFailure(err));

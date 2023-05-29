@@ -8,14 +8,14 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
-        appBar: AppBar(title: Text('Hello ${authBloc.state.userName}')),
+        appBar: AppBar(title: Text('Hello ${authBloc.state.user!.userName}')),
         body: Center(
           child: Column(
             children: [
-              Text('Hello ${authBloc.state.userName}'),
+              Text('Hello ${authBloc.state.user!.userName}'),
               ElevatedButton(
                 onPressed: () {
-                  authBloc.add(UserLogOutEvent());
+                  authBloc.add(LogoutEvent());
                 },
                 child: const Text('Log Out'),
               ),

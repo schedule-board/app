@@ -1,26 +1,79 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../bloc/bloc.dart';
-import '../models/schedule.dart';
+import '../models/schedules_Amodel.dart';
+import '../../auth/bloc/auth_bloc.dart';
 
 class ScheduleProvider {
   ScheduleProvider();
-  Future<List<dynamic>> loadSchedule(String schoolId) async {
-    var uri = "http://localhost:4000/api/v1/schedules";
-    try {
-      var response = await http.get(Uri.parse(uri));
+  Future<List<dynamic>> loadSchedules(Map filter) async {
+    var uri;
+    if (filter.containsKey("school")) {
+      uri = "http://localhost:4000/api/v1/schedules?school=${filter['school']}";
+    }
 
-      if (response.statusCode == 200) {
-        var jsonData = jsonDecode(response.body)["data"] as List<dynamic>;
+    if (filter.containsKey("teacher")) {
+      uri =
+          "http://localhost:4000/api/v1/schedules?teacher=${filter['teacher']}";
+    }
 
-        List<ScheduleItem> posts =
-            jsonData.map((json) => ScheduleItem.fromJson(json)).toList();
-        return posts;
-      } else {
-        throw Exception('Failed to fetch data');
-      }
-    } catch (e) {
-      throw Exception('Failed to fetch data: $e');
+    if (filter.containsKey("courses")) {
+      var classFilter = (filter["courses"] as List)
+          .map((course) => "course=$course")
+          .toList()
+          .join("&");
+      uri = "http://localhost:4000/api/v1/schedules?$classFilter";
+    }
+    var response = await http.get(
+      Uri.parse(uri),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': "Bearer ${filter["token"]}"
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var scheduledata = jsonDecode(response.body)["data"];
+
+      List<dynamic> schedules = scheduledata.map((json) {
+        return Schedule.fromJson(json);
+      }).toList();
+
+      return schedules;
+    } else {
+      var error = jsonDecode(response.body);
+      throw Exception(error["message"]);
+    }
+  }
+
+  Future<Schedule> updateSchedule(Map schedule, scheduleId) async {
+    var uri = "http://localhost:4000/api/v1/shedules/$scheduleId";
+    var response = await http.patch(Uri.parse(uri),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          // 'Authorization':filter
+        },
+        body: jsonEncode(schedule));
+
+    if (response.statusCode == 200) {
+      var scheduleData = jsonDecode(response.body)["data"];
+      var schedule = Schedule.fromJson(scheduleData);
+      return schedule;
+    } else {
+      var error = jsonDecode(response.body);
+      throw Exception(error["message"]);
+    }
+  }
+
+  Future<dynamic> deleteSchedule(scheduleId) async {
+    var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
+
+    var response = await http.delete(Uri.parse(uri));
+
+    if (response.statusCode == 204) {
+      return true;
+    } else {
+      var error = jsonDecode(response.body);
+      throw Exception(error["message"]);
     }
   }
 }

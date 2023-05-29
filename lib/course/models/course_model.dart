@@ -1,6 +1,5 @@
-import './schedules_Amodel.dart';
-import './user_model.dart';
-import './school_models.dart';
+import '../../schedule/models/schedules_Amodel.dart';
+import '../../auth/models/user_model.dart';
 
 class Course {
   final String courseId;
@@ -32,12 +31,6 @@ class Course {
           day: schedule["dayOfTheWeek"],
           schoolId:
               json["school"] is String ? json["school"] : json["school"]["id"],
-          classId: schedule["class"] == null
-              ? schedule["class"]
-              : schedule["class"]["id"],
-          className: schedule["class"] == null
-              ? schedule["class"]
-              : schedule["class"]["class_name"],
           teacherId: json["teacher"] is String
               ? json["teacher"]
               : json["teacher"]["_id"],

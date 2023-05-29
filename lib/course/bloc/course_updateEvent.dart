@@ -9,7 +9,8 @@ class UpdateCourseEvent extends CourseUpdateEvent {
   Map course;
   String? schoolId;
   String? courseId;
-  UpdateCourseEvent(this.course, this.courseId, this.schoolId);
+  String token;
+  UpdateCourseEvent(this.course, this.courseId, this.schoolId,this.token);
   @override
   List<Object?> get props => [course];
 }

@@ -5,6 +5,7 @@ import "../../course/bloc/bloc.dart";
 import "../../course/models/course_model.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/teacher/bloc/bloc.dart';
+import '../../auth/bloc/auth_bloc.dart';
 
 class CourseDetailPage extends StatefulWidget {
   String? id;
@@ -40,6 +41,8 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
   @override
   Widget build(BuildContext context) {
     List teachers = context.watch<TeacherBloc>().state.props;
+    var currentSchool = context.watch<AuthBloc>().state.school;
+    var token = context.watch<AuthBloc>().state.token;
 
     if (teachers.length != 0) {
       _teachers = teachers[0];
@@ -47,7 +50,8 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
 
     return WillPopScope(
       onWillPop: () async {
-        BlocProvider.of<CourseBloc>(context).add(LoadCourseEvent());
+        BlocProvider.of<CourseBloc>(context)
+            .add(LoadCourseEvent(currentSchool?.id,token));
         return true;
       },
       child: Scaffold(
@@ -180,7 +184,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                                   .add(UpdateCourseEvent(
                                 course,
                                 state.course.courseId,
-                                "646a2b183748bfedb7cb7819",
+                                currentSchool!.id,token!
                               ));
                               _showUpdateCoursePopup(context);
                             }
@@ -192,7 +196,8 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                             BlocProvider.of<CourseBloc>(context)
                                 .add(DeleteCourseEvent(
                               state.course.courseId,
-                              "646a2b183748bfedb7cb7819",
+                              currentSchool!.id,
+                              token
                             ));
                           },
                           child: Text('Delete'),

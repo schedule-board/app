@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule/teacher/bloc/bloc.dart';
 import '../bloc/bloc.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
+import '../../auth/bloc/auth_bloc.dart';
 
 class CreateCoursePage extends StatefulWidget {
   @override
@@ -32,6 +33,8 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
   @override
   Widget build(BuildContext context) {
     List teachers = context.watch<TeacherBloc>().state.props;
+    var currentSchool = context.watch<AuthBloc>().state.school;
+    var token = context.watch<AuthBloc>().state.token;
 
     if (teachers.length != 0) {
       _teachers = teachers[0];
@@ -39,7 +42,8 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
 
     return WillPopScope(
       onWillPop: () async {
-        BlocProvider.of<CourseBloc>(context).add(LoadCourseEvent());
+        BlocProvider.of<CourseBloc>(context)
+            .add(LoadCourseEvent(currentSchool?.id, token));
         return true;
       },
       child: Scaffold(
@@ -144,7 +148,7 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
                           .toList()
                     };
                     BlocProvider.of<CourseBloc>(context).add(
-                        CreateCourseEvent(course, "646a2b183748bfedb7cb7819"));
+                        CreateCourseEvent(course, currentSchool?.id, token));
                     _showCreateCoursePopup(context);
                   }
                 },

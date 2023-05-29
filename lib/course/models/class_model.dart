@@ -1,6 +1,5 @@
-import './schedules_Amodel.dart';
+import '../../schedule/models/schedules_Amodel.dart';
 import './course_model.dart';
-import './school_models.dart';
 
 class Class {
   String classId;

@@ -2,14 +2,16 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import '../models/course_model.dart';
-import '../models/schedules_Amodel.dart';
+import '../../schedule/models/schedules_Amodel.dart';
 
 class CourseProvider {
   CourseProvider();
-  Future<List<dynamic>> loadCourses(String schoolId) async {
-    var uri =
-        "http://localhost:4000/api/v1/schools/646a2b183748bfedb7cb7819/courses";
-    var response = await http.get(Uri.parse(uri));
+  Future<List<dynamic>> loadCourses(String schoolId,token) async {
+    var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses";
+    var response = await http.get(Uri.parse(uri), headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "Authorization": "Bearer $token"
+        });
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
@@ -24,10 +26,13 @@ class CourseProvider {
     }
   }
 
-  Future<Course> loadCourseOne(String schoolId, String? courseId) async {
+  Future<Course> loadCourseOne(String schoolId, String? courseId,token) async {
     var uri =
-        "http://localhost:4000/api/v1/schools/646a2b183748bfedb7cb7819/courses/$courseId";
-    var response = await http.get(Uri.parse(uri));
+        "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
+    var response = await http.get(Uri.parse(uri), headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "Authorization": "Bearer $token"
+        });
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["course"];
@@ -40,11 +45,12 @@ class CourseProvider {
     }
   }
 
-  Future<Course> createCourse(Map course, String? schoolId) async {
+  Future<Course> createCourse(Map course, String? schoolId,token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses";
     var response = await http.post(Uri.parse(uri),
-        headers: <String, String>{
+         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          "Authorization": "Bearer $token"
         },
         body: jsonEncode(course));
 
@@ -59,12 +65,13 @@ class CourseProvider {
     }
   }
 
-  Future<Course> updateCourse(Map course, courseId, schoolId) async {
+  Future<Course> updateCourse(Map course, courseId, schoolId,token) async {
     var uri =
         "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
     var response = await http.patch(Uri.parse(uri),
-        headers: <String, String>{
+         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          "Authorization": "Bearer $token"
         },
         body: jsonEncode(course));
 
@@ -78,11 +85,14 @@ class CourseProvider {
     }
   }
 
-  Future<dynamic> deleteCourse(courseId, schoolId) async {
+  Future<dynamic> deleteCourse(courseId, schoolId,token) async {
     var uri =
         "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
 
-    var response = await http.delete(Uri.parse(uri));
+    var response = await http.delete(Uri.parse(uri), headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "Authorization": "Bearer $token"
+        });
 
     if (response.statusCode == 204) {
       return true;

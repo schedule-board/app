@@ -4,12 +4,16 @@ import '../models/course_model.dart';
 import '../bloc/bloc.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import '../../teacher/bloc/bloc.dart';
+import '../../auth/bloc/auth_bloc.dart';
 
 class CourseListPage extends StatelessWidget {
   const CourseListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var currentSchool = context.watch<AuthBloc>().state.school;
+    var token = context.watch<AuthBloc>().state.token;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("course List"),
@@ -28,10 +32,11 @@ class CourseListPage extends StatelessWidget {
                           elevation: 3,
                           child: InkWell(
                             onTap: () {
-                              BlocProvider.of<TeacherBloc>(context).add(
-                                  LoadTeacherEvent("646a2b183748bfedb7cb7819"));
-                              BlocProvider.of<CourseBloc>(context)
-                                  .add(LoadOneCourseEvent(course.courseId));
+                              BlocProvider.of<TeacherBloc>(context)
+                                  .add(LoadTeacherEvent(currentSchool!.id));
+                              BlocProvider.of<CourseBloc>(context).add(
+                                  LoadOneCourseEvent(currentSchool.id,
+                                      course.courseId, token!));
                               context.push("/courseDetail");
                             },
                             child: ListTile(
@@ -54,7 +59,7 @@ class CourseListPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           BlocProvider.of<TeacherBloc>(context)
-              .add(LoadTeacherEvent("646a2b183748bfedb7cb7819"));
+              .add(LoadTeacherEvent(currentSchool!.id));
 
           context.push('/createCourse');
           // Navigator.of(context).pop();

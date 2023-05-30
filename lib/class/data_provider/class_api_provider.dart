@@ -6,14 +6,14 @@ import '../../auth/bloc/auth_bloc.dart';
 
 class ClassApiProvider {
   ClassApiProvider();
-  Future<List<dynamic>> loadClasses(String schoolId, token) async {
+  Future<List<Class>> loadClasses(String schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes";
     var response = await http
         .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
-      List<dynamic> classes = coursedata.map((courseJson) {
+      List<Class> classes = coursedata.map<Class>((courseJson) {
         return Class.fromJson(courseJson);
       }).toList();
 

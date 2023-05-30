@@ -1,36 +1,47 @@
 import 'package:schedule/course/models/course_model.dart';
 import 'package:schedule/database_helper/db_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
 class ClassRepository {
-  final ClassApiProvider classProvider;
+  final ClassApiProvider classApiProvider = ClassApiProvider();
+  final DatabaseHelper databaseHelper = DatabaseHelper();
 
-  ClassRepository(this.classProvider);
+  ClassRepository();
 
   Future<List<dynamic>> loadClassesOfSchoolFromApi(String schoolId, token) async {
-    return classProvider.loadClasses(schoolId, token);
+    return classApiProvider.loadClasses(schoolId, token);
   }
 
   Future<List<dynamic>> loadAllClassesFromApi(token) async {
-    return classProvider.loadAllClasses(token);
+    return classApiProvider.loadAllClasses(token);
   }
 
   Future<Class> loadSingleClassFromApi(String schoolId, String? classId, token) async {
-    return classProvider.loadClassOne(schoolId, classId, token);
+    return classApiProvider.loadClassOne(schoolId, classId, token);
   }
 
   Future<Class> createClassOnApi(Map course, String? schoolId, token) async {
-    return classProvider.createClass(course, schoolId, token);
+    return classApiProvider.createClass(course, schoolId, token);
   }
 
   Future<Class> updateClassOnApi(Map course, String? classId, String? schoolId, token) async {
-    return classProvider.updateClass(course, classId, schoolId, token);
+    return classApiProvider.updateClass(course, classId, schoolId, token);
   }
 
   Future<dynamic> deleteClassFromApi(String? classId, String? schoolId, token) async {
-    return classProvider.deleteClass(classId, schoolId, token);
+    return classApiProvider.deleteClass(classId, schoolId, token);
+  }
+
+  Future<void> syncClassDataWithServer(String schoolId) async {
+    var prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    var classes = await classApiProvider.loadClasses(schoolId, token);
+    for (var element in classes) {
+      await databaseHelper.upsertClass(element.toJson());
+    }
   }
 
   Future<List<Class>> loadClassesFromLocal(String schoolId) async {

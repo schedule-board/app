@@ -17,6 +17,7 @@ import 'package:schedule/schedule/data_provider/schedule_provider.dart';
 
 // import 'package:schedule/schedule/screens/ManageClassPageschedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
+import 'package:sqflite/sqflite.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
@@ -35,10 +36,16 @@ import 'teacher/bloc/bloc.dart';
 import 'teacher/repository/teacher_repository.dart';
 import 'teacher/data_provider/teacher_provider.dart';
 import 'course/screens/course_list_page.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // import 'announcement.dart';
 
 void main() {
+  // Call this method to set up the ffi database factory
+  sqfliteFfiInit();
+
+  // Set the database factory to the ffi factory
+  databaseFactory = databaseFactoryFfi;
   runApp(MyApp());
 }
 
@@ -156,10 +163,10 @@ class MyApp extends StatelessWidget {
           create: (context) => CourseBloc(courseRepository),
         ),
         BlocProvider<ClassBloc>(
-          create: (context) => ClassBloc(ClassRepository(ClassApiProvider())),
+          create: (context) => ClassBloc(ClassRepository()),
         ),
         BlocProvider<ClassUpdateBloc>(
-          create: (context) => ClassUpdateBloc(ClassRepository(ClassApiProvider())),
+          create: (context) => ClassUpdateBloc(ClassRepository()),
         ),
         BlocProvider<CourseUpdateBloc>(
           create: (context) => CourseUpdateBloc(courseRepository),

@@ -548,6 +548,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "sqflite_common_ffi",
+      "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/sqflite_common_ffi-2.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "sqlite3",
       "rootUri": "file:///home/samuel/.pub-cache/hosted/pub.dev/sqlite3-1.11.1",
       "packageUri": "lib/",
@@ -692,7 +698,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-29T20:07:16.982705Z",
+  "generated": "2023-05-30T07:12:24.638463Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

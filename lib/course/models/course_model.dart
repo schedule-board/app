@@ -29,11 +29,8 @@ class Course {
           startTime: schedule["startTime"],
           endTime: schedule["endTime"],
           day: schedule["dayOfTheWeek"],
-          schoolId:
-              json["school"] is String ? json["school"] : json["school"]["id"],
-          teacherId: json["teacher"] is String
-              ? json["teacher"]
-              : json["teacher"]["_id"],
+          schoolId: json["school"] is String ? json["school"] : json["school"]["id"],
+          teacherId: json["teacher"] is String ? json["teacher"] : json["teacher"]["_id"],
         );
       }).toList();
     }
@@ -42,12 +39,17 @@ class Course {
         courseId: json["id"],
         courseName: json["course_name"],
         schedules: schedules,
-        teacherName:
-            json["teacher"] is String ? null : json["teacher"]["user_name"],
-        teacherId: json["teacher"] is String
-            ? json["teacher"]
-            : json["teacher"]["_id"],
-        schoolName:
-            json["school"] is String ? null : json["school"]["school_name"]);
+        teacherName: json["teacher"] is String ? null : json["teacher"]["user_name"],
+        teacherId: json["teacher"] is String ? json["teacher"] : json["teacher"]["_id"],
+        schoolName: json["school"] is String ? null : json["school"]["school_name"]);
   }
+
+  Map<String, dynamic> toJson() => {
+        "courseId": courseId,
+        "courseName": courseName,
+        "classId": schedules,
+        "teacherName": teacherName,
+        "teacherId": teacherId,
+        "schoolName": schoolName,
+      };
 }

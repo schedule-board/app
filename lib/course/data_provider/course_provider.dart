@@ -4,18 +4,16 @@ import 'package:http/http.dart' as http;
 import '../models/course_model.dart';
 import '../../schedule/models/schedules_Amodel.dart';
 
-class CourseProvider {
-  CourseProvider();
-  Future<List<dynamic>> loadCourses(String schoolId,token) async {
+class CourseApiProvider {
+  CourseApiProvider();
+  Future<List<Course>> loadCourses(String schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses";
-    var response = await http.get(Uri.parse(uri), headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          "Authorization": "Bearer $token"
-        });
+    var response = await http
+        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
-      List<dynamic> courses = coursedata.map((courseJson) {
+      List<Course> courses = coursedata.map<Course>((courseJson) {
         return Course.fromJson(courseJson);
       }).toList();
 
@@ -26,13 +24,10 @@ class CourseProvider {
     }
   }
 
-  Future<Course> loadCourseOne(String schoolId, String? courseId,token) async {
-    var uri =
-        "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
-    var response = await http.get(Uri.parse(uri), headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          "Authorization": "Bearer $token"
-        });
+  Future<Course> loadCourseOne(String schoolId, String? courseId, token) async {
+    var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
+    var response = await http
+        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["course"];
@@ -45,14 +40,10 @@ class CourseProvider {
     }
   }
 
-  Future<Course> createCourse(Map course, String? schoolId,token) async {
+  Future<Course> createCourse(Map course, String? schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses";
     var response = await http.post(Uri.parse(uri),
-         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          "Authorization": "Bearer $token"
-        },
-        body: jsonEncode(course));
+        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}, body: jsonEncode(course));
 
     if (response.statusCode == 201) {
       var coursedata = jsonDecode(response.body)["course"];
@@ -65,15 +56,10 @@ class CourseProvider {
     }
   }
 
-  Future<Course> updateCourse(Map course, courseId, schoolId,token) async {
-    var uri =
-        "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
+  Future<Course> updateCourse(Map course, courseId, schoolId, token) async {
+    var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
     var response = await http.patch(Uri.parse(uri),
-         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          "Authorization": "Bearer $token"
-        },
-        body: jsonEncode(course));
+        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}, body: jsonEncode(course));
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["updatedCourse"];
@@ -85,14 +71,11 @@ class CourseProvider {
     }
   }
 
-  Future<dynamic> deleteCourse(courseId, schoolId,token) async {
-    var uri =
-        "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
+  Future<dynamic> deleteCourse(courseId, schoolId, token) async {
+    var uri = "http://localhost:4000/api/v1/schools/$schoolId/courses/$courseId";
 
-    var response = await http.delete(Uri.parse(uri), headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          "Authorization": "Bearer $token"
-        });
+    var response = await http
+        .delete(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
 
     if (response.statusCode == 204) {
       return true;

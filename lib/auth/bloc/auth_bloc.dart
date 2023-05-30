@@ -4,6 +4,7 @@ import 'package:schedule/auth/models/user_model.dart';
 import 'package:schedule/auth/repository/auth_repository.dart';
 import 'package:schedule/auth/states/auth_state.dart';
 import 'package:schedule/class/repository/class_repository.dart';
+import 'package:schedule/course/repository/course_repository.dart';
 import 'package:schedule/school/models/school_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,6 +39,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       prefs.setString('token', event.token);
       if(event.user.role != "student") {
         ClassRepository().syncClassDataWithServer(event.school!.id);
+        CourseRepository().syncCourseDataWithServer(event.school!.id);
       }
       emit(state.copyWith(
         user: event.user,

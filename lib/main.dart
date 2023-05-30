@@ -151,7 +151,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CourseRepository courseRepository = CourseRepository(CourseProvider());
+    CourseRepository courseRepository = CourseRepository();
     TeacherRepository teacherRepository = TeacherRepository(TeacherProvider());
 
     return MultiBlocProvider(

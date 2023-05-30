@@ -30,7 +30,7 @@ class DatabaseHelper {
         )
       ''');
 
-      db.execute('''
+    db.execute('''
         CREATE TABLE course(
           courseId TEXT PRIMARY KEY,
           courseName TEXT,
@@ -69,7 +69,7 @@ class DatabaseHelper {
   Future<Map<String, dynamic>?> getClassById(String classId) async {
     return await db.then((database) async {
       var result = await database.query('class', where: 'classId = ?', whereArgs: [classId]);
-      if(result.isEmpty) {
+      if (result.isEmpty) {
         return null;
       }
       return result.first;
@@ -79,7 +79,7 @@ class DatabaseHelper {
   Future<Map<String, dynamic>?> getCourseById(String courseId) async {
     return await db.then((database) async {
       var result = await database.query('course', where: 'courseId = ?', whereArgs: [courseId]);
-      if(result.isEmpty) {
+      if (result.isEmpty) {
         return null;
       }
       return result.first;

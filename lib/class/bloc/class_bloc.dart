@@ -11,7 +11,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<LoadClassesEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var courses = await classRepository.loadClassesOfSchoolFromApi(event.schoolId, event.token);
+        var courses = await classRepository.loadClassesOfSchool(event.schoolId, event.token);
         emit(ClassesOperationSuccess(courses));
       } catch (err) {
         emit(ClassOperationFailure(err));
@@ -21,7 +21,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<LoadAllClassesEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var courses = await classRepository.loadAllClassesFromApi(event.token);
+        var courses = await classRepository.loadAllClasses(event.token);
         emit(ClassesOperationSuccess(courses));
       } catch (err) {
         emit(ClassOperationFailure(err));
@@ -31,7 +31,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<LoadOneClassEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var classs = await classRepository.loadSingleClassFromApi(event.classid!, event.schoolId, event.token);
+        var classs = await classRepository.loadSingleClass(event.classid!, event.schoolId, event.token);
         emit(OneClassOperationSuccess(classs));
       } catch (err) {
         emit(ClassOperationFailure(err));
@@ -41,7 +41,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<CreateClassEvent>((event, emit) async {
       try {
         emit(ClassLoadingState());
-        var classs = await classRepository.createClassOnApi(event.classs, event.schoolId, event.token);
+        var classs = await classRepository.createClass(event.classs, event.schoolId, event.token);
         emit(OneClassOperationSuccess(classs));
       } catch (err) {
         emit(ClassOperationFailure(err));
@@ -51,7 +51,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<DeleteClassEvent>((event, emit) async {
       try {
         emit(ClassLoadingState());
-        var x = await classRepository.deleteClassFromApi(event.classId, event.schoolId, event.token);
+        var x = await classRepository.deleteClass(event.classId, event.schoolId, event.token);
         emit(DeleteClassOperationSuccess(x));
       } catch (err) {
         emit(ClassOperationFailure(err));

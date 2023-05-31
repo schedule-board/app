@@ -11,27 +11,27 @@ class ClassRepository {
 
   ClassRepository();
 
-  Future<List<dynamic>> loadClassesOfSchoolFromApi(String schoolId, token) async {
+  Future<List<dynamic>> loadClassesOfSchool(String schoolId, token) async {
     return classApiProvider.loadClasses(schoolId, token);
   }
 
-  Future<List<dynamic>> loadAllClassesFromApi(token) async {
+  Future<List<dynamic>> loadAllClasses(token) async {
     return classApiProvider.loadAllClasses(token);
   }
 
-  Future<Class> loadSingleClassFromApi(String schoolId, String? classId, token) async {
+  Future<Class> loadSingleClass(String schoolId, String? classId, token) async {
     return classApiProvider.loadClassOne(schoolId, classId, token);
   }
 
-  Future<Class> createClassOnApi(Map course, String? schoolId, token) async {
+  Future<Class> createClass(Map course, String? schoolId, token) async {
     return classApiProvider.createClass(course, schoolId, token);
   }
 
-  Future<Class> updateClassOnApi(Map course, String? classId, String? schoolId, token) async {
+  Future<Class> updateClass(Map course, String? classId, String? schoolId, token) async {
     return classApiProvider.updateClass(course, classId, schoolId, token);
   }
 
-  Future<dynamic> deleteClassFromApi(String? classId, String? schoolId, token) async {
+  Future<dynamic> deleteClass(String? classId, String? schoolId, token) async {
     return classApiProvider.deleteClass(classId, schoolId, token);
   }
 

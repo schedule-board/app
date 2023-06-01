@@ -44,13 +44,15 @@ class DatabaseHelper {
 
   Future<void> upsertClass(Map<String, dynamic> classData) async {
     await db.then((database) async {
-      await database.insert('class', classData, conflictAlgorithm: ConflictAlgorithm.replace);
+      await database.insert('class', classData,
+          conflictAlgorithm: ConflictAlgorithm.replace);
     });
   }
 
   Future<void> upsertCourse(Map<String, dynamic> courseData) async {
     await db.then((database) async {
-      await database.insert('course', courseData, conflictAlgorithm: ConflictAlgorithm.replace);
+      await database.insert('course', courseData,
+          conflictAlgorithm: ConflictAlgorithm.replace);
     });
   }
 
@@ -68,7 +70,8 @@ class DatabaseHelper {
 
   Future<Map<String, dynamic>?> getClassById(String classId) async {
     return await db.then((database) async {
-      var result = await database.query('class', where: 'classId = ?', whereArgs: [classId]);
+      var result = await database
+          .query('class', where: 'classId = ?', whereArgs: [classId]);
       if (result.isEmpty) {
         return null;
       }
@@ -78,7 +81,8 @@ class DatabaseHelper {
 
   Future<Map<String, dynamic>?> getCourseById(String courseId) async {
     return await db.then((database) async {
-      var result = await database.query('course', where: 'courseId = ?', whereArgs: [courseId]);
+      var result = await database
+          .query('course', where: 'courseId = ?', whereArgs: [courseId]);
       if (result.isEmpty) {
         return null;
       }
@@ -88,14 +92,16 @@ class DatabaseHelper {
 
   Future<bool> deleteClassById(String classId) async {
     return await db.then((database) async {
-      var result = await database.delete('class', where: 'classId = ?', whereArgs: [classId]);
+      var result = await database
+          .delete('class', where: 'classId = ?', whereArgs: [classId]);
       return result > 0;
     });
   }
 
   Future<bool> deleteCourseById(String courseId) async {
     return await db.then((database) async {
-      var result = await database.delete('course', where: 'courseId = ?', whereArgs: [courseId]);
+      var result = await database
+          .delete('course', where: 'courseId = ?', whereArgs: [courseId]);
       return result > 0;
     });
   }

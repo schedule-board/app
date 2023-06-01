@@ -74,7 +74,7 @@ void main() {
               '{"course": {"course_name": "javascript","school": { "school_name": "oneline","id":"002"}, "teacher": { "_id": "001", "user_name": "meme"}, "schedules": [{"dayOfTheWeek": "monday","startTime": "1:34 PM","endTime": "2:34 PM", "id": "001"}],"id": "002"}}',
               201));
 
-      var course = await CourseProvider().(client, c, "10", "12");
+      var course = await CourseProvider().createCourse(client, c, "10", "12");
       expect(course, isA<Course>());
     });
 
@@ -99,7 +99,7 @@ void main() {
               },
               body: jsonEncode(c)))
           .thenAnswer((_) async => http.Response(
-              '{"course": {"course_name": "javascript","school": { "school_name": "oneline","id":"002"}, "teacher": { "_id": "001", "user_name": "meme"}, "schedules": [{"dayOfTheWeek": "monday","startTime": "1:34 PM","endTime": "2:34 PM", "id": "001"}],"id": "002"}}',
+              '{"updatedCourse": {"course_name": "javascript","school": { "school_name": "oneline","id":"002"}, "teacher": { "_id": "001", "user_name": "meme"}, "schedules": [{"dayOfTheWeek": "monday","startTime": "1:34 PM","endTime": "2:34 PM", "id": "001"}],"id": "002"}}',
               200));
 
       var course =

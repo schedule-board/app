@@ -1,10 +1,15 @@
+import 'package:schedule/database_helper/db_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../data_provider/course_provider.dart';
 import '../models/course_model.dart';
 
 class CourseRepository {
-  final CourseProvider courseProvider;
+  // final CourseApiProvider courseApiProvider = CourseApiProvider();
+  final CourseProvider courseProvider = CourseProvider();
+  final DatabaseHelper databaseHelper = DatabaseHelper();
 
-  CourseRepository(this.courseProvider);
+  CourseRepository();
 
   Future<List<dynamic>> load(client, String schoolId, token) async {
     return courseProvider.loadCourses(client, schoolId, token);

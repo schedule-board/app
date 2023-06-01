@@ -18,6 +18,7 @@ import 'package:schedule/schedule/data_provider/schedule_provider.dart';
 
 // import 'package:schedule/schedule/screens/ManageClassPageschedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
+import 'package:sqflite/sqflite.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
@@ -31,15 +32,21 @@ import 'course/data_provider/course_provider.dart';
 import 'class/screens/select_class_page.dart';
 import 'class/bloc/class_bloc.dart';
 import 'class/repository/class_repository.dart';
-import 'class/data_provider/class_provider.dart';
+import 'class/data_provider/class_api_provider.dart';
 import 'teacher/bloc/bloc.dart';
 import 'teacher/repository/teacher_repository.dart';
 import 'teacher/data_provider/teacher_provider.dart';
 import 'course/screens/course_list_page.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // import 'announcement.dart';
 
 void main() {
+  // Call this method to set up the ffi database factory
+  sqfliteFfiInit();
+
+  // Set the database factory to the ffi factory
+  databaseFactory = databaseFactoryFfi;
   runApp(MyApp());
 }
 
@@ -48,8 +55,7 @@ class MyApp extends StatelessWidget {
 
   final router = GoRouter(
     initialLocation: '/login',
-    initialExtra:
-        GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
+    initialExtra: GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -123,8 +129,7 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/courseDetail',
         name: "courseDetail",
-        builder: (context, state) =>
-            CourseDetailPage(id: state.queryParameters["id"]),
+        builder: (context, state) => CourseDetailPage(id: state.queryParameters["id"]),
       ),
       GoRoute(
         path: '/SelectClass',
@@ -147,7 +152,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CourseRepository courseRepository = CourseRepository(CourseProvider());
+    CourseRepository courseRepository = CourseRepository();
     TeacherRepository teacherRepository = TeacherRepository(TeacherProvider());
 
     return MultiBlocProvider(
@@ -159,11 +164,10 @@ class MyApp extends StatelessWidget {
           create: (context) => CourseBloc(courseRepository),
         ),
         BlocProvider<ClassBloc>(
-          create: (context) => ClassBloc(ClassRepository(ClassProvider())),
+          create: (context) => ClassBloc(ClassRepository()),
         ),
         BlocProvider<ClassUpdateBloc>(
-          create: (context) =>
-              ClassUpdateBloc(ClassRepository(ClassProvider())),
+          create: (context) => ClassUpdateBloc(ClassRepository()),
         ),
         BlocProvider<CourseUpdateBloc>(
           create: (context) => CourseUpdateBloc(courseRepository),
@@ -172,8 +176,7 @@ class MyApp extends StatelessWidget {
           create: (context) => TeacherBloc(teacherRepository),
         ),
         BlocProvider<ScheduleBloc>(
-          create: (context) =>
-              ScheduleBloc(ScheduleRepository(ScheduleProvider())),
+          create: (context) => ScheduleBloc(ScheduleRepository(ScheduleProvider())),
         ),
         BlocProvider<ScheduleUpdateBloc>(
           create: (context) =>

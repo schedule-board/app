@@ -11,8 +11,7 @@ class ClassUpdateBloc extends Bloc<ClassUpdateEvent, ClassUpdateState> {
     on<UpdateClassEvent>((event, emit) async {
       emit(ClassUpdateLoadingState());
       try {
-        var classs = await classRepository.update(
-            event.classs, event.classId, event.schoolId, event.token);
+        var classs = await classRepository.updateClass(event.classs, event.classId, event.schoolId, event.token);
         emit(ClassUpdateOperationSuccess(classs));
       } catch (err) {
         emit(ClassUpdateOperationFailure(err));

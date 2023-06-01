@@ -9,10 +9,10 @@ class AuthRepository {
 
   AuthRepository(this.authBloc);
 
-  Future<void> signIn(String userName, String password) async {
+  Future<void> signIn(client,String userName, String password) async {
     try {
       // sign in and fetch the data
-      var dataDynamic = (await AuthApiProvider().signIn(userName, password))!;
+      var dataDynamic = (await AuthApiProvider().signIn(client,userName, password))!;
       Map<String, dynamic> dataMap = Map<String, dynamic>.from(dataDynamic as Map<String, dynamic>);
       // create the user
       User user = User.fromJson(dataMap['user']);
@@ -29,10 +29,10 @@ class AuthRepository {
     }
   }
 
-  Future joinAsStudent(String userName, String userEmail, String password) async {
+  Future joinAsStudent(client,String userName, String userEmail, String password) async {
     try {
       // sigh up and fetch data
-      var dataDynamic = (await AuthApiProvider().signUpAsStudent(userName: userName, userEmail: userEmail, password: password))!;
+      var dataDynamic = (await AuthApiProvider().signUpAsStudent(client,userName: userName, userEmail: userEmail, password: password))!;
       Map<String, dynamic> dataMap = Map<String, dynamic>.from(dataDynamic as Map<String, dynamic>);
       // create the user
       User user = User.fromJson(dataMap['user']);
@@ -44,10 +44,10 @@ class AuthRepository {
     }
   }
 
-  Future joinAsOwner(String schoolName, String schoolEmail, String userName, String userEmail, String password) async {
+  Future joinAsOwner(client,String schoolName, String schoolEmail, String userName, String userEmail, String password) async {
     try {
       // sign up and fetch data
-      var dataDynamic = (await AuthApiProvider().signUpAsOwner(
+      var dataDynamic = (await AuthApiProvider().signUpAsOwner(client,
         schoolName: schoolName,
         schoolEmail: schoolEmail,
         userName: userName,
@@ -66,10 +66,10 @@ class AuthRepository {
     }
   }
 
-  Future joinWithCode(String code, String userName, String userEmail, String password) async {
+  Future joinWithCode(client,String code, String userName, String userEmail, String password) async {
     try {
       // sign up and fetch data
-      var dataDynamic = (await AuthApiProvider().signUpWithCode(
+      var dataDynamic = (await AuthApiProvider().signUpWithCode(client,
         code: code,
         userName: userName,
         userEmail: userEmail,
@@ -87,12 +87,12 @@ class AuthRepository {
     }
   }
 
-  getInvitationCode({required String schoolId, required bool forTeacher}) async {
+  getInvitationCode(client,{required String schoolId, required bool forTeacher}) async {
     String invitationCode;
     if (forTeacher) {
-      invitationCode = (await AuthApiProvider().getInvitationCodeForTeacher(schoolId))!;
+      invitationCode = (await AuthApiProvider().getInvitationCodeForTeacher(client,schoolId))!;
     } else {
-      invitationCode = (await AuthApiProvider().getInvitationCodeForCoordinator(schoolId))!;
+      invitationCode = (await AuthApiProvider().getInvitationCodeForCoordinator(client,schoolId))!;
     }
     return invitationCode;
   }

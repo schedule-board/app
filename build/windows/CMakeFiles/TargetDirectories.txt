@@ -1,13 +1,14 @@
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/CMakeFiles/INSTALL.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/CMakeFiles/ALL_BUILD.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/CMakeFiles/ZERO_CHECK.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/flutter/CMakeFiles/flutter_assemble.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/flutter/CMakeFiles/INSTALL.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/CMakeFiles/schedule.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/CMakeFiles/INSTALL.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/runner/CMakeFiles/ALL_BUILD.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/plugins/isar_flutter_libs/CMakeFiles/isar_flutter_libs_plugin.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/plugins/isar_flutter_libs/CMakeFiles/INSTALL.dir
-C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/plugins/isar_flutter_libs/CMakeFiles/ALL_BUILD.dir
+C:/Users/yonas/Desktop/app/build/windows/CMakeFiles/INSTALL.dir
+C:/Users/yonas/Desktop/app/build/windows/CMakeFiles/ALL_BUILD.dir
+C:/Users/yonas/Desktop/app/build/windows/CMakeFiles/ZERO_CHECK.dir
+C:/Users/yonas/Desktop/app/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Users/yonas/Desktop/app/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Users/yonas/Desktop/app/build/windows/flutter/CMakeFiles/flutter_assemble.dir
+C:/Users/yonas/Desktop/app/build/windows/flutter/CMakeFiles/INSTALL.dir
+C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/schedule.dir
+C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/INSTALL.dir
+C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/ALL_BUILD.dir
+C:/Users/yonas/Desktop/app/build/windows/plugins/sqlite3_flutter_libs/CMakeFiles/sqlite3_flutter_libs_plugin.dir
+C:/Users/yonas/Desktop/app/build/windows/plugins/sqlite3_flutter_libs/CMakeFiles/sqlite3.dir
+C:/Users/yonas/Desktop/app/build/windows/plugins/sqlite3_flutter_libs/CMakeFiles/INSTALL.dir
+C:/Users/yonas/Desktop/app/build/windows/plugins/sqlite3_flutter_libs/CMakeFiles/ALL_BUILD.dir

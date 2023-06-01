@@ -7,28 +7,29 @@ import 'package:schedule/class/repository/class_repository.dart';
 import 'package:schedule/course/repository/course_repository.dart';
 import 'package:schedule/school/models/school_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState()) {
     on<LoginAttemptEvent>((event, emit) async {
-      AuthRepository(this).signIn(event.userEmail, event.password);
+      AuthRepository(this).signIn(http.Client(),event.userEmail, event.password);
       emit(state.copyWith(isProcessing: true));
     });
 
     on<JoinAsStudentAttemptEvent>((event, emit) async {
       AuthRepository(this)
-          .joinAsStudent(event.userName, event.userEmail, event.password);
+          .joinAsStudent(http.Client(),event.userName, event.userEmail, event.password);
       emit(state.copyWith(isProcessing: true));
     });
 
     on<JoinAsOwnerAttemptEvent>((event, emit) async {
-      AuthRepository(this).joinAsOwner(event.schoolName, event.schoolEmail,
+      AuthRepository(this).joinAsOwner(http.Client(),event.schoolName, event.schoolEmail,
           event.userName, event.userEmail, event.password);
       emit(state.copyWith(isProcessing: true));
     });
 
     on<JoinWithCodeAttemptEvent>((event, emit) async {
-      AuthRepository(this).joinWithCode(
+      AuthRepository(this).joinWithCode(http.Client(),
           event.code, event.userName, event.userEmail, event.password);
       emit(state.copyWith(isProcessing: true));
     });
@@ -38,7 +39,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', event.token);
       if (event.user.role != "student") {
-        ClassRepository().syncClassDataWithServer(event.school!.id);
+        ClassRepository().syncClassDataWithServer(http.Client(),event.school!.id);
         // CourseRepository().syncCourseDataWithServer(event.school!.id);
       }
       emit(state.copyWith(
@@ -111,7 +112,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<InviteCoordinatorEvent>((event, emit) async {
       emit(state.copyWith(isProcessing: true));
       String invitationCode = await AuthRepository(this)
-          .getInvitationCode(schoolId: event.schoolId, forTeacher: false);
+          .getInvitationCode(http.Client(),schoolId: event.schoolId, forTeacher: false);
       emit(InviteCoordinatorState(
         user: state.user,
         school: state.school,
@@ -123,7 +124,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<InviteTeacherEvent>((event, emit) async {
       emit(state.copyWith(isProcessing: true));
       String invitationCode = await AuthRepository(this)
-          .getInvitationCode(schoolId: event.schoolId, forTeacher: true);
+          .getInvitationCode(http.Client(),schoolId: event.schoolId, forTeacher: true);
       emit(InviteTeacherState(
         user: state.user,
         school: state.school,

@@ -5,40 +5,43 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
+
+
+
 class ClassRepository {
   final ClassApiProvider classApiProvider = ClassApiProvider();
   final DatabaseHelper databaseHelper = DatabaseHelper();
 
   ClassRepository();
 
-  Future<List<dynamic>> loadClassesOfSchool(String schoolId, token) async {
-    return classApiProvider.loadClasses(schoolId, token);
+  Future<List<dynamic>> loadClassesOfSchool(client,String schoolId, token) async {
+    return classApiProvider.loadClasses(client,schoolId, token);
   }
 
-  Future<List<dynamic>> loadAllClasses(token) async {
-    return classApiProvider.loadAllClasses(token);
+  Future<List<dynamic>> loadAllClasses(client,token) async {
+    return classApiProvider.loadAllClasses(client,token);
   }
 
-  Future<Class> loadSingleClass(String schoolId, String? classId, token) async {
-    return classApiProvider.loadClassOne(schoolId, classId, token);
+  Future<Class> loadSingleClass(client,String schoolId, String? classId, token) async {
+    return classApiProvider.loadClassOne(client,schoolId, classId, token);
   }
 
-  Future<Class> createClass(Map course, String? schoolId, token) async {
-    return classApiProvider.createClass(course, schoolId, token);
+  Future<Class> createClass(client,Map course, String? schoolId, token) async {
+    return classApiProvider.createClass(client,course, schoolId, token);
   }
 
-  Future<Class> updateClass(Map course, String? classId, String? schoolId, token) async {
-    return classApiProvider.updateClass(course, classId, schoolId, token);
+  Future<Class> updateClass(client,Map course, String? classId, String? schoolId, token) async {
+    return classApiProvider.updateClass(client,course, classId, schoolId, token);
   }
 
-  Future<dynamic> deleteClass(String? classId, String? schoolId, token) async {
-    return classApiProvider.deleteClass(classId, schoolId, token);
+  Future<dynamic> deleteClass(client,String? classId, String? schoolId, token) async {
+    return classApiProvider.deleteClass(client,classId, schoolId, token);
   }
 
-  Future<void> syncClassDataWithServer(String schoolId) async {
+  Future<void> syncClassDataWithServer(client,String schoolId) async {
     var prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    var classes = await classApiProvider.loadClasses(schoolId, token);
+    var classes = await classApiProvider.loadClasses(client,schoolId, token);
     for (var element in classes) {
       await databaseHelper.upsertClass(element.toJson());
     }

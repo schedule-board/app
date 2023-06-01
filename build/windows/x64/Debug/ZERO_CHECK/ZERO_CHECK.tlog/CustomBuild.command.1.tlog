@@ -1,6 +1,6 @@
-^C:\USERS\YONAS\DOCUMENTS\CLASS\AAIT CLASS\MOBILE\APP\BUILD\WINDOWS\CMAKEFILES\62CEB0D435F6CADBC2DF4E0D000BEE6F\GENERATE.STAMP.RULE
+^C:\USERS\YONAS\DESKTOP\APP\BUILD\WINDOWS\CMAKEFILES\E8BC666EB9041B95A49DE3B77A59ED09\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/yonas/Documents/class/aait class/mobile/app/windows" "-BC:/Users/yonas/Documents/class/aait class/mobile/app/build/windows" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/yonas/Documents/class/aait class/mobile/app/build/windows/schedule.sln"
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/yonas/Desktop/app/windows -BC:/Users/yonas/Desktop/app/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/yonas/Desktop/app/build/windows/schedule.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

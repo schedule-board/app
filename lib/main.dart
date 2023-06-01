@@ -10,6 +10,7 @@ import 'package:schedule/class/screens/class_detail_page.dart';
 import 'package:schedule/class/screens/create_class_page.dart';
 import 'package:schedule/course/screens/course_detail_page.dart';
 import 'package:schedule/course/screens/create_course_page.dart';
+import 'package:schedule/schedule/bloc/bloc.dart';
 import 'package:schedule/schedule/bloc/schedule_bloc.dart';
 import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/schedule/repository/schedule_repository.dart';
@@ -115,7 +116,7 @@ class MyApp extends StatelessWidget {
 
       GoRoute(
         path: '/landing',
-        builder: (context, state) => const LandingPage(
+        builder: (context, state) => LandingPage(
           title: 'Schedule board',
         ),
       ),
@@ -173,6 +174,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<ScheduleBloc>(
           create: (context) =>
               ScheduleBloc(ScheduleRepository(ScheduleProvider())),
+        ),
+        BlocProvider<ScheduleUpdateBloc>(
+          create: (context) =>
+              ScheduleUpdateBloc(ScheduleRepository(ScheduleProvider())),
+        ),
+         BlocProvider<ScheduleDeleteBloc>(
+          create: (context) =>
+              ScheduleDeleteBloc(ScheduleRepository(ScheduleProvider())),
         ),
       ],
       child: MaterialApp.router(

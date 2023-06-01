@@ -2,7 +2,6 @@
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:schedule/schedule/data_provider/schedule_provider.dart';
 // import 'package:schedule/schedule/repository/schedule_repository.dart';
-
 // import '../bloc/bloc.dart';
 
 // class ScheduleScreen extends StatelessWidget {
@@ -33,7 +32,7 @@
 //             if (state is LoadScheduleEvent) {
 //               return const Center(child: CircularProgressIndicator());
 //             }
-
+// // 
 //             if (state is ScheduleOperationSuccess) {
 //               return ListView.builder(
 //                 itemCount: state.schedules.length,

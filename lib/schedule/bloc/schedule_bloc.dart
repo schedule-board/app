@@ -16,25 +16,8 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
       }
     });
 
-    on<UpdateScheduleEvent>((event, emit) async {
-      emit(ScheduleLoadingState());
-      try {
-        var schedule = await scheduleRepository.update(
-            event.updatedschedule, event.secduleId!);
-        emit(ScheduleOperationSuccess(schedule));
-      } catch (err) {
-        emit(ScheduleOperationFailureState(err));
-      }
-    });
-
-    on<DeleteScheduleEvent>((event, emit) async {
-      emit(ScheduleLoadingState());
-      try {
-        var schedule = await scheduleRepository.delete(event.scheduleId);
-        emit(ScheduleOperationSuccess(schedule));
-      } catch (err) {
-        emit(ScheduleOperationFailureState(err));
-      }
+    on<RanderSchedule>((event, emit) async {
+      emit(ScheduleOperationSuccess(event.schedules));
     });
   }
 }

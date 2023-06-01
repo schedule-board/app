@@ -123,7 +123,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                         _selectedTeacher = value as String;
                       },
                     ),
-                    Text(
+                   const Text(
                       'Schedules',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

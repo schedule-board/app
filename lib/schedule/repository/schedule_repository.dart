@@ -11,13 +11,11 @@ class ScheduleRepository {
     return scheduleProvider.loadSchedules(filter);
   }
 
-  Future<Schedule> update(Map schedule, String? scheduleId) async {
-    return scheduleProvider.updateSchedule(schedule, scheduleId);
+  Future<Schedule> update(Map schedule, String? scheduleId, token) async {
+    return scheduleProvider.updateSchedule(schedule, scheduleId, token);
   }
 
-  Future<dynamic> delete(
-    String? scheduleId,
-  ) async {
-    return scheduleProvider.deleteSchedule(scheduleId);
+  Future<dynamic> delete(String? scheduleId, token) async {
+    return scheduleProvider.deleteSchedule(scheduleId, token);
   }
 }

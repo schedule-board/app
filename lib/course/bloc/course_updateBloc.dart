@@ -2,7 +2,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import './course_updateEvent.dart';
 import './course_updateState.dart';
 import '../repository/course_repository.dart';
-import '../models/course_model.dart';
+import 'package:http/http.dart' as http;
 
 class CourseUpdateBloc extends Bloc<CourseUpdateEvent, CourseUpdateState> {
   CourseRepository courseRepository;
@@ -11,8 +11,8 @@ class CourseUpdateBloc extends Bloc<CourseUpdateEvent, CourseUpdateState> {
     on<UpdateCourseEvent>((event, emit) async {
       emit(CourseUpdateLoadingState());
       try {
-        var course = await courseRepository.update(
-            event.course, event.courseId, event.schoolId, event.token);
+        var course = await courseRepository.update(http.Client(), event.course,
+            event.courseId, event.schoolId, event.token);
         emit(CourseUpdateOperationSuccess(course));
       } catch (err) {
         emit(CourseUpdateOperationFailure(err));

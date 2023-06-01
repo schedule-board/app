@@ -6,24 +6,27 @@ class CourseRepository {
 
   CourseRepository(this.courseProvider);
 
-  Future<List<dynamic>> load(String schoolId, token) async {
-    return courseProvider.loadCourses(schoolId, token);
+  Future<List<dynamic>> load(client, String schoolId, token) async {
+    return courseProvider.loadCourses(client, schoolId, token);
   }
 
-  Future<Course> loadOne(String schoolId, String? courseId, token) async {
-    return courseProvider.loadCourseOne(schoolId, courseId, token);
+  Future<Course> loadOne(
+      client, String schoolId, String? courseId, token) async {
+    return courseProvider.loadCourseOne(client, schoolId, courseId, token);
   }
 
-  Future<Course> create(Map course, String? schoolId, token) async {
-    return courseProvider.createCourse(course, schoolId, token);
+  Future<Course> create(client, Map course, String? schoolId, token) async {
+    return courseProvider.createCourse(client, course, schoolId, token);
   }
 
   Future<Course> update(
-      Map course, String? courseId, String? schoolId, token) async {
-    return courseProvider.updateCourse(course, courseId, schoolId, token);
+      client, Map course, String? courseId, String? schoolId, token) async {
+    return courseProvider.updateCourse(
+        client, course, courseId, schoolId, token);
   }
 
-  Future<dynamic> delete(String? courseId, String? schoolId, token) async {
-    return courseProvider.deleteCourse(courseId, schoolId, token);
+  Future<dynamic> delete(
+      client, String? courseId, String? schoolId, token) async {
+    return courseProvider.deleteCourse(client, courseId, schoolId, token);
   }
 }

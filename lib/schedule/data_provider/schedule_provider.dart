@@ -45,12 +45,12 @@ class ScheduleProvider {
     }
   }
 
-  Future<Schedule> updateSchedule(Map schedule, scheduleId) async {
-    var uri = "http://localhost:4000/api/v1/shedules/$scheduleId";
+  Future<Schedule> updateSchedule(Map schedule, scheduleId, token) async {
+    var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
     var response = await http.patch(Uri.parse(uri),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
-          // 'Authorization':filter
+          "Authorization": "Bearer $token"
         },
         body: jsonEncode(schedule));
 
@@ -64,10 +64,13 @@ class ScheduleProvider {
     }
   }
 
-  Future<dynamic> deleteSchedule(scheduleId) async {
+  Future<dynamic> deleteSchedule(scheduleId, token) async {
     var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
 
-    var response = await http.delete(Uri.parse(uri));
+    var response = await http.delete(Uri.parse(uri), headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      "Authorization": "Bearer $token"
+    });
 
     if (response.statusCode == 204) {
       return true;

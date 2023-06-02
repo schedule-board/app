@@ -1,3 +1,4 @@
+import 'package:schedule/class/models/class_model.dart';
 import 'package:schedule/database_helper/db_helper.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -13,8 +14,12 @@ class ClassLocalProvider {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<List<Map<String, dynamic>>> getAllClasses() async {
-    return await db.query('class');
+  Future<List<Class>> getAllClasses() async {
+    var result = await db.query('class');
+    var classList = result.toList().map<Class>((e) {
+      return Class.fromJson(Map<String, dynamic>.from(e));
+    }).toList();
+    return classList;
   }
 
   Future<Map<String, dynamic>?> getClassById(String classId) async {

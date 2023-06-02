@@ -16,7 +16,7 @@ class DatabaseHelper {
 
   var db = openDatabase(
     'schedule_board.db',
-    version: 1,
+    version: 2,
     onCreate: createTables,
   );
 
@@ -31,6 +31,19 @@ class DatabaseHelper {
       ''');
 
     db.execute('''
+        CREATE TABLE schedule(
+          scheduleId TEXT PRIMARY KEY,
+          courseName TEXT,
+          startTime TEXT,
+          endTime TEXT,
+          dayOfTheWeek TEXT
+          schoolId TEXT,
+          teacherName TEXT,
+          teacherId TEXT
+        )
+      ''');
+      
+    db.execute('''
         CREATE TABLE course(
           courseId TEXT PRIMARY KEY,
           courseName TEXT,
@@ -40,6 +53,7 @@ class DatabaseHelper {
           schoolName TEXT
         )
       ''');
+
   }
 
   Future<void> upsertClass(Map<String, dynamic> classData) async {

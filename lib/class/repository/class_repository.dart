@@ -2,7 +2,7 @@ import 'package:schedule/class/data_provider/class_local_provider.dart';
 import 'package:schedule/course/models/course_model.dart';
 import 'package:schedule/database_helper/db_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:http/http.dart' as http;
 import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
@@ -14,25 +14,25 @@ class ClassRepository {
 
   Future<List<dynamic>> loadClassesOfSchool(
       client, String schoolId, token) async {
-    // try {
-    return classApiProvider.loadClasses(client, schoolId, token);
-    // } catch (e) {
-    //   // todo: change this
-    //   return classApiProvider.loadClasses(schoolId, token);
-    // }
+    try {
+      return classApiProvider.loadClasses(client, schoolId, token);
+    } catch (e) {
+      // todo: change this
+      return classApiProvider.loadClasses(client, schoolId, token);
+    }
   }
 
   Future<List<dynamic>> loadAllClasses(client, token) async {
-    // try {
-    return await classApiProvider.loadAllClasses(client, token);
-    // } catch (e) {
-    //   return await classLocalProvider.getAllClasses();
-    // }
+    try {
+      return await classApiProvider.loadAllClasses(client, token);
+    } catch (e) {
+      return await classLocalProvider.getAllClasses();
+    }
   }
 
-  Future<Class> loadSingleClass(
-      client, String schoolId, String? classId, token) async {
-    return classApiProvider.loadClassOne(client, schoolId, classId, token);
+  Future<Class> loadSingleClass(client, classId, schoolId, token) async {
+    return await classApiProvider.loadClassOne(
+        client, classId, schoolId, token);
   }
 
   Future<Class> createClass(client, Map course, String? schoolId, token) async {
@@ -50,10 +50,10 @@ class ClassRepository {
     return classApiProvider.deleteClass(client, classId, schoolId, token);
   }
 
-  Future<void> syncClassDataWithServer(client, String schoolId) async {
+  Future<void> syncClassDataWithServer() async {
     var prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    var classes = await classApiProvider.loadClasses(client, schoolId, token);
+    var classes = await classApiProvider.loadAllClasses(http.Client(), token);
     for (var element in classes) {
       await classLocalProvider.upsertClass(element.toJson());
     }

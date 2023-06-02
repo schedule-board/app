@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import '../../lib/class/data_provider/class_api_provider.dart';
 import '../../lib/class/models/class_model.dart';
 import '../../lib/schedule/bloc/schedule_bloc.dart';
-import '../../lib/schedule/data_provider/schedule_provider.dart';
+import '../../lib/schedule/data_provider/schedule_api_provider.dart';
 import '../../lib/schedule/models/schedules_Amodel.dart';
 import '../../lib/schedule/repository/schedule_repository.dart';
 import 'package:mockito/annotations.dart';
@@ -35,7 +35,7 @@ void main() {
           })).thenAnswer((_) async => http.Response(
           '{"data": [{"_id": "23","course": {"_id": "12","course_name": "math","school": {"_id": "12","school_name": "oneline","id": "12" }, "id": "12"  }, "school": {"_id": "21", "school_name": "oneline",  "id": "1212"  },"teacher": {  "_id": "23",  "user_name": "meme"},  "dayOfTheWeek": "tuesday",  "startTime": "2:35 PM",  "endTime": "11:31 PM",  "id": "121"  }]}',
           200));
-      var schedule = await ScheduleProvider().loadSchedules(client, {
+      var schedule = await ScheduleApiProvider().loadSchedules(client, {
         "courses": ["121", "122"],
         "token": "1"
       });
@@ -53,7 +53,7 @@ void main() {
           })).thenAnswer((_) async => http.Response(
           '{"data": [{"_id": "23","course": {"_id": "12","course_name": "math","school": {"_id": "12","school_name": "oneline","id": "12" }, "id": "12"  }, "school": {"_id": "21", "school_name": "oneline",  "id": "1212"  },"teacher": {  "_id": "23",  "user_name": "meme"},  "dayOfTheWeek": "tuesday",  "startTime": "2:35 PM",  "endTime": "11:31 PM",  "id": "121"  }]}',
           200));
-      var schedule = await ScheduleProvider()
+      var schedule = await ScheduleApiProvider()
           .loadSchedules(client, {"teacher": "121", "token": "1"});
       expect(schedule, isA<List<Schedule>>());
     });
@@ -69,7 +69,7 @@ void main() {
           })).thenAnswer((_) async => http.Response(
           '{"data": [{"_id": "23","course": {"_id": "12","course_name": "math","school": {"_id": "12","school_name": "oneline","id": "12" }, "id": "12"  }, "school": {"_id": "21", "school_name": "oneline",  "id": "1212"  },"teacher": {  "_id": "23",  "user_name": "meme"},  "dayOfTheWeek": "tuesday",  "startTime": "2:35 PM",  "endTime": "11:31 PM",  "id": "121"  }]}',
           200));
-      var schedule = await ScheduleProvider()
+      var schedule = await ScheduleApiProvider()
           .loadSchedules(client, {"school": "121", "token": "1"});
       expect(schedule, isA<List<Schedule>>());
     });
@@ -94,7 +94,7 @@ void main() {
               200));
 
       var schedule =
-          await ScheduleProvider().updateSchedule(client, c, "10", "12");
+          await ScheduleApiProvider().updateSchedule(client, c, "10", "12");
       expect(schedule, isA<Schedule>());
     });
 
@@ -106,7 +106,8 @@ void main() {
             'Content-Type': 'application/json; charset=UTF-8',
             "Authorization": "Bearer 1"
           })).thenAnswer((_) async => http.Response("", 204));
-      var course = await ScheduleProvider().deleteSchedule(client, "12", "1");
+      var course =
+          await ScheduleApiProvider().deleteSchedule(client, "12", "1");
       expect(course, equals(true));
     });
   });

@@ -14,7 +14,7 @@ import 'package:schedule/schedule/bloc/bloc.dart';
 import 'package:schedule/schedule/bloc/schedule_bloc.dart';
 import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/schedule/repository/schedule_repository.dart';
-import 'package:schedule/schedule/data_provider/schedule_provider.dart';
+import 'package:schedule/schedule/data_provider/schedule_api_provider.dart';
 
 // import 'package:schedule/schedule/screens/ManageClassPageschedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
 
   final router = GoRouter(
     initialLocation: '/login',
-    initialExtra: GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
+    initialExtra:
+        GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -129,7 +130,8 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/courseDetail',
         name: "courseDetail",
-        builder: (context, state) => CourseDetailPage(id: state.queryParameters["id"]),
+        builder: (context, state) =>
+            CourseDetailPage(id: state.queryParameters["id"]),
       ),
       GoRoute(
         path: '/SelectClass',
@@ -176,15 +178,16 @@ class MyApp extends StatelessWidget {
           create: (context) => TeacherBloc(teacherRepository),
         ),
         BlocProvider<ScheduleBloc>(
-          create: (context) => ScheduleBloc(ScheduleRepository(ScheduleProvider())),
+          create: (context) =>
+              ScheduleBloc(ScheduleRepository(ScheduleApiProvider())),
         ),
         BlocProvider<ScheduleUpdateBloc>(
           create: (context) =>
-              ScheduleUpdateBloc(ScheduleRepository(ScheduleProvider())),
+              ScheduleUpdateBloc(ScheduleRepository(ScheduleApiProvider())),
         ),
-         BlocProvider<ScheduleDeleteBloc>(
+        BlocProvider<ScheduleDeleteBloc>(
           create: (context) =>
-              ScheduleDeleteBloc(ScheduleRepository(ScheduleProvider())),
+              ScheduleDeleteBloc(ScheduleRepository(ScheduleApiProvider())),
         ),
       ],
       child: MaterialApp.router(

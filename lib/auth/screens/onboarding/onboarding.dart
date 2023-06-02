@@ -22,8 +22,8 @@ class OnBoarding extends StatelessWidget {
               elevation: 0,
               // primary: kPrimaryColor
               shape: const StadiumBorder(),
-              maximumSize: const Size(double.infinity, 56),
-              minimumSize: const Size(double.infinity, 56),
+              // maximumSize: const Size(double.infinity, 56),
+              // minimumSize: const Size(double.infinity, 56),
             ),
           ),
           inputDecorationTheme: const InputDecorationTheme(

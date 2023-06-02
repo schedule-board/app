@@ -30,4 +30,15 @@ class Schedule {
         schoolId: json["school"]["id"],
         teacherName: json["teacher"]["user_name"]);
   }
+
+  toJson() => {
+        "scheduleId": scheduleId,
+        "courseName": courseName,
+        "startTime": startTime,
+        "endTime": endTime,
+        "dayOfTheWeek": day,
+        "schoolId": schoolId,
+        "teacherName": teacherName,
+        "teacherId": teacherId,
+      };
 }

@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import '../../lib/class/data_provider/class_api_provider.dart';
 import '../../lib/class/models/class_model.dart';
 import '../../lib/schedule/bloc/schedule_bloc.dart';
-import '../../lib/schedule/data_provider/schedule_provider.dart';
+import '../../lib/schedule/data_provider/schedule_api_provider.dart';
 import '../../lib/schedule/models/schedules_Amodel.dart';
 import '../../lib/schedule/repository/schedule_repository.dart';
 

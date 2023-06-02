@@ -12,44 +12,48 @@ class ClassRepository {
 
   ClassRepository();
 
-  Future<List<dynamic>> loadClassesOfSchool(String schoolId, token) async {
-    try {
-      return classApiProvider.loadClasses(schoolId, token);
-    } catch (e) {
-      // todo: change this
-      return classApiProvider.loadClasses(schoolId, token);
-    }
+  Future<List<dynamic>> loadClassesOfSchool(
+      client, String schoolId, token) async {
+    // try {
+    return classApiProvider.loadClasses(client, schoolId, token);
+    // } catch (e) {
+    //   // todo: change this
+    //   return classApiProvider.loadClasses(schoolId, token);
+    // }
   }
 
-  Future<List<dynamic>> loadAllClasses(token) async {
-    try {
-      return await classApiProvider.loadAllClasses(token);
-    } catch (e) {
-      return await classLocalProvider.getAllClasses();
-    }
+  Future<List<dynamic>> loadAllClasses(client, token) async {
+    // try {
+    return await classApiProvider.loadAllClasses(client, token);
+    // } catch (e) {
+    //   return await classLocalProvider.getAllClasses();
+    // }
   }
 
-  Future<Class> loadSingleClass(String schoolId, String? classId, token) async {
-    return classApiProvider.loadClassOne(schoolId, classId, token);
+  Future<Class> loadSingleClass(
+      client, String schoolId, String? classId, token) async {
+    return classApiProvider.loadClassOne(client, schoolId, classId, token);
   }
 
-  Future<Class> createClass(Map course, String? schoolId, token) async {
-    return classApiProvider.createClass(course, schoolId, token);
+  Future<Class> createClass(client, Map course, String? schoolId, token) async {
+    return classApiProvider.createClass(client, course, schoolId, token);
   }
 
   Future<Class> updateClass(
-      Map course, String? classId, String? schoolId, token) async {
-    return classApiProvider.updateClass(course, classId, schoolId, token);
+      client, Map course, String? classId, String? schoolId, token) async {
+    return classApiProvider.updateClass(
+        client, course, classId, schoolId, token);
   }
 
-  Future<dynamic> deleteClass(String? classId, String? schoolId, token) async {
-    return classApiProvider.deleteClass(classId, schoolId, token);
+  Future<dynamic> deleteClass(
+      client, String? classId, String? schoolId, token) async {
+    return classApiProvider.deleteClass(client, classId, schoolId, token);
   }
 
-  Future<void> syncClassDataWithServer(String schoolId) async {
+  Future<void> syncClassDataWithServer(client, String schoolId) async {
     var prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    var classes = await classApiProvider.loadClasses(schoolId, token);
+    var classes = await classApiProvider.loadClasses(client, schoolId, token);
     for (var element in classes) {
       await classLocalProvider.upsertClass(element.toJson());
     }

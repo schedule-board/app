@@ -7,15 +7,15 @@ class ScheduleRepository {
 
   ScheduleRepository(this.scheduleProvider);
 
-  Future<List<dynamic>> load(Map filter) async {
-    return scheduleProvider.loadSchedules(filter);
+  Future<List<dynamic>> load(client,Map filter) async {
+    return scheduleProvider.loadSchedules(client,filter);
   }
 
-  Future<Schedule> update(Map schedule, String? scheduleId, token) async {
-    return scheduleProvider.updateSchedule(schedule, scheduleId, token);
+  Future<Schedule> update(client,Map schedule, String? scheduleId, token) async {
+    return scheduleProvider.updateSchedule(client,schedule, scheduleId, token);
   }
 
-  Future<dynamic> delete(String? scheduleId, token) async {
-    return scheduleProvider.deleteSchedule(scheduleId, token);
+  Future<dynamic> delete(client,String? scheduleId, token) async {
+    return scheduleProvider.deleteSchedule(client,scheduleId, token);
   }
 }

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/schedules_Amodel.dart';
-import '../../auth/bloc/auth_bloc.dart';
+// import '../../auth/bloc/auth_bloc.dart';
 
 class ScheduleProvider {
   ScheduleProvider();
-  Future<List<dynamic>> loadSchedules(Map filter) async {
+  Future<List<Schedule>> loadSchedules(http.Client client, filter) async {
     var uri;
     if (filter.containsKey("school")) {
       uri = "http://localhost:4000/api/v1/schedules?school=${filter['school']}";
@@ -23,7 +23,7 @@ class ScheduleProvider {
           .join("&");
       uri = "http://localhost:4000/api/v1/schedules?$classFilter";
     }
-    var response = await http.get(
+    var response = await client.get(
       Uri.parse(uri),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -32,9 +32,9 @@ class ScheduleProvider {
     );
 
     if (response.statusCode == 200) {
-      var scheduledata = jsonDecode(response.body)["data"];
+      List scheduledata = jsonDecode(response.body)["data"];
 
-      List<dynamic> schedules = scheduledata.map((json) {
+      List<Schedule> schedules = scheduledata.map((json) {
         return Schedule.fromJson(json);
       }).toList();
 
@@ -45,9 +45,10 @@ class ScheduleProvider {
     }
   }
 
-  Future<Schedule> updateSchedule(Map schedule, scheduleId, token) async {
+  Future<Schedule> updateSchedule(
+      http.Client client, Map schedule, scheduleId, token) async {
     var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
-    var response = await http.patch(Uri.parse(uri),
+    var response = await client.patch(Uri.parse(uri),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           "Authorization": "Bearer $token"
@@ -64,10 +65,11 @@ class ScheduleProvider {
     }
   }
 
-  Future<dynamic> deleteSchedule(scheduleId, token) async {
+  Future<dynamic> deleteSchedule(http.Client client, scheduleId, token) async {
     var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
 
-    var response = await http.delete(Uri.parse(uri), headers: <String, String>{
+    var response =
+        await client.delete(Uri.parse(uri), headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       "Authorization": "Bearer $token"
     });

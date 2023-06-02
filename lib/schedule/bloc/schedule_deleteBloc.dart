@@ -1,6 +1,7 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import '../repository/schedule_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:http/http.dart' as http;
 
 class ScheduleDeleteBloc
     extends Bloc<ScheduleDeleteEvent, ScheduleDeleteState> {
@@ -11,7 +12,7 @@ class ScheduleDeleteBloc
     on<DeleteScheduleEvent>((event, emit) async {
       emit(ScheduleDeleteLoadingState());
       try {
-        await scheduleRepository.delete(event.secduleId, event.token);
+        await scheduleRepository.delete(http.Client(),event.secduleId, event.token);
         emit(const ScheduleDeleteOperationSuccess());
       } catch (err) {
         emit(ScheduleDeleteOperationFailure(err));

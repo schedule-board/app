@@ -5,7 +5,7 @@ class TeacherRepository {
 
   TeacherRepository(this.teacherProvider);
 
-  Future<List<dynamic>> load(String schoolId) async {
-    return teacherProvider.loadTeachers(schoolId);
+  Future<List<dynamic>> load(client, String schoolId) async {
+    return teacherProvider.loadTeachers(client, schoolId);
   }
 }

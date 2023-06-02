@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/yonas/Documents/class/aait class/mobile/app/windows/runner
+# Install script for directory: C:/Users/yonas/Desktop/app/windows/runner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

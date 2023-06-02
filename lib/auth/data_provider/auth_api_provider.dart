@@ -4,7 +4,8 @@ import 'package:schedule/auth/bloc/auth_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthApiProvider {
-  Future<Map?> signIn(String userEmail, String password) async {
+  Future<Map?> signIn(
+      http.Client client, String userEmail, String password) async {
     var uri = Uri.http('localhost:4000', '/api/v1/users/login');
 
     final response = await http.post(
@@ -23,7 +24,7 @@ class AuthApiProvider {
     }
   }
 
-  Future<Map?> signUpAsStudent(
+  Future<Map?> signUpAsStudent(http.Client client,
       {required String userName,
       required String userEmail,
       required String password}) async {
@@ -47,7 +48,7 @@ class AuthApiProvider {
     }
   }
 
-  Future<Map?> signUpAsOwner({
+  Future<Map?> signUpAsOwner(http.Client client,{
     required schoolName,
     required schoolEmail,
     required String userName,
@@ -76,7 +77,7 @@ class AuthApiProvider {
     }
   }
 
-  Future<Map?> signUpWithCode({
+  Future<Map?> signUpWithCode(http.Client client,{
     required String code,
     required String userName,
     required String userEmail,
@@ -107,7 +108,7 @@ class AuthApiProvider {
   signOut() {}
   signUp() {}
 
-  Future<String?> getInvitationCodeForCoordinator(String schoolId) async {
+  Future<String?> getInvitationCodeForCoordinator(http.Client client,String schoolId) async {
     var uri = Uri.http(
         'localhost:4000', '/api/v1/schools/$schoolId/inviteCoordinator');
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -129,7 +130,7 @@ class AuthApiProvider {
     }
   }
 
-  Future<String?> getInvitationCodeForTeacher(String schoolId) async {
+  Future<String?> getInvitationCodeForTeacher(http.Client client,String schoolId) async {
     var uri =
         Uri.http('localhost:4000', '/api/v1/schools/$schoolId/inviteTeacher');
     SharedPreferences prefs = await SharedPreferences.getInstance();

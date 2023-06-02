@@ -10,7 +10,7 @@ class WelcomeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         AnimatedDefaultTextStyle(
         duration: Duration(milliseconds: 5000),

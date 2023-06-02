@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data_provider/class_api_provider.dart';
 import '../models/class_model.dart';
 
+
+
+
 class ClassRepository {
   final ClassApiProvider classApiProvider = ClassApiProvider();
   final ClassLocalProvider classLocalProvider = ClassLocalProvider();
@@ -29,20 +32,22 @@ class ClassRepository {
     }
   }
 
-  Future<Class> loadSingleClass(String schoolId, String? classId, token) async {
-    return classApiProvider.loadClassOne(schoolId, classId, token);
+  Future<Class> loadSingleClass(client,String schoolId, String? classId, token) async {
+    return classApiProvider.loadClassOne(client,schoolId, classId, token);
   }
 
-  Future<Class> createClass(Map course, String? schoolId, token) async {
-    return classApiProvider.createClass(course, schoolId, token);
+  Future<Class> createClass(client,Map course, String? schoolId, token) async {
+    return classApiProvider.createClass(client,course, schoolId, token);
   }
 
-  Future<Class> updateClass(Map course, String? classId, String? schoolId, token) async {
+
+  Future<Class> updateClass(
+      Map course, String? classId, String? schoolId, token) async {
     return classApiProvider.updateClass(course, classId, schoolId, token);
   }
 
-  Future<dynamic> deleteClass(String? classId, String? schoolId, token) async {
-    return classApiProvider.deleteClass(classId, schoolId, token);
+  Future<dynamic> deleteClass(client,String? classId, String? schoolId, token) async {
+    return classApiProvider.deleteClass(client,classId, schoolId, token);
   }
 
   Future<void> syncClassDataWithServer() async {

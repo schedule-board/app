@@ -1,6 +1,7 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import './bloc.dart';
 import '../repository/schedule_repository.dart';
+import 'package:http/http.dart' as http;
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   ScheduleRepository scheduleRepository;
@@ -9,7 +10,7 @@ class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
     on<LoadScheduleEvent>((event, emit) async {
       emit(ScheduleLoadingState());
       try {
-        var schedules = await scheduleRepository.load(event.filter);
+        var schedules = await scheduleRepository.load(http.Client(),event.filter);
         emit(ScheduleOperationSuccess(schedules));
       } catch (err) {
         emit(ScheduleOperationFailureState(err));

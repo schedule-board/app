@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\flutter\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\yonas\Desktop\app\windows\flutter\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{24732980-3716-3EA6-B4C9-DBC7B0324872}</UniqueIdentifier>
+      <UniqueIdentifier>{52ED63C1-91A7-34A9-8915-BC8F1A72B998}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{F830F09E-D809-3DB9-8CB1-AEF17D1B5A20}</UniqueIdentifier>
+      <UniqueIdentifier>{3330CF27-A2DC-32FD-BA35-E28BFADC6DA1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ import '../../auth/bloc/auth_bloc.dart';
 
 class ScheduleProvider {
   ScheduleProvider();
-  Future<List<dynamic>> loadSchedules(Map filter) async {
+  Future<List<dynamic>> loadSchedules(http.Client client, filter) async {
     var uri;
     if (filter.containsKey("school")) {
       uri = "http://localhost:4000/api/v1/schedules?school=${filter['school']}";
@@ -45,7 +45,7 @@ class ScheduleProvider {
     }
   }
 
-  Future<Schedule> updateSchedule(Map schedule, scheduleId, token) async {
+  Future<Schedule> updateSchedule(http.Client client,Map schedule, scheduleId, token) async {
     var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
     var response = await http.patch(Uri.parse(uri),
         headers: <String, String>{
@@ -64,7 +64,7 @@ class ScheduleProvider {
     }
   }
 
-  Future<dynamic> deleteSchedule(scheduleId, token) async {
+  Future<dynamic> deleteSchedule(http.Client client,scheduleId, token) async {
     var uri = "http://localhost:4000/api/v1/schedules/$scheduleId";
 
     var response = await http.delete(Uri.parse(uri), headers: <String, String>{

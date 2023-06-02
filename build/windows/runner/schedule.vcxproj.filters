@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\flutter_window.cpp">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\flutter_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\main.cpp">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\utils.cpp">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\win32_window.cpp">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\win32_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\flutter\generated_plugin_registrant.cc">
+    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\generated_plugin_registrant.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\yonas\Desktop\app\windows\runner\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="C:\Users\yonas\Documents\class\aait class\mobile\app\windows\runner\Runner.rc">
+    <ResourceCompile Include="C:\Users\yonas\Desktop\app\windows\runner\Runner.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{F830F09E-D809-3DB9-8CB1-AEF17D1B5A20}</UniqueIdentifier>
+      <UniqueIdentifier>{3330CF27-A2DC-32FD-BA35-E28BFADC6DA1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

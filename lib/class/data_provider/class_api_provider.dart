@@ -6,7 +6,7 @@ import '../../auth/bloc/auth_bloc.dart';
 
 class ClassApiProvider {
   ClassApiProvider();
-  Future<List<Class>> loadClasses(String schoolId, token) async {
+  Future<List<Class>> loadClasses(http.Client client, String schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes";
     // q: how do I set timeout for this request?
 
@@ -29,7 +29,7 @@ class ClassApiProvider {
     }
   }
 
-  Future<List<dynamic>> loadAllClasses(token) async {
+  Future<List<dynamic>> loadAllClasses(http.Client client,token) async {
     var uri = "http://localhost:4000/api/v1/classes";
     var response = await http
         .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}).timeout(
@@ -50,7 +50,7 @@ class ClassApiProvider {
     }
   }
 
-  Future<Class> loadClassOne(String classId, String? schoolId, token) async {
+  Future<Class> loadClassOne(http.Client client,String classId, String? schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes/$classId";
     var response = await http
         .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
@@ -64,7 +64,7 @@ class ClassApiProvider {
     }
   }
 
-  Future<Class> createClass(Map classs, String? schoolId, token) async {
+  Future<Class> createClass(http.Client client,Map classs, String? schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes";
     var response = await http.post(Uri.parse(uri),
         headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}, body: jsonEncode(classs));
@@ -80,7 +80,7 @@ class ClassApiProvider {
     }
   }
 
-  Future<Class> updateClass(Map classs, classId, schoolId, token) async {
+  Future<Class> updateClass(http.Client client,Map classs, classId, schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes/$classId";
     var response = await http.patch(Uri.parse(uri),
         headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}, body: jsonEncode(classs));
@@ -95,7 +95,7 @@ class ClassApiProvider {
     }
   }
 
-  Future<dynamic> deleteClass(classId, schoolId, token) async {
+  Future<dynamic> deleteClass(http.Client client,classId, schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes/$classId";
 
     var response = await http

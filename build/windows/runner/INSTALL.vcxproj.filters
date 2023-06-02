@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yonas\Documents\class\aait class\mobile\app\build\windows\CMakeFiles\80e693b50898e1a0c9973f9d854b8a8f\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\yonas\Desktop\app\build\windows\CMakeFiles\e850abf916a4e0af676b5dea42d031ba\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{24732980-3716-3EA6-B4C9-DBC7B0324872}</UniqueIdentifier>
+      <UniqueIdentifier>{52ED63C1-91A7-34A9-8915-BC8F1A72B998}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

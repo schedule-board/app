@@ -2,19 +2,19 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\yonas\Desktop\app\build\windows\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\yonas\Desktop\app\build\windows\flutter\x64\Debug\flutter_assemble</FullPath>
+      <FullPath>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\flutter\x64\Debug\flutter_assemble</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\yonas\Desktop\app\build\windows\plugins\sqlite3_flutter_libs\Debug\sqlite3.dll</FullPath>
+      <FullPath>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\plugins\sqlite3_flutter_libs\Debug\sqlite3.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\yonas\Desktop\app\build\windows\plugins\sqlite3_flutter_libs\Debug\sqlite3_flutter_libs_plugin.dll</FullPath>
+      <FullPath>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\plugins\sqlite3_flutter_libs\Debug\sqlite3_flutter_libs_plugin.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\yonas\Desktop\app\build\windows\runner\Debug\schedule.exe</FullPath>
+      <FullPath>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\Debug\schedule.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,4 +1,4 @@
-import 'package:schedule/class/data_provider/class_local_provider.dart';
+import '../data_provider/class_local_provider.dart';
 import 'package:schedule/course/models/course_model.dart';
 import 'package:schedule/database_helper/db_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';

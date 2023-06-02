@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:schedule/teacher/bloc/bloc.dart';
 import '../bloc/bloc.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -219,9 +220,7 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () {},
               child: Text('Cancel'),
             ),
             TextButton(
@@ -235,7 +234,6 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
                     ),
                   );
                 });
-                Navigator.pop(context);
               },
               child: Text('Add'),
             ),
@@ -322,7 +320,7 @@ void _showCreateCoursePopup(context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Text('Cancel'),
           ),

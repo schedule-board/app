@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../course/bloc/bloc.dart';
@@ -171,7 +172,6 @@ class _ClassDetailPageState extends State<ClassDetailPage> {
                     setState(() {
                       _assignedCourses.add(course);
                     });
-                    Navigator.pop(context);
                   },
                 );
               },
@@ -203,7 +203,7 @@ void _showUpdateClassPopup(context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Text('Cancel'),
           ),

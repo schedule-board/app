@@ -75,7 +75,7 @@ class CourseListPage extends StatelessWidget {
                 .add(LoadTeacherEvent(currentSchool!.id));
 
             context.push('/createCourse');
-            // Navigator.of(context).pop();
+            
           },
           child: const Icon(Icons.add),
         ),

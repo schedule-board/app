@@ -139,7 +139,6 @@ class _CreateClassPageState extends State<CreateClassPage> {
                     setState(() {
                       _assignedCourses.add(course);
                     });
-                    Navigator.pop(context);
                   },
                 );
               },
@@ -175,9 +174,7 @@ void _showCreateClassPopup(context) {
         }),
         actions: <Widget>[
           TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            onPressed: () {},
             child: Text('Cancel'),
           ),
         ],

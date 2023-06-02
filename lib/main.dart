@@ -15,10 +15,11 @@ import 'package:schedule/schedule/bloc/schedule_bloc.dart';
 import 'package:schedule/schedule/landing_page.dart';
 import 'package:schedule/schedule/repository/schedule_repository.dart';
 import 'package:schedule/schedule/data_provider/schedule_api_provider.dart';
+import "./schedule/bloc/bloc.dart";
 
-// import 'package:schedule/schedule/screens/ManageClassPageschedule_list_screen.dart';
 import 'package:schedule/ui/subject_detail.dart';
 import 'package:sqflite/sqflite.dart';
+import 'auth/screens/onboarding/onboarding.dart';
 import 'auth/screens/join_with_code_page.dart';
 import 'auth/screens/signup_screen.dart';
 import 'school/screens/school_detail_page.dart';
@@ -54,9 +55,9 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/welcomepage',
     initialExtra:
-        GoRoute(path: '/', builder: (context, state) => const CourseListPage()),
+        GoRoute(path: '/', builder: (context, state) => const OnBoarding()),
     routes: [
       // a route for the root of the app
       GoRoute(
@@ -149,6 +150,10 @@ class MyApp extends StatelessWidget {
         path: '/joinAsStudent',
         builder: (context, state) => JoinAsStudentPage(),
       ),
+      GoRoute(
+        path: '/welcomepage',
+        builder: (context, state) => OnBoarding(),
+      ),
     ],
   );
 
@@ -195,7 +200,7 @@ class MyApp extends StatelessWidget {
         routerConfig: router,
         title: 'Schedule Board',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.purple,
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schedule/auth/bloc/auth_bloc.dart';
+import 'package:schedule/auth/screens/onboarding/welcomepage/components/background.dart';
 import 'package:schedule/auth/states/auth_state.dart';
 
 class JoinAsOwnerPage extends StatelessWidget {
@@ -12,12 +13,13 @@ class JoinAsOwnerPage extends StatelessWidget {
   final TextEditingController _userEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  JoinAsOwnerPage({super.key});
+  JoinAsOwnerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 236, 217, 89),
         title: const Text('Join As Owner'),
       ),
       body: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
@@ -62,127 +64,255 @@ class JoinAsOwnerPage extends StatelessWidget {
           );
         }
 
-        return Center(
-            child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.only(bottom: 20)),
-              const Text("school Details"),
-              const Padding(padding: EdgeInsets.only(bottom: 20)),
-              TextFormField(
-                controller: _schoolNameController,
-                decoration: const InputDecoration(
-                  labelText: 'School Name',
+        return Background(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Card(
+                color: Colors.white
+                    .withOpacity(0.8), // Translucent background color
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter the  School Name';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _shoolEmailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'School email',
+                child: Form(
+                  key: _formKey,
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        const Padding(padding: EdgeInsets.only(bottom: 20)),
+                        const Text(
+                          "school Details",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        const Padding(padding: EdgeInsets.only(bottom: 20)),
+                        TextFormField(
+                          controller: _schoolNameController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'School Name',
+                            fillColor: Colors.black.withOpacity(
+                                0.3), // Transparent background color
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter the School Name';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _shoolEmailController,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'School email',
+                            fillColor: Colors.black.withOpacity(
+                                0.3), // Transparent background color
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          validator: (value) {
+                            RegExp emailRegex = RegExp(
+                                r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter the School email';
+                            }
+                            if (!emailRegex.hasMatch(value)) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        const Padding(padding: EdgeInsets.only(bottom: 20)),
+                        const Text(
+                          "user Details",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        const Padding(padding: EdgeInsets.only(bottom: 20)),
+                        TextFormField(
+                          controller: _userNameController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'User Name',
+                            fillColor: Colors.black.withOpacity(
+                                0.3), // Transparent background color
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a username';
+                            }
+
+                            if (value.length < 3) {
+                              return 'Please enter a valid username';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _userEmailController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'User email',
+                            fillColor: Colors.black.withOpacity(
+                                0.3), // Transparent background color
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          keyboardType: TextInputType.number,
+                          validator: (value) {
+                            RegExp emailRegex = RegExp(
+                                r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your school\'s email';
+                            }
+                            if (!emailRegex.hasMatch(value)) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            fillColor: Colors.black.withOpacity(
+                                0.3), // Transparent background color
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          keyboardType: TextInputType.number,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter the password';
+                            }
+
+                            if (value.length < 6) {
+                              return 'Passwords should be longer than 6 characters';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        const Padding(padding: EdgeInsets.only(bottom: 30)),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              // Form is valid, perform desired actions here
+                              final shoolName = _schoolNameController.text;
+                              final schoolEmail = _shoolEmailController.text;
+                              final userName = _userNameController.text;
+                              final userEmail = _userEmailController.text;
+                              final password = _passwordController.text;
+
+                              // add join as student attempt event to the bloc
+                              var authBloc = BlocProvider.of<AuthBloc>(context);
+                              authBloc.add(JoinAsOwnerAttemptEvent(
+                                schoolName: shoolName,
+                                schoolEmail: schoolEmail,
+                                userName: userName,
+                                userEmail: userEmail,
+                                password: password,
+                              ));
+                            }
+                          },
+                          child: const Text('join'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                validator: (value) {
-                  RegExp emailRegex = RegExp(
-                      r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter the School email';
-                  }
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Please enter a valid email';
-                  }
-                  return null;
-                },
               ),
-              const Padding(padding: EdgeInsets.only(bottom: 20)),
-              const Text("user Details"),
-              const Padding(padding: EdgeInsets.only(bottom: 20)),
-              TextFormField(
-                controller: _userNameController,
-                decoration: const InputDecoration(
-                  labelText: 'User Name',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a username';
-                  }
-
-                  if (value.length < 3) {
-                    return 'Please enter a valid username';
-                  }
-
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _userEmailController,
-                decoration: const InputDecoration(
-                  labelText: 'User email',
-                ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  RegExp emailRegex = RegExp(
-                      r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your school\'s email';
-                  }
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Please enter a valid email';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _passwordController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter the password';
-                  }
-
-                  if (value.length < 6) {
-                    return 'passwords should be longer than 6 characters';
-                  }
-
-                  return null;
-                },
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 30)),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Form is valid, perform desired actions here
-                    final shoolName = _schoolNameController.text;
-                    final schoolEmail = _shoolEmailController.text;
-                    final userName = _userNameController.text;
-                    final userEmail = _userEmailController.text;
-                    final password = _passwordController.text;
-
-                    // add join as student attempt event to the bloc
-                    var authBloc = BlocProvider.of<AuthBloc>(context);
-                    authBloc.add(JoinAsOwnerAttemptEvent(
-                      schoolName: shoolName,
-                      schoolEmail: schoolEmail,
-                      userName: userName,
-                      userEmail: userEmail,
-                      password: password,
-                    ));
-                  }
-                },
-                child: const Text('Create Course'),
-              ),
-            ],
+            ),
           ),
-        ));
+        );
       }),
     );
   }

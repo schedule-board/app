@@ -22,6 +22,7 @@ class ProfilePage extends StatelessWidget {
         ),
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 236, 217, 89),
             title: const Text("user Profile"),
           ),
           body: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {

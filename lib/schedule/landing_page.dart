@@ -123,7 +123,6 @@ class _LandingPageState extends State<LandingPage> {
                   title: const Text('Invite'),
                   onTap: () {
                     context.push('/invite');
-                    Navigator.pop(context);
                   },
                 ),
               if (state.user?.role == 'student')
@@ -133,7 +132,6 @@ class _LandingPageState extends State<LandingPage> {
                     BlocProvider.of<ClassBloc>(context)
                         .add(LoadAllClassesEvent(token!));
                     context.push('/selectClass');
-                    Navigator.pop(context);
                   },
                 ),
               if (state.user?.role != 'student')
@@ -141,14 +139,12 @@ class _LandingPageState extends State<LandingPage> {
                   title: const Text('MY School'),
                   onTap: () {
                     context.push('/schoolDetail');
-                    Navigator.of(context).pop();
                   },
                 ),
               ListTile(
                 title: const Text('Profile'),
                 onTap: () {
                   context.push('/profile');
-                  Navigator.of(context).pop();
                 },
               ),
               if (state.user?.role == 'owner' ||
@@ -159,7 +155,6 @@ class _LandingPageState extends State<LandingPage> {
                     BlocProvider.of<CourseBloc>(context)
                         .add(LoadCourseEvent(currentSchool?.id, token));
                     context.push('/courseList');
-                    Navigator.of(context).pop();
                   },
                 ),
               if (state.user?.role == 'owner' ||
@@ -168,7 +163,7 @@ class _LandingPageState extends State<LandingPage> {
                   title: const Text('Manage Classes'),
                   onTap: () {
                     context.push('/classList');
-                    Navigator.of(context).pop();
+
                     BlocProvider.of<ClassBloc>(context)
                         .add(LoadClassesEvent(currentSchool!.id, token!));
                   },
@@ -208,15 +203,13 @@ class _LandingPageState extends State<LandingPage> {
                 onPressed: () {
                   BlocProvider.of<ScheduleDeleteBloc>(context).add(
                       DeleteScheduleEvent(schedules[index].scheduleId, token));
-                  Navigator.pop(context);
+
                   _showDeleteSchedulePopup(context, schedules, index);
                 },
                 child: const Text('Yes'),
               ),
               TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () {},
                 child: const Text('No'),
               ),
             ],
@@ -249,7 +242,7 @@ class _LandingPageState extends State<LandingPage> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
               child: const Text('Cancel'),
             ),
@@ -369,9 +362,7 @@ class _CoustomAlartDailogState extends State<CoustomAlartDailog> {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () {},
           child: Text('Cancel'),
         ),
         TextButton(
@@ -388,7 +379,7 @@ class _CoustomAlartDailogState extends State<CoustomAlartDailog> {
             BlocProvider.of<ScheduleUpdateBloc>(context).add(
                 UpdateScheduleEvent(newSchedule,
                     widget.schedules[widget.index].scheduleId, widget.token));
-            Navigator.pop(context);
+
             widget.showUpdateSchedulePopup(
                 context, widget.schedules, widget.index);
           },
@@ -422,7 +413,7 @@ void _showDeleteSchedulePopup(context, schedules, index) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Text('Cancel'),
           ),

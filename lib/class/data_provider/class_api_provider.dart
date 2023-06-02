@@ -8,8 +8,13 @@ class ClassApiProvider {
   ClassApiProvider();
   Future<List<Class>> loadClasses(String schoolId, token) async {
     var uri = "http://localhost:4000/api/v1/schools/$schoolId/classes";
+    // q: how do I set timeout for this request?
+
     var response = await http
-        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
+        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}).timeout(
+      const Duration(seconds: 10),
+      onTimeout: () => http.Response('Error', 408),
+    );
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
@@ -27,11 +32,14 @@ class ClassApiProvider {
   Future<List<dynamic>> loadAllClasses(token) async {
     var uri = "http://localhost:4000/api/v1/classes";
     var response = await http
-        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"});
+        .get(Uri.parse(uri), headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', "Authorization": "Bearer $token"}).timeout(
+      const Duration(seconds: 10),
+      onTimeout: () => http.Response('Error', 408),
+    );
 
     if (response.statusCode == 200) {
       var coursedata = jsonDecode(response.body)["data"];
-      List<dynamic> classes = coursedata.map((courseJson) {
+      List<Class> classes = coursedata.map<Class>((courseJson) {
         return Class.fromJson(courseJson);
       }).toList();
 

@@ -37,8 +37,7 @@ class ClassRepository {
     return classApiProvider.createClass(course, schoolId, token);
   }
 
-  Future<Class> updateClass(
-      Map course, String? classId, String? schoolId, token) async {
+  Future<Class> updateClass(Map course, String? classId, String? schoolId, token) async {
     return classApiProvider.updateClass(course, classId, schoolId, token);
   }
 
@@ -46,10 +45,10 @@ class ClassRepository {
     return classApiProvider.deleteClass(classId, schoolId, token);
   }
 
-  Future<void> syncClassDataWithServer(String schoolId) async {
+  Future<void> syncClassDataWithServer() async {
     var prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    var classes = await classApiProvider.loadClasses(schoolId, token);
+    var classes = await classApiProvider.loadAllClasses(token);
     for (var element in classes) {
       await classLocalProvider.upsertClass(element.toJson());
     }

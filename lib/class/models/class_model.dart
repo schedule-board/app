@@ -8,9 +8,9 @@ class Class {
 
   factory Class.fromJson(Map<dynamic, dynamic> json) {
     return Class(
-      schoolName: json["school"] is Map ? json["school"]["school_name"] : null,
-      classId: json["id"],
-      className: json["class_name"],
+      schoolName: json["school"] is Map ? json["school"]["school_name"] : json['schoolName'],
+      classId: json["id"] ?? json["classId"],
+      className: json["class_name"] ?? json["className"],
       courses: json["courses"],
     );
   }

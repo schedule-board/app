@@ -51,7 +51,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
     return WillPopScope(
       onWillPop: () async {
         BlocProvider.of<CourseBloc>(context)
-            .add(LoadCourseEvent(currentSchool?.id,token));
+            .add(LoadCourseEvent(currentSchool?.id, token));
         return true;
       },
       child: Scaffold(
@@ -123,7 +123,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                         _selectedTeacher = value as String;
                       },
                     ),
-                   const Text(
+                    const Text(
                       'Schedules',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -180,12 +180,12 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                                         })
                                     .toList()
                               };
-                              BlocProvider.of<CourseUpdateBloc>(context)
-                                  .add(UpdateCourseEvent(
-                                course,
-                                state.course.courseId,
-                                currentSchool!.id,token!
-                              ));
+                              BlocProvider.of<CourseUpdateBloc>(context).add(
+                                  UpdateCourseEvent(
+                                      course,
+                                      state.course.courseId,
+                                      currentSchool!.id,
+                                      token!));
                               _showUpdateCoursePopup(context);
                             }
                           },
@@ -193,12 +193,9 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            BlocProvider.of<CourseBloc>(context)
-                                .add(DeleteCourseEvent(
-                              state.course.courseId,
-                              currentSchool!.id,
-                              token
-                            ));
+                            BlocProvider.of<CourseBloc>(context).add(
+                                DeleteCourseEvent(state.course.courseId,
+                                    currentSchool!.id, token));
                           },
                           child: Text('Delete'),
                         ),
@@ -280,9 +277,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () {},
               child: Text('Cancel'),
             ),
             TextButton(
@@ -296,7 +291,6 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                     ),
                   );
                 });
-                Navigator.pop(context);
               },
               child: Text('Add'),
             ),
@@ -375,7 +369,7 @@ void _showUpdateCoursePopup(context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
             child: Text('Cancel'),
           ),

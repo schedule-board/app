@@ -10,7 +10,8 @@ class InvitePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Invite Page")),
+      appBar: AppBar(title: const Text("Invite Page"),
+      backgroundColor: Color.fromARGB(255, 236, 217, 89),),
       body: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

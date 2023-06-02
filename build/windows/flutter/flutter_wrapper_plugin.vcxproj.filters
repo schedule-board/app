@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yonas\Desktop\app\windows\flutter\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{52ED63C1-91A7-34A9-8915-BC8F1A72B998}</UniqueIdentifier>
+      <UniqueIdentifier>{C44E13BF-1488-32E3-A3CB-8CB2BA3AE7D0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{3330CF27-A2DC-32FD-BA35-E28BFADC6DA1}</UniqueIdentifier>
+      <UniqueIdentifier>{392DB2EE-1444-3468-BDDD-3F22B8CFE9AC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

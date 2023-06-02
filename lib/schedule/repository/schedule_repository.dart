@@ -1,4 +1,4 @@
-import 'package:schedule/schedule/data_provider/schedule_local_provider.dart';
+import '../data_provider/schedule_local_provider.dart';
 
 import '../bloc/bloc.dart';
 import '../data_provider/schedule_api_provider.dart';

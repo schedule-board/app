@@ -11,13 +11,14 @@ class JoinWithCodeScreen extends StatelessWidget {
   final TextEditingController _userEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  JoinWithCodeScreen({super.key});
+  JoinWithCodeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Join with Code'),
+        backgroundColor: Color.fromARGB(255, 236, 217, 89),
       ),
       body: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
         if (state.isProcessing) {
@@ -29,7 +30,6 @@ class JoinWithCodeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text('SignUp failed'),
-                // retry button
                 ElevatedButton(
                   onPressed: () {
                     context.read<AuthBloc>().add(AuthProcessingStartEvent());
@@ -50,7 +50,6 @@ class JoinWithCodeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text('SignUp success'),
-                // go to home button
                 ElevatedButton(
                   onPressed: () {
                     context.go('/landing');
@@ -62,90 +61,116 @@ class JoinWithCodeScreen extends StatelessWidget {
           );
         }
 
-        return Center(
-            child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _codeController,
-                decoration: const InputDecoration(
-                  labelText: 'Code',
-                ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter valid code';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _userNameController,
-                decoration: const InputDecoration(
-                  labelText: 'username',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter username';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _userEmailController,
-                decoration: const InputDecoration(
-                  labelText: 'user email',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  if (!value.contains("@")) {
-                    return 'please enter a valid email';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a password';
-                  }
-                  if (value.length < 6) {
-                    return 'the password length should be greater than 6';
-                  }
+        return SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Card(
+                color: Colors.white.withOpacity(0.8),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _codeController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'Code',
+                            fillColor: Colors.black.withOpacity(0.3),
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                          ),
+                          keyboardType: TextInputType.number,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter valid code';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _userNameController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'Username',
+                            fillColor: Colors.black.withOpacity(0.3),
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a username';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _userEmailController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'User Email',
+                            fillColor: Colors.black.withOpacity(0.3),
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            if (!value.contains("@")) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            fillColor: Colors.black.withOpacity(0.3),
+                            filled: true,
+                            labelStyle: TextStyle(color: Colors.white),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a password';
+                            }
+                            if (value.length < 6) {
+                              return 'The password length should be greater than 6';
+                            }
+                            return null;
+                          },
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              final code = _codeController.text;
+                              final userName = _userNameController.text;
+                              final userEmail = _userEmailController.text;
+                              final password = _passwordController.text;
 
-                  return null;
-                },
+                              var authBloc = BlocProvider.of<AuthBloc>(context);
+                              authBloc.add(JoinWithCodeAttemptEvent(
+                                code: code,
+                                userName: userName,
+                                userEmail: userEmail,
+                                password: password,
+                              ));
+                            }
+                          },
+                          child: const Text('Join'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Form is valid, perform desired actions here
-                    final code = _codeController.text;
-                    final userName = _userNameController.text;
-                    final userEmail = _userEmailController.text;
-                    final password = _passwordController.text;
-
-                    // add join as student attempt event to the bloc
-                    var authBloc = BlocProvider.of<AuthBloc>(context);
-                    authBloc.add(JoinWithCodeAttemptEvent(
-                        code: code,
-                        userName: userName,
-                        userEmail: userEmail,
-                        password: password));
-                  }
-                },
-                child: const Text('Join'),
-              ),
-            ],
+            ),
           ),
-        ));
+        );
       }),
     );
   }

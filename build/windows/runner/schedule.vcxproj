@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -18,9 +18,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{77B3C750-9A74-3FAB-8A49-196578DDE77E}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{914C39B6-CA6B-36D7-91B6-20C81FD1E0CC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>schedule</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -29,17 +29,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -50,19 +50,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">schedule.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">schedule</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\Profile\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\Profile\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">schedule.dir\Profile\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">schedule</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">schedule.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">schedule</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -86,15 +86,15 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;_DEBUG;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_HAS_EXCEPTIONS=0;_DEBUG;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -102,25 +102,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Debug\sqlite3_flutter_libs_plugin.lib;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Debug\sqlite3_flutter_libs_plugin.lib;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/yonas/Desktop/app/build/windows/runner/Debug/schedule.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/yonas/Desktop/app/build/windows/runner/Debug/schedule.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Debug/schedule.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Debug/schedule.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\yonas\Desktop\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -133,17 +133,17 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Profile";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Profile"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Profile\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Profile\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -151,25 +151,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Profile\sqlite3_flutter_libs_plugin.lib;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Profile\sqlite3_flutter_libs_plugin.lib;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/yonas/Desktop/app/build/windows/runner/Profile/schedule.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/yonas/Desktop/app/build/windows/runner/Profile/schedule.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Profile/schedule.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Profile/schedule.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\yonas\Desktop\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -182,17 +182,17 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION="1.0.0+1";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\yonas\Desktop\app\windows;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\cpp_client_wrapper\include;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\.plugin_symlinks\sqlite3_flutter_libs\windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -200,28 +200,28 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Release\sqlite3_flutter_libs_plugin.lib;C:\Users\yonas\Desktop\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;..\plugins\sqlite3_flutter_libs\Release\sqlite3_flutter_libs_plugin.lib;C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/yonas/Desktop/app/build/windows/runner/Release/schedule.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/yonas/Desktop/app/build/windows/runner/Release/schedule.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Release/schedule.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/Release/schedule.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\yonas\Desktop\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\yonas\Desktop\app\windows\runner\CMakeLists.txt">
-      <StdOutEncoding>UTF-8</StdOutEncoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/yonas/Desktop/app/windows/runner/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/yonas/Desktop/app/windows -BC:/Users/yonas/Desktop/app/build/windows --check-stamp-file C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows" "-BC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows" --check-stamp-file "C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -230,11 +230,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule C:/Users/yonas/Desktop/app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">setlocal
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/yonas/Desktop/app/windows -BC:/Users/yonas/Desktop/app/build/windows --check-stamp-file C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows" "-BC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows" --check-stamp-file "C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -243,11 +243,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/yonas/Desktop/app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/yonas/Desktop/app/windows -BC:/Users/yonas/Desktop/app/build/windows --check-stamp-file C:/Users/yonas/Desktop/app/build/windows/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/windows" "-BC:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows" --check-stamp-file "C:/Users/biniy/Desktop/flutter eprojects/app/afinalscheduleboard/app/build/windows/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -256,37 +256,37 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\yonas\Desktop\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\flutter_window.cpp" />
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\main.cpp" />
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\utils.cpp" />
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\runner\win32_window.cpp" />
-    <ClCompile Include="C:\Users\yonas\Desktop\app\windows\flutter\generated_plugin_registrant.cc" />
-    <ResourceCompile Include="C:\Users\yonas\Desktop\app\windows\runner\Runner.rc" />
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\flutter_window.cpp" />
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\main.cpp" />
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\utils.cpp" />
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\win32_window.cpp" />
+    <ClCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\flutter\generated_plugin_registrant.cc" />
+    <ResourceCompile Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\windows\runner\Runner.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\yonas\Desktop\app\build\windows\ZERO_CHECK.vcxproj">
-      <Project>{92EA7291-5E71-3A67-8795-F9E0BD835F48}</Project>
+    <ProjectReference Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\ZERO_CHECK.vcxproj">
+      <Project>{E16DF1E5-230D-331F-B7D2-6D3E63060551}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\yonas\Desktop\app\build\windows\flutter\flutter_assemble.vcxproj">
-      <Project>{6201AA17-91EA-3A4A-BD38-2AD8F1F8FCE0}</Project>
+    <ProjectReference Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\flutter\flutter_assemble.vcxproj">
+      <Project>{45BABBE5-771D-3C19-9715-BF699495156A}</Project>
       <Name>flutter_assemble</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\yonas\Desktop\app\build\windows\flutter\flutter_wrapper_app.vcxproj">
-      <Project>{CEEDBFB0-CC57-3DC4-A41B-57EE74A38C18}</Project>
+    <ProjectReference Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\flutter\flutter_wrapper_app.vcxproj">
+      <Project>{F2955488-91E4-3DA8-B869-3FB40A5C7A78}</Project>
       <Name>flutter_wrapper_app</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\yonas\Desktop\app\build\windows\plugins\sqlite3_flutter_libs\sqlite3_flutter_libs_plugin.vcxproj">
-      <Project>{F998B527-E4E7-3EA8-A5D8-8D2DB4E6ED43}</Project>
+    <ProjectReference Include="C:\Users\biniy\Desktop\flutter eprojects\app\afinalscheduleboard\app\build\windows\plugins\sqlite3_flutter_libs\sqlite3_flutter_libs_plugin.vcxproj">
+      <Project>{5D090E09-634C-305C-AD45-E7EA2A28BEF8}</Project>
       <Name>sqlite3_flutter_libs_plugin</Name>
     </ProjectReference>
   </ItemGroup>

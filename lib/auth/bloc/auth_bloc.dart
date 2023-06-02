@@ -38,10 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // set the jwt token in the shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', event.token);
-      if (event.user.role != "student") {
-        ClassRepository().syncClassDataWithServer(http.Client(),event.school!.id);
-        // CourseRepository().syncCourseDataWithServer(event.school!.id);
-      }
+        ClassRepository().syncClassDataWithServer();
       emit(state.copyWith(
         user: event.user,
         school: event.school,

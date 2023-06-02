@@ -14,7 +14,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<LoadClassesEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var courses = await classRepository.loadClassesOfSchool(http.Client(),event.schoolId, event.token);
+        var courses = await classRepository.loadClassesOfSchool(event.schoolId, event.token);
         emit(ClassesOperationSuccess(courses));
       } catch (err) {
         emit(ClassOperationFailure(err));
@@ -24,7 +24,7 @@ class ClassBloc extends Bloc<ClassEvent, ClassState> {
     on<LoadAllClassesEvent>((event, emit) async {
       emit(ClassLoadingState());
       try {
-        var courses = await classRepository.loadAllClasses(http.Client(),event.token);
+        var courses = await classRepository.loadAllClasses(event.token);
         emit(ClassesOperationSuccess(courses));
       } catch (err) {
         emit(ClassOperationFailure(err));
